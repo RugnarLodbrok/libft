@@ -81,6 +81,10 @@ SRC = \
       src/t_buff.c
 
 OBJ = $(SRC:.c=.o)
+
+TEST_SRC = tests/tests_main.c
+TEST_OBJ = $(TEST_SRC:.c=.o)
+
 OPTION = -I.
 
 all : $(NAME)
@@ -89,7 +93,10 @@ $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-%.o: %.c
+test : $(NAME) $(TEST_OBJ)
+	$(CC) -o test $(TEST_OBJ) $(OPTION) -L . -lft
+
+%.o : %.c
 	$(CC) $(FLAGS) -c $(<) -o $(<:.c=.o) $(OPTION)
 
 clean :

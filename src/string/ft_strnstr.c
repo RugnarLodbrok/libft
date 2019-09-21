@@ -14,9 +14,9 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 {
-	unsigned int hay_i;
-	unsigned int nee_i;
-	unsigned int len;
+	size_t	hay_i;
+	size_t 	nee_i;
+	size_t	len;
 
 	len = ft_strlen(needle);
 	if (!len)

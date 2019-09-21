@@ -3,7 +3,8 @@ project(libft_run C)
 set(CMAKE_C_STANDARD 90)
 include_directories(.)
 include_directories(headers)
-add_library(libft.a
+#add_library(libft.a
+add_executable(libft_tests.exe tests/tests_main.c
 		src/string/ft_atoi.c
 		src/string/ft_bzero.c
 		src/string/ft_isalnum.c
