@@ -69,4 +69,9 @@ add_executable(libft_tests.exe tests/tests_main.c
 		src/ft_sqrt.c
 		src/ft_swap.c
 		src/get_next_line.c
-		src/t_buff.c)
+		src/t_buff.c
+
+		src/printf/ft_printf.c
+		src/printf/handlers.c
+		src/printf/varg.c
+		)

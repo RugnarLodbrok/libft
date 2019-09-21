@@ -78,7 +78,11 @@ SRC = \
       src/ft_sqrt.c \
       src/ft_swap.c \
       src/get_next_line.c \
-      src/t_buff.c
+      src/t_buff.c \
+      \
+      src/printf/handlers.c \
+      src/printf/varg.c \
+      src/printf/ft_printf.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -94,7 +98,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 test : $(NAME) $(TEST_OBJ)
-	$(CC) -o test $(TEST_OBJ) $(OPTION) -L . -lft
+	@$(CC) -o test $(TEST_OBJ) $(OPTION) -L . -lft
 
 %.o : %.c
 	$(CC) $(FLAGS) -c $(<) -o $(<:.c=.o) $(OPTION)

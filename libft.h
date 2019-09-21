@@ -117,4 +117,6 @@ void				ft_swap_char(char *a, char *b);
 
 int					get_next_line(const int fd, char **line);
 
+void				ft_printf(const char *format, ...);
+
 #endif
