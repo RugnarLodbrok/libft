@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include "unistd_fix.h"
+# include "unistd_compat.h"
 
 # define CHECK0RET(x, r) if (!(x)) return (r);
 # define CHECK0RET0(x) CHECK0RET(x, 0);

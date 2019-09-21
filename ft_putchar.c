@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unistd_fix.h"
+#include "unistd_compat.h"
 
 void	ft_putchar(char c)
 {
