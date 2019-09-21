@@ -20,8 +20,8 @@ static int	is_sp(char c)
 
 char		*ft_strtrim(char const *s)
 {
-	unsigned int	i;
-	char			*dst;
+	size_t	i;
+	char	*dst;
 
 	while (is_sp(*s))
 		s++;

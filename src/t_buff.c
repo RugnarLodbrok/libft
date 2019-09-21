@@ -32,7 +32,7 @@ void	*t_buff_init(t_buff *b, size_t size)
 	return (b->data);
 }
 
-int		t_buff_extend(t_buff *b)
+size_t	t_buff_extend(t_buff *b)
 {
 	size_t size_old;
 
@@ -43,7 +43,7 @@ int		t_buff_extend(t_buff *b)
 	return (b->size);
 }
 
-int		t_buff_add_len(t_buff *b, size_t len)
+size_t	t_buff_add_len(t_buff *b, size_t len)
 {
 	b->len += len;
 	while (b->len > b->size)
