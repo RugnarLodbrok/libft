@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "unistd_compat.h"
 
 static int		ft_check_for_line_end(char *result, char **fd_array, int *flag)
 {
@@ -67,20 +68,20 @@ int				get_next_line(const int fd, char **line)
 		return (-1);
 	if (!(*line = NULL) && fd_array[fd] != NULL)
 	{
-		MALLCHECK((*line = ft_strdup(fd_array[fd])));
+		CHECK0RET1((*line = ft_strdup(fd_array[fd])));
 		free(fd_array[fd]);
 		fd_array[fd] = NULL;
 		if (ft_check_for_line_end(*line, &fd_array[fd], flag))
 			return (1);
-		MALLCKECK_INT(flag[0]);
+		CHECK1RET1(flag[0]);
 	}
 	while ((read_size = read(fd, buf, BUFF_SIZE)))
 	{
 		buf[read_size] = '\0';
-		MALLCHECK((*line = ft_malloc_str(*line, buf)));
+		CHECK0RET1((*line = ft_malloc_str(*line, buf)));
 		if (ft_check_for_line_end(*line, &fd_array[fd], flag))
 			return (1);
-		MALLCKECK_INT(flag[0]);
+		CHECK1RET1(flag[0]);
 	}
 	return (read_size == 0 && fd_array[fd] == NULL && *line == NULL) ? 0 : 1;
 }

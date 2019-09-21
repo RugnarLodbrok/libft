@@ -13,72 +13,75 @@
 CC = gcc
 NAME = libft.a
 FLAGS = -Wall -Wextra -Werror
-HEADER = .
-SRC = ft_memset.c \
-      ft_bzero.c \
-      ft_memcpy.c \
-      ft_memccpy.c \
-      ft_memmove.c \
-      ft_memcmp.c \
-      ft_strlen.c \
-      ft_strdup.c \
-      ft_strcpy.c \
-      ft_strncpy.c \
-      ft_strcat.c \
-      ft_strncat.c \
-      ft_strlcat.c \
-      ft_strchr.c \
-      ft_strrchr.c \
-      ft_strstr.c \
-      ft_strnstr.c \
-      ft_strcmp.c \
-      ft_strncmp.c \
-      ft_atoi.c \
-      ft_isalpha.c \
-      ft_isdigit.c \
-      ft_isalnum.c \
-      ft_isascii.c \
-      ft_isprint.c \
-      ft_toupper.c \
-      ft_tolower.c \
-      ft_memchr.c \
-      ft_memalloc.c \
-      ft_memdel.c \
-      ft_strnew.c \
-      ft_strdel.c \
-      ft_strclr.c \
-      ft_striter.c \
-      ft_striteri.c \
-      ft_strmap.c \
-      ft_strmapi.c \
-      ft_strequ.c \
-      ft_strnequ.c \
-      ft_strsub.c \
-      ft_strjoin.c \
-      ft_strtrim.c \
-      ft_strsplit.c \
-      ft_itoa.c \
-      ft_putchar.c \
-      ft_putstr.c \
-      ft_putendl.c \
-      ft_putnbr.c \
-      ft_putchar_fd.c \
-      ft_putstr_fd.c \
-      ft_putendl_fd.c \
-      ft_putnbr_fd.c \
-      ft_lstnew.c \
-      ft_lstdelone.c \
-      ft_lstdel.c \
-      ft_lstadd.c \
-      ft_lstaddend.c \
-      ft_lstiter.c \
-      ft_lstmap.c \
-      ft_sqrt.c \
-      ft_swap.c \
-      t_buff.c \
-      get_next_line.c
+SRC = \
+	  src/string/ft_atoi.c \
+      src/string/ft_bzero.c \
+      src/string/ft_isalnum.c \
+      src/string/ft_isalpha.c \
+      src/string/ft_isascii.c \
+      src/string/ft_isdigit.c \
+      src/string/ft_isprint.c \
+      src/string/ft_itoa.c \
+      src/string/ft_memalloc.c \
+      src/string/ft_memccpy.c \
+      src/string/ft_memchr.c \
+      src/string/ft_memcmp.c \
+      src/string/ft_memcpy.c \
+      src/string/ft_memdel.c \
+      src/string/ft_memmove.c \
+      src/string/ft_memset.c \
+      src/string/ft_putchar.c \
+      src/string/ft_putchar_fd.c \
+      src/string/ft_putendl.c \
+      src/string/ft_putendl_fd.c \
+      src/string/ft_putnbr.c \
+      src/string/ft_putnbr_fd.c \
+      src/string/ft_putstr.c \
+      src/string/ft_putstr_fd.c \
+      src/string/ft_strcat.c \
+      src/string/ft_strchr.c \
+      src/string/ft_strclr.c \
+      src/string/ft_strcmp.c \
+      src/string/ft_strcpy.c \
+      src/string/ft_strdel.c \
+      src/string/ft_strdup.c \
+      src/string/ft_strequ.c \
+      src/string/ft_striter.c \
+      src/string/ft_striteri.c \
+      src/string/ft_strjoin.c \
+      src/string/ft_strlcat.c \
+      src/string/ft_strlen.c \
+      src/string/ft_strmap.c \
+      src/string/ft_strmapi.c \
+      src/string/ft_strncat.c \
+      src/string/ft_strncmp.c \
+      src/string/ft_strncpy.c \
+      src/string/ft_strnequ.c \
+      src/string/ft_strnew.c \
+      src/string/ft_strnstr.c \
+      src/string/ft_strrchr.c \
+      src/string/ft_strsplit.c \
+      src/string/ft_strstr.c \
+      src/string/ft_strsub.c \
+      src/string/ft_strtrim.c \
+      src/string/ft_tolower.c \
+      src/string/ft_toupper.c \
+	  \
+      src/list/ft_lstadd.c \
+      src/list/ft_lstaddend.c \
+      src/list/ft_lstdel.c \
+      src/list/ft_lstdelone.c \
+      src/list/ft_lstiter.c \
+      src/list/ft_lstmap.c \
+      src/list/ft_lstnew.c \
+      \
+      src/ft_sqrt.c \
+      src/ft_swap.c \
+      src/get_next_line.c \
+      src/t_buff.c
 
 OBJ = $(SRC:.c=.o)
+OPTION = -I.
 
 all : $(NAME)
 
@@ -87,7 +90,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -I$(HEADER)
+	$(CC) $(FLAGS) -c $(<) -o $(<:.c=.o) $(OPTION)
 
 clean :
 	/bin/rm -f $(OBJ)
