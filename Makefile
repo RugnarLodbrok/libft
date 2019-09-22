@@ -79,9 +79,11 @@ SRC = \
       src/ft_swap.c \
       src/get_next_line.c \
       src/t_buff.c \
+      src/endian.c \
       \
       src/printf/handlers.c \
       src/printf/varg.c \
+      src/printf/ft_printf_args.c \
       src/printf/ft_printf.c
 
 OBJ = $(SRC:.c=.o)

@@ -116,7 +116,7 @@ void				ft_swap_int(int *a, int *b);
 void				ft_swap_char(char *a, char *b);
 
 int					get_next_line(const int fd, char **line);
-
+int					endian();
 void				ft_printf(const char *format, ...);
 
 #endif
