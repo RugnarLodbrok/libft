@@ -11,5 +11,7 @@ int main(void)
 	printf("%s\n", ft_itoa_base(-123456, 16));
 	printf("%lx\n", 335123123456);
 	printf("%s\n", ft_ultoa_base(335123123456, 16));
+	printf("%p\n", s);
+	ft_printf("%p\n", s);
 	return (0);
 }

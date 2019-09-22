@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-void printf_handler_d(ft_printf_arg v)
+void printf_handler_d(t_printf_arg v)
 {
 	char *s;
 
@@ -13,12 +13,21 @@ void printf_handler_d(ft_printf_arg v)
 	free(s);
 }
 
-void printf_handler_s(ft_printf_arg v)
+void printf_handler_s(t_printf_arg v)
 {
 	ft_putstr(v.s);
 }
 
-void printf_handler_c(ft_printf_arg v)
+void printf_handler_c(t_printf_arg v)
 {
 	ft_putchar(v.c);
+}
+
+void printf_handler_p(t_printf_arg v)
+{
+	char *s;
+	ft_putstr("0x");
+	s = ft_ultoa_base(v.lu, 16);
+	ft_putstr(s);
+	free(s);
 }

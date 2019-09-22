@@ -1,7 +1,7 @@
 
 #include <stdlib.h>
 
-static unsigned int	count_digits(unsigned long int n, unsigned int base)
+static uint	count_digits(ulong n, uint base)
 {
 	unsigned int i;
 
@@ -16,7 +16,7 @@ static unsigned int	count_digits(unsigned long int n, unsigned int base)
 	return (i);
 }
 
-void			ft_ultoa_stack(char *s, unsigned long int n, unsigned int base)
+void		ft_ultoa_stack(char *s, ulong n, uint base)
 {
 	unsigned  int	d;
 	char			c;
@@ -38,7 +38,7 @@ void			ft_ultoa_stack(char *s, unsigned long int n, unsigned int base)
 	}
 }
 
-char				*ft_ultoa(unsigned long int n)
+char		*ft_ultoa(ulong n)
 {
 	unsigned int	d;
 	char			*s;
@@ -50,7 +50,7 @@ char				*ft_ultoa(unsigned long int n)
 	return (s);
 }
 
-char				*ft_ultoa_base(unsigned long int n, int base)
+char		*ft_ultoa_base(ulong n, uint base)
 {
 	unsigned int	d;
 	char			*s;

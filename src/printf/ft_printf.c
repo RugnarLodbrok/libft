@@ -5,11 +5,12 @@
 #include "ft_printf.h"
 
 t_printf_handler g_handler_tab[] =
-		{
-				{"d", &printf_handler_d, "int",   sizeof(int)},
-				{"s", &printf_handler_s, "char*", sizeof(char *)},
-				{"c", &printf_handler_c, "char",  4/*sizeof(char)*/}
-		};
+{
+	{"p", &printf_handler_p, "void*", sizeof(void *)},
+	{"d", &printf_handler_d, "int",   sizeof(int)},
+	{"s", &printf_handler_s, "char*", sizeof(char *)},
+	{"c", &printf_handler_c, "char",  4/*sizeof(char)*/}
+};
 
 t_printf_handler *get_handler(char **p)
 {
@@ -29,7 +30,7 @@ t_printf_handler *get_handler(char **p)
 
 void ft_printf_make_print(const char *format, va_list ap)
 {
-	ft_printf_arg arg;
+	t_printf_arg arg;
 	t_printf_handler *h;
 	char *ptr;
 	char *ptr1;
@@ -40,7 +41,7 @@ void ft_printf_make_print(const char *format, va_list ap)
 	{
 		write(1, ptr1, ptr - ptr1);
 		h = get_handler(&ptr);
-		arg = va_arg(ap, ft_printf_arg);
+		arg = va_arg(ap, t_printf_arg);
 		h->f(arg);
 		ptr1 = ptr;
 	}
