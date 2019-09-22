@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-static unsigned int	count_digits(int n)
+static unsigned int	count_digits(long int n, unsigned int base)
 {
 	unsigned int i;
 
@@ -25,14 +25,19 @@ static unsigned int	count_digits(int n)
 		i++;
 	while (n)
 	{
-		n /= 10;
+		n /= base;
 		i++;
 	}
 	return (i);
 }
 
-static void			ft_itoa_static(char *s, unsigned int d, int n)
+void			ft_itoa_stack(char *s, long int n, unsigned int base)
 {
+	unsigned  int	d;
+	char			c;
+	int				rem;
+
+	d = count_digits(n, base);
 	if (n >= 0)
 		n *= -1;
 	else
@@ -42,19 +47,38 @@ static void			ft_itoa_static(char *s, unsigned int d, int n)
 		s[0] = '0';
 	while (n)
 	{
-		s[d-- - 1] = '0' - (n % 10);
-		n /= 10;
+		rem = (int ) (- (n % base));
+		if (rem > 9)
+			c = 'a' + rem - 10;
+		else
+			c = '0' + rem;
+		s[d-- - 1] = c;
+		n /= base;
 	}
 }
 
-char				*ft_itoa(int n)
+char				*ft_itoa(long int n)
 {
 	unsigned int	d;
 	char			*s;
 
-	d = count_digits(n);
+	d = count_digits(n, 10);
 	if (!(s = malloc(sizeof(char) * (d + 1))))
 		return (0);
-	ft_itoa_static(s, d, n);
+	ft_itoa_stack(s, n, 10);
+	return (s);
+}
+
+char				*ft_itoa_base(long int n, int base)
+{
+	unsigned int	d;
+	char			*s;
+
+	if (base < 2 || base > 32)
+		return (0);
+	d = count_digits(n, base);
+	if (!(s = malloc(sizeof(char) * (d + 1))))
+		return (0);
+	ft_itoa_stack(s, n, base);
 	return (s);
 }
