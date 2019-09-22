@@ -6,9 +6,9 @@
 
 t_printf_handler g_handler_tab[] =
 		{
-				{"d", &printf_handler_d, "int", sizeof(int)},
-				{"s", &printf_handler_s, "char*", sizeof(char*)},
-				{"c", &printf_handler_c, "char", sizeof(char)}
+				{"d", &printf_handler_d, "int",   sizeof(int)},
+				{"s", &printf_handler_s, "char*", sizeof(char *)},
+				{"c", &printf_handler_c, "char",  sizeof(char)}
 		};
 
 t_printf_handler *get_handler(char **p)
@@ -34,12 +34,24 @@ ft_printf_arg get_next_arg(va_list ap, const char *literal)
 	if (!ft_strcmp(literal, "d"))
 		arg.d = va_arg(ap, int);
 	else if (!ft_strcmp(literal, "c"))
-		arg.c = va_arg(ap, char);
+		arg.c = (char) va_arg(ap, int);
 	else if (!ft_strcmp(literal, "s"))
 		arg.s = va_arg(ap, char*);
 	else
 		arg.s = 0;
 	return (arg);
+}
+
+size_t count_va_len(const char *format)
+{
+	char *ptr;
+	size_t ret;
+
+	ret = 0;
+	ptr = (char *) format;
+	while ((ptr = ft_strchr(ptr, '%')))
+		ret += get_handler(&ptr)->size;
+	return (ret);
 }
 
 void ft_printf(const char *format, ...)
@@ -49,24 +61,18 @@ void ft_printf(const char *format, ...)
 	char *ptr1;
 	ft_printf_arg arg;
 	t_printf_handler *h;
-	t_varg varg;
-	t_list *arg_stack;
 
-	varg_init(&varg, &format, sizeof(format));
-//			va_start(ap, format);
+	va_start(ap, format);
 	ptr = (char *) format;
 	ptr1 = ptr;
 	while ((ptr = ft_strchr(ptr, '%')))
 	{
 		write(1, ptr1, ptr - ptr1);
 		h = get_handler(&ptr);
-		printf("\nprocess: `%s`\n", h->literal);
-		arg = varg_next(&varg, h->size);
-//		arg = get_next_arg(ap, h->literal);
-//		arg.d = va_arg(ap, int);
+		arg = get_next_arg(ap, h->literal);
 		h->f(arg);
 		ptr1 = ptr;
 	}
 	ft_putstr(ptr1);
-//			va_end(ap);
+	va_end(ap);
 }

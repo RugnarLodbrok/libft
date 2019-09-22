@@ -100,11 +100,14 @@ $(NAME): $(OBJ)
 test : $(NAME) $(TEST_OBJ)
 	@$(CC) -o test $(TEST_OBJ) $(OPTION) -L . -lft
 
+run : test
+	@./test
+
 %.o : %.c
 	$(CC) $(FLAGS) -c $(<) -o $(<:.c=.o) $(OPTION)
 
 clean :
-	/bin/rm -f $(OBJ)
+	/bin/rm -f $(OBJ) $(TEST_OBJ)
 
 fclean : clean
 	/bin/rm -f $(NAME)

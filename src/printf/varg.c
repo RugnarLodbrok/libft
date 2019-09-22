@@ -12,10 +12,6 @@ ft_printf_arg varg_next(t_varg *ap, size_t size)
 {
 	ft_printf_arg ret;
 
-	printf("call varg_next, size = %zu; sizeof(arg) = %zu\n", size, sizeof(ret));
-	printf("ptr: %p\n", ap->p);
-	if (size == 8)
-		printf("ptrs: %s\n", (char*)(ap->p));
 	ft_memcpy(&ret, ap->p, size);
 	ap->p += size;
 	return (ret);

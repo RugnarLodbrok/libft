@@ -4,7 +4,7 @@
 
 int main(void)
 {
-	ft_printf("hello! `%d`, `%s`\n", 42, "abc");
+	ft_printf("hello! %c`%d`, `%s`, '!' %d\n", '@', 42, "abc", '!', 666);
 //	ft_printf("hello! `%d`\n", 42);
 
 //	ft_printf_arg arg;
