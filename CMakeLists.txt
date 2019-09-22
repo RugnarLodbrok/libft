@@ -76,6 +76,4 @@ add_executable(libft_tests tests/tests_main.c
 
 		src/printf/ft_printf.c
 		src/printf/handlers.c
-		src/printf/varg.c
-		src/printf/ft_printf_args.c
 		)
