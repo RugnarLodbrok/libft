@@ -21,7 +21,6 @@ SRC = \
       src/string/ft_isascii.c \
       src/string/ft_isdigit.c \
       src/string/ft_isprint.c \
-      src/string/ft_itoa.c \
       src/string/ft_memalloc.c \
       src/string/ft_memccpy.c \
       src/string/ft_memchr.c \
@@ -66,6 +65,9 @@ SRC = \
       src/string/ft_strtrim.c \
       src/string/ft_tolower.c \
       src/string/ft_toupper.c \
+	  \
+	  src/format/ft_itoa.c \
+	  src/format/ft_ultoa.c \
 	  \
       src/list/ft_lstadd.c \
       src/list/ft_lstaddend.c \
