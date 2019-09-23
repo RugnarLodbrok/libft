@@ -20,8 +20,6 @@
 # define CHECK0RET1(x) CHECK0RET(x, -1);
 # define CHECK1RET1(x) if (x == -1) return (-1)
 
-# define BUFF_SIZE 42
-
 typedef struct		s_list
 {
 	void			*content;
@@ -114,7 +112,5 @@ int					ft_sqrt_ceil(int nb);
 void				ft_swap(void **a, void **b);
 void				ft_swap_int(int *a, int *b);
 void				ft_swap_char(char *a, char *b);
-
-int					get_next_line(const int fd, char **line);
 
 #endif
