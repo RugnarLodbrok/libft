@@ -42,7 +42,10 @@ void ft_printf_make_print(const char *format, va_list ap)
 	{
 		write(1, ptr1, ptr - ptr1);
 		h = get_handler(&ptr);
-		arg = va_arg(ap, t_printf_arg);
+		if (!ft_strcmp(h->literal, "f"))
+			arg.f = va_arg(ap, double);
+		else
+			arg = va_arg(ap, t_printf_arg);
 		h->f(arg);
 		ptr1 = ptr;
 	}
