@@ -6,6 +6,7 @@
 
 t_printf_handler g_handler_tab[] =
 {
+	{"f", &printf_handler_f, "double", sizeof(double)},
 	{"p", &printf_handler_p, "void*", sizeof(void *)},
 	{"d", &printf_handler_d, "int",   sizeof(int)},
 	{"s", &printf_handler_s, "char*", sizeof(char *)},

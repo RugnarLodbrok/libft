@@ -31,3 +31,11 @@ void printf_handler_p(t_printf_arg v)
 	ft_putstr(s);
 	free(s);
 }
+
+void printf_handler_f(t_printf_arg v)
+{
+	char *s;
+	s = ft_ftoa(v.f, 6);
+	ft_putstr(s);
+	free(s);
+}

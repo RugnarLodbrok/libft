@@ -13,5 +13,8 @@ int main(void)
 	printf("%s\n", ft_ultoa_base(335123123456, 16));
 	printf("%p\n", s);
 	ft_printf("%p\n", s);
+	printf("\n\n");
+	ft_printf("%s\n", ft_ftoa(5843.335445342321, 6));
+//	ft_printf("%f\n", 5843.335445342321);
 	return (0);
 }
