@@ -68,6 +68,7 @@ SRC = \
 	  \
 	  src/format/ft_itoa.c \
 	  src/format/ft_ultoa.c \
+	  src/format/ft_ftoa.c \
 	  \
       src/list/ft_lstadd.c \
       src/list/ft_lstaddend.c \
@@ -77,7 +78,9 @@ SRC = \
       src/list/ft_lstmap.c \
       src/list/ft_lstnew.c \
       \
-      src/ft_sqrt.c \
+      src/math/ft_sqrt.c \
+      src/math/ft_pow.c \
+      \
       src/ft_swap.c \
       src/get_next_line.c \
       src/t_buff.c \

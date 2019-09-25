@@ -20,6 +20,13 @@
 # define CHECK0RET1(x) CHECK0RET(x, -1);
 # define CHECK1RET1(x) if (x == -1) return (-1)
 
+# define BUFF_SIZE 42
+
+#ifndef LITTLE_ENDIAN
+# define LITTLE_ENDIAN 0
+# define BIG_ENDIAN 1
+#endif
+
 typedef struct		s_list
 {
 	void			*content;
@@ -94,11 +101,13 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int nb, int fd);
 
+size_t				ft_count_int_digits(long int n, unsigned int base);
 char				*ft_itoa(long int n);
 char				*ft_itoa_base(long int n, unsigned int base);
-void				ft_itoa_stack(char *s, long int n, unsigned int base);
+size_t				ft_itoa_stack(char *s, long int n, unsigned int base);
 char				*ft_ultoa(unsigned long int n);
 char				*ft_ultoa_base(unsigned long int n, int base);
+char				*ft_ftoa(double n, int decimals);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
@@ -114,6 +123,8 @@ size_t				t_buff_add_len(t_buff *b, size_t len);
 
 int					ft_sqrt_int(int nb);
 int					ft_sqrt_ceil(int nb);
+int					ft_pow(int a, int b);
+
 void				ft_swap(void **a, void **b);
 void				ft_swap_int(int *a, int *b);
 void				ft_swap_char(char *a, char *b);

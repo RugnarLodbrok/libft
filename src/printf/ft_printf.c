@@ -6,6 +6,7 @@
 
 t_printf_handler g_handler_tab[] =
 {
+	{"f", &printf_handler_f, "double", sizeof(double)},
 	{"p", &printf_handler_p, "void*", sizeof(void *)},
 	{"d", &printf_handler_d, "int",   sizeof(int)},
 	{"s", &printf_handler_s, "char*", sizeof(char *)},
@@ -41,7 +42,10 @@ void ft_printf_make_print(const char *format, va_list ap)
 	{
 		write(1, ptr1, ptr - ptr1);
 		h = get_handler(&ptr);
-		arg = va_arg(ap, t_printf_arg);
+		if (!ft_strcmp(h->literal, "f"))
+			arg.f = va_arg(ap, double);
+		else
+			arg = va_arg(ap, t_printf_arg);
 		h->f(arg);
 		ptr1 = ptr;
 	}

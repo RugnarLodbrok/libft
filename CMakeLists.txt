@@ -5,6 +5,13 @@ project(libft_run C)
 set(CMAKE_C_STANDARD 90)
 include_directories(.)
 include_directories(headers)
+
+#--------------LIB LINK EXAMPLE---------------------
+#add_executable(<exe_name> sorce1 source2)
+#find_library(FT ft libft)
+#target_link_libraries(<exe_name> LINK_PUBLIC ${FT})
+#---------------------------------------------------
+
 #add_library(libft.a
 add_executable(libft_tests tests/tests_main.c
 		src/string/ft_atoi.c
@@ -61,6 +68,7 @@ add_executable(libft_tests tests/tests_main.c
 
 		src/format/ft_itoa.c
 		src/format/ft_ultoa.c
+		src/format/ft_ftoa.c
 
 		src/list/ft_lstadd.c
 		src/list/ft_lstaddend.c
@@ -70,7 +78,9 @@ add_executable(libft_tests tests/tests_main.c
 		src/list/ft_lstmap.c
 		src/list/ft_lstnew.c
 
-		src/ft_sqrt.c
+		src/math/ft_sqrt.c
+		src/math/ft_pow.c
+
 		src/ft_swap.c
 		src/get_next_line.c
 		src/t_buff.c
