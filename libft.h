@@ -130,6 +130,7 @@ void				ft_swap_int(int *a, int *b);
 void				ft_swap_char(char *a, char *b);
 
 int					endian();
+int					get_next_line(int fd, char **line);
 void				ft_printf(const char *format, ...);
 
 #endif

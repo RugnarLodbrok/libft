@@ -2,7 +2,18 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-int main(void)
+void test_gnl();
+void test_printf();
+
+int		main(void)
+{
+	test_printf();
+	test_gnl();
+
+	return (0);
+}
+
+void	test_printf()
 {
 	char *s;
 	t_printf_arg arg;
@@ -19,5 +30,5 @@ int main(void)
 //	ft_printf("%p\n", s);
 //	printf("\n\n");
 //	ft_printf("%s\n", ft_ftoa(5843.335445342321, 6));
-	return (0);
+
 }
