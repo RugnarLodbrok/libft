@@ -22,10 +22,10 @@
 
 # define BUFF_SIZE 42
 
-#ifndef LITTLE_ENDIAN
-# define LITTLE_ENDIAN 0
-# define BIG_ENDIAN 1
-#endif
+# ifndef LITTLE_ENDIAN
+#  define LITTLE_ENDIAN 0
+#  define BIG_ENDIAN 1
+# endif
 
 typedef struct		s_list
 {
