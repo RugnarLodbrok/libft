@@ -22,14 +22,12 @@ int		do_chunk(t_buff *buff, char *chunk, size_t chunk_size, char **ptr)
 	if (*ptr)
 	{
 		line_size = *ptr - chunk;
-		CHECK0RET0(!line_size || t_buff_add_len(buff, line_size));
-		ft_memcpy(buff->data + buff->len - line_size, chunk, line_size);
+		CHECK0RET0(t_buff_append(buff, chunk, line_size));
 		ft_bzero(chunk, line_size + 1);
 	}
 	else
 	{
-		CHECK0RET0(!chunk_size || t_buff_add_len(buff, chunk_size));
-		ft_memcpy(buff->data + buff->len - chunk_size, chunk, chunk_size);
+		CHECK0RET0(t_buff_append(buff, chunk, chunk_size));
 		ft_bzero(chunk, chunk_size);
 	}
 	return (1);

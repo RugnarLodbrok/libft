@@ -121,7 +121,7 @@ void				*ft_realloc(void *ptr, size_t n, size_t len);
 
 void				*t_buff_init(t_buff *b, size_t size);
 size_t				t_buff_extend(t_buff *b);
-size_t				t_buff_add_len(t_buff *b, size_t len);
+int					t_buff_append(t_buff *b, void *data, size_t len);
 
 int					ft_sqrt_int(int nb);
 int					ft_sqrt_ceil(int nb);

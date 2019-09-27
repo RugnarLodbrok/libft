@@ -31,11 +31,12 @@ size_t	t_buff_extend(t_buff *b)
 	return (b->size);
 }
 
-size_t	t_buff_add_len(t_buff *b, size_t len)
+int		t_buff_append(t_buff *b, void *data, size_t len)
 {
-	b->len += len;
-	while (b->len > b->size)
-		if (!t_buff_extend(b))
+	while (b->len + len > b->size)
+		if(!t_buff_extend(b))
 			return (0);
-	return (b->len);
+	ft_memcpy(b->data + b->len, data, len);
+	b->len += len;
+	return (1);
 }
