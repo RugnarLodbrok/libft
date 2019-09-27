@@ -56,6 +56,8 @@ static int	do_next_reads(int fd, t_buff *b, t_gnl_state *s)
 		if (!n)
 		{
 			s->file_ended = 1;
+			if (!GNL_LAST_EMPTY_LINE_BEHAVIOUR && !b->len)
+				return (0);
 			return (1);
 		}
 	}

@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
-
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 4
+# define BUFF_SIZE 256
+# define GNL_LAST_EMPTY_LINE_BEHAVIOUR 1
 
 typedef struct	s_gnl_iterator_state
 {
