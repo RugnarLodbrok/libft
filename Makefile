@@ -81,6 +81,7 @@ SRC = \
       src/math/ft_sqrt.c \
       src/math/ft_pow.c \
       \
+      src/ft_realloc.c \
       src/ft_swap.c \
       src/get_next_line.c \
       src/t_buff.c \

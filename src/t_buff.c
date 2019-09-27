@@ -10,19 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
-
-void	*re_alloc(void *ptr, size_t n, size_t len)
-{
-	void *ret;
-
-	ret = malloc(n);
-	if (ret)
-		ft_memcpy(ret, ptr, len);
-	free(ptr);
-	return (ret);
-}
 
 void	*t_buff_init(t_buff *b, size_t size)
 {
@@ -38,7 +26,7 @@ size_t	t_buff_extend(t_buff *b)
 
 	size_old = b->size;
 	b->size *= 2;
-	if (!(b->data = re_alloc(b->data, b->size + 1, size_old)))
+	if (!(b->data = ft_realloc(b->data, b->size + 1, size_old)))
 		return (0);
 	return (b->size);
 }
