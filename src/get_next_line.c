@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "get_next_line.h"
 
-int		do_chunk(t_buff *buff, char *chunk, size_t chunk_size, char **ptr)
+static int	do_chunk(t_buff *buff, char *chunk, size_t chunk_size, char **ptr)
 {
 	size_t	line_size;
 
@@ -34,7 +34,7 @@ int		do_chunk(t_buff *buff, char *chunk, size_t chunk_size, char **ptr)
 }
 
 
-int		do_chunk_remainder(t_buff *buff, t_gnl_state *s)
+static int	do_chunk_remainder(t_buff *buff, t_gnl_state *s)
 {
 	size_t chunk_size;
 
@@ -52,7 +52,7 @@ int		do_chunk_remainder(t_buff *buff, t_gnl_state *s)
 	return (0);
 }
 
-int		do_next_reads(int fd, t_buff *b, t_gnl_state *s)
+static int	do_next_reads(int fd, t_buff *b, t_gnl_state *s)
 {
 	int i;
 
@@ -106,7 +106,7 @@ t_gnl_state	*gnl_state_get(t_list **lst, const int fd)
 	return (e->content);
 }
 
-void	gnl_state_remove(t_list **lst, const int fd)
+void		gnl_state_remove(t_list **lst, const int fd)
 {
 	t_list	*ptr;
 	t_list	*prev;
@@ -135,13 +135,6 @@ void	gnl_state_remove(t_list **lst, const int fd)
 	}
 }
 
-int		terminate(t_buff *b, char **line, int return_val)
-{
-	b->data[b->len] = 0;
-	*line = b->data;
-	return (return_val);
-}
-
 int		get_next_line(const int fd, char **line)
 {
 	static t_list		*state_lst;
@@ -153,10 +146,18 @@ int		get_next_line(const int fd, char **line)
 	CHECK0RET1(t_buff_init(&buff, 16))
 	CHECK0RET1(line)
 	if (do_chunk_remainder(&buff, state))
-		return (terminate(&buff, line, 1));
+	{
+		buff.data[buff.len] = 0;
+		*line = buff.data;
+		return (1);
+	}
 	ret = do_next_reads(fd, &buff, state);
 	if (ret > 0)
-		return (terminate(&buff, line, 1));
+	{
+		buff.data[buff.len] = 0;
+		*line = buff.data;
+		return (1);
+	}
 	if (ret == 0)
 		gnl_state_remove(&state_lst, fd);
 	return (ret);
