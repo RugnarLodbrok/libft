@@ -37,44 +37,27 @@ static int	copy_until_break(
 	return (1);
 }
 
-
-static int	do_chunk_remainder(t_buff *buff, t_gnl_state *s)
-{
-	size_t chunk_size;
-
-	if (!s->cursor)
-		return (0);
-	chunk_size = s->chunk_size - (s->cursor - s->chunk) - 1; //cursor points to a '\n'
-	CHECK0RET1(copy_until_break(buff, s->cursor + 1, chunk_size, &(s->cursor)));
-	if (s->cursor)
-		return (1);
-	return (0);
-}
-
 static int	do_next_reads(int fd, t_buff *b, t_gnl_state *s)
 {
 	int n;
+	size_t offset;
 
 	while (1)
 	{
-		n = read(fd, s->chunk, BUFF_SIZE);
-		if (n < 0)
-		{
-			free(b->data);
-			return (-1);
-		}
-		s->chunk_size = n;
-		if (n < BUFF_SIZE)
-			s->file_ended = 1;
-		if (!n)
-		{
-			if (b->len)
-				return (1);
-			return (0);
-		}
-		CHECK0RET1(copy_until_break(b, s->chunk, s->chunk_size, &(s->cursor)));
+		offset = s->cursor ? s->cursor - s->chunk + 1 : 0;
+		CHECK0RET1(copy_until_break(b, s->chunk + offset,
+				s->chunk_size - offset, &(s->cursor)));
 		if (s->cursor)
 			return (1);
+		if (s->file_ended)
+			return (0);
+		CHECK1RET1((n = read(fd, s->chunk, BUFF_SIZE)));
+		s->chunk_size = n;
+		if (!n)
+		{
+			s->file_ended = 1;
+			return (1);
+		}
 	}
 }
 
@@ -141,12 +124,6 @@ int		get_next_line(const int fd, char **line)
 	CHECK0RET1(state = gnl_state_get(&state_lst, fd))
 	CHECK0RET1(t_buff_init(&buff, 16))
 	CHECK0RET1(line)
-	if (do_chunk_remainder(&buff, state))
-	{
-		buff.data[buff.len] = 0;
-		*line = buff.data;
-		return (1);
-	}
 	ret = do_next_reads(fd, &buff, state);
 	if (ret > 0)
 	{
@@ -154,6 +131,8 @@ int		get_next_line(const int fd, char **line)
 		*line = buff.data;
 		return (1);
 	}
+	else
+		free(buff.data);
 	if (ret == 0)
 		gnl_state_remove(&state_lst, fd);
 	return (ret);

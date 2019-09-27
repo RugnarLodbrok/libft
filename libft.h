@@ -18,7 +18,10 @@
 # define CHECK0RET(x, r) if (!(x)) return (r);
 # define CHECK0RET0(x) CHECK0RET(x, 0);
 # define CHECK0RET1(x) CHECK0RET(x, -1);
-# define CHECK1RET1(x) if (x == -1) return (-1)
+# define CHECK1RET1(x) if (x < 0) return (-1)
+
+# define OR(a, b) (a) ? (a) : (b)
+# define AND(a, b) !(a) ? (a) : (b)
 
 # ifndef LITTLE_ENDIAN
 #  define LITTLE_ENDIAN 1234
