@@ -20,6 +20,14 @@
 # define CHECK0RET1(x) CHECK0RET(x, -1);
 # define CHECK1RET1(x) if (x < 0) return (-1)
 
+# ifndef ulong
+typedef unsigned long ulong;
+# endif
+
+# ifndef uint
+typedef unsigned int uint;
+# endif
+
 # define OR(a, b) (a) ? (a) : (b)
 # define AND(a, b) !(a) ? (a) : (b)
 
@@ -78,6 +86,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+void				ft_toupper_inplace(char *s);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 char				*ft_strnew(size_t size);
@@ -102,12 +111,12 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int nb, int fd);
 
-size_t				ft_count_int_digits(long int n, unsigned int base);
+size_t				ft_count_int_digits(long int n, uint base);
 char				*ft_itoa(long int n);
-char				*ft_itoa_base(long int n, unsigned int base);
-size_t				ft_itoa_stack(char *s, long int n, unsigned int base);
-char				*ft_ultoa(unsigned long int n);
-char				*ft_ultoa_base(unsigned long int n, int base);
+char				*ft_itoa_base(long int n, uint base);
+size_t				ft_itoa_stack(char *s, long int n, uint base);
+char				*ft_ultoa(ulong n);
+char				*ft_ultoa_base(ulong n, uint base);
 char				*ft_ftoa(double n, int decimals);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
@@ -133,7 +142,6 @@ void				ft_swap_int(int *a, int *b);
 void				ft_swap_char(char *a, char *b);
 
 int					endian();
-int					get_next_line(int fd, char **line);
 void				ft_printf(const char *format, ...);
 
 #endif

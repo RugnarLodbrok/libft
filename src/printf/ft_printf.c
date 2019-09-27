@@ -6,9 +6,14 @@
 
 t_printf_handler g_handler_tab[] =
 {
+	{"X", &printf_handler_X, "unsigned int", sizeof(unsigned int)},
+	{"x", &printf_handler_x, "unsigned int", sizeof(unsigned int)},
+	{"u", &printf_handler_u, "unsigned int", sizeof(unsigned int)},
+	{"o", &printf_handler_o, "unsigned int", sizeof(unsigned int)},
 	{"f", &printf_handler_f, "double", sizeof(double)},
 	{"p", &printf_handler_p, "void*", sizeof(void *)},
 	{"d", &printf_handler_d, "int",   sizeof(int)},
+	{"i", &printf_handler_d, "int",   sizeof(int)},
 	{"s", &printf_handler_s, "char*", sizeof(char *)},
 	{"c", &printf_handler_c, "char",  4/*sizeof(char)*/}
 };

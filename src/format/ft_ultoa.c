@@ -3,7 +3,7 @@
 
 static size_t	count_digits(ulong n, uint base)
 {
-	unsigned int i;
+	uint i;
 
 	if (n == 0)
 		return (1);
