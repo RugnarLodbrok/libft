@@ -92,7 +92,9 @@ SRC = \
 
 OBJ = $(SRC:.c=.o)
 
-TEST_SRC = tests/tests_main.c
+TEST_SRC = \
+      tests/tests_main.c \
+      tests/gnl.c
 TEST_OBJ = $(TEST_SRC:.c=.o)
 
 OPTION = -I.

@@ -14,7 +14,11 @@
 #include "libft.h"
 #include "get_next_line.h"
 
-static int	do_chunk(t_buff *buff, char *chunk, size_t chunk_size, char **ptr)
+static int	copy_until_break(
+		t_buff	*buff,
+		char	*chunk,
+		size_t	chunk_size,
+		char	**ptr)
 {
 	size_t	line_size;
 
@@ -38,43 +42,37 @@ static int	do_chunk_remainder(t_buff *buff, t_gnl_state *s)
 {
 	size_t chunk_size;
 
-	chunk_size = BUFF_SIZE;
+	if (!s->cursor)
+		return (0);
+	chunk_size = s->chunk_size - (s->cursor - s->chunk) - 1; //cursor points to a '\n'
+	CHECK0RET1(copy_until_break(buff, s->cursor + 1, chunk_size, &(s->cursor)));
 	if (s->cursor)
-		chunk_size -= s->cursor - s->chunk + 1;
-	if (s->end_cursor)
-		chunk_size = s->end_cursor - (s->chunk + BUFF_SIZE - chunk_size);
-	if (s->cursor && s->cursor < s->chunk + BUFF_SIZE - 1)
-	{
-		CHECK0RET1(do_chunk(buff, s->cursor + 1, chunk_size, &(s->cursor)));
-		if (s->cursor)
-			return (1);
-	}
+		return (1);
 	return (0);
 }
 
 static int	do_next_reads(int fd, t_buff *b, t_gnl_state *s)
 {
-	int i;
+	int n;
 
 	while (1)
 	{
-		i = read(fd, s->chunk, BUFF_SIZE);
-		if (i < 0)
+		n = read(fd, s->chunk, BUFF_SIZE);
+		if (n < 0)
 		{
 			free(b->data);
 			return (-1);
 		}
-		if (!i)
+		s->chunk_size = n;
+		if (n < BUFF_SIZE)
+			s->file_ended = 1;
+		if (!n)
 		{
 			if (b->len)
 				return (1);
 			return (0);
 		}
-		if (i < BUFF_SIZE)
-			s->end_cursor = s->chunk + i;
-		else
-			s->end_cursor = 0;
-		CHECK0RET1(do_chunk(b, s->chunk, i, &(s->cursor)));
+		CHECK0RET1(copy_until_break(b, s->chunk, s->chunk_size, &(s->cursor)));
 		if (s->cursor)
 			return (1);
 	}
@@ -93,10 +91,8 @@ t_gnl_state	*gnl_state_get(t_list **lst, const int fd)
 		e = e->next;
 	}
 	CHECK0RET0(s = malloc(sizeof(t_gnl_state)));
-	ft_memset(s->chunk, '0', BUFF_SIZE);
+	ft_bzero(s, sizeof(t_gnl_state));
 	s->fd = fd;
-	s->cursor = 0;
-	s->end_cursor = 0;
 	if (!(e = ft_lstnew(s, sizeof(t_gnl_state))))
 	{
 		free(s);

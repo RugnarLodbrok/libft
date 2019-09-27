@@ -20,11 +20,9 @@
 # define CHECK0RET1(x) CHECK0RET(x, -1);
 # define CHECK1RET1(x) if (x == -1) return (-1)
 
-# define BUFF_SIZE 42
-
 # ifndef LITTLE_ENDIAN
-#  define LITTLE_ENDIAN 0
-#  define BIG_ENDIAN 1
+#  define LITTLE_ENDIAN 1234
+#  define BIG_ENDIAN 4321
 # endif
 
 typedef struct		s_list

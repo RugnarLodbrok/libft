@@ -22,6 +22,8 @@ typedef struct	s_gnl_iterator_state
 	char	chunk[BUFF_SIZE];
 	char	*cursor;
 	char	*end_cursor;
+	size_t	chunk_size;
+	int		file_ended;
 }				t_gnl_state;
 
 int				get_next_line(const int fd, char **line);
