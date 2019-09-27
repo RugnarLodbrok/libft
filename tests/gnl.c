@@ -6,11 +6,13 @@ void test_gnl()
 {
 	int fd;
 	char *s;
+	int status;
 
 	fd = open("KO", O_RDONLY);
-	while (get_next_line(fd, &s))
-	{
+	while ((status = get_next_line(fd, &s)) > 0)
 		printf("%s\n", s);
-	}
-	printf("-----END-----\n");
+	if (status < 0)
+		printf("----ERROR----\n");
+	else
+		printf("-----END-----\n");
 }
