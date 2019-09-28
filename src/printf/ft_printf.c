@@ -6,14 +6,43 @@
 
 t_printf_handler g_handler_tab[] =
 {
-	{"X", &printf_handler_X, "unsigned int", sizeof(unsigned int)},
-	{"x", &printf_handler_x, "unsigned int", sizeof(unsigned int)},
-	{"u", &printf_handler_u, "unsigned int", sizeof(unsigned int)},
-	{"o", &printf_handler_o, "unsigned int", sizeof(unsigned int)},
-	{"f", &printf_handler_f, "double", sizeof(double)},
-	{"p", &printf_handler_p, "void*", sizeof(void *)},
 	{"d", &printf_handler_d, "int",   sizeof(int)},
 	{"i", &printf_handler_d, "int",   sizeof(int)},
+	{"o", &printf_handler_o, "unsigned int", sizeof(unsigned int)},
+	{"u", &printf_handler_u, "unsigned int", sizeof(unsigned int)},
+	{"x", &printf_handler_x, "unsigned int", sizeof(unsigned int)},
+	{"X", &printf_handler_X, "unsigned int", sizeof(unsigned int)},
+
+	{"ld", &printf_handler_li, "long int",   sizeof(long int)},
+	{"li", &printf_handler_li, "long int",   sizeof(long int)},
+	{"lo", &printf_handler_lo, "unsigned long int", sizeof(unsigned long int)},
+	{"lu", &printf_handler_lu, "unsigned long int", sizeof(unsigned long int)},
+	{"lx", &printf_handler_lx, "unsigned long int", sizeof(unsigned long int)},
+	{"lX", &printf_handler_lX, "unsigned long int", sizeof(unsigned long int)},
+
+	{"lld", &printf_handler_lli, "long long int",   sizeof(long long int)},
+	{"lli", &printf_handler_lli, "long long int",   sizeof(long long int)},
+	{"llo", &printf_handler_llo, "unsigned long long int", sizeof(unsigned long long int)},
+	{"llu", &printf_handler_llu, "unsigned long long int", sizeof(unsigned long long int)},
+	{"llx", &printf_handler_llx, "unsigned long long int", sizeof(unsigned long long int)},
+	{"llX", &printf_handler_llX, "unsigned long long int", sizeof(unsigned long long int)},
+
+	{"hd", &printf_handler_hi, "short int",   sizeof(short int)},
+	{"hi", &printf_handler_hi, "short int",   sizeof(short int)},
+	{"ho", &printf_handler_ho, "unsigned short int", sizeof(unsigned short int)},
+	{"hu", &printf_handler_hu, "unsigned short int", sizeof(unsigned short int)},
+	{"hx", &printf_handler_hx, "unsigned short int", sizeof(unsigned short int)},
+	{"hX", &printf_handler_hX, "unsigned short int", sizeof(unsigned short int)},
+
+	{"hhd", &printf_handler_hhi, "signed char",   sizeof(signed char)},
+	{"hhi", &printf_handler_hhi, "signed char",   sizeof(signed char)},
+	{"hho", &printf_handler_hho, "unsigned char", sizeof(unsigned char)},
+	{"hhu", &printf_handler_hhu, "unsigned char", sizeof(unsigned char)},
+	{"hhx", &printf_handler_hhx, "unsigned char", sizeof(unsigned char)},
+	{"hhX", &printf_handler_hhX, "unsigned char", sizeof(unsigned char)},
+
+	{"f", &printf_handler_f, "double", sizeof(double)},
+	{"p", &printf_handler_p, "void*", sizeof(void *)},
 	{"s", &printf_handler_s, "char*", sizeof(char *)},
 	{"c", &printf_handler_c, "char",  4/*sizeof(char)*/}
 };
@@ -57,11 +86,12 @@ void ft_printf_make_print(const char *format, va_list ap)
 	ft_putstr(ptr1);
 }
 
-void ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list ap;
 
 	va_start(ap, format);
 	ft_printf_make_print(format, ap);
 	va_end(ap);
+	return (1);
 }

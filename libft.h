@@ -111,10 +111,10 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int nb, int fd);
 
-size_t				ft_count_int_digits(long int n, uint base);
-char				*ft_itoa(long int n);
-char				*ft_itoa_base(long int n, uint base);
-size_t				ft_itoa_stack(char *s, long int n, uint base);
+size_t				ft_count_int_digits(long long int n, uint base);
+char				*ft_itoa(long long int n);
+char				*ft_itoa_base(long long int n, uint base);
+size_t				ft_itoa_stack(char *s, long long int n, uint base);
 char				*ft_ultoa(ulong n);
 char				*ft_ultoa_base(ulong n, uint base);
 char				*ft_ftoa(double n, int decimals);
@@ -142,6 +142,6 @@ void				ft_swap_int(int *a, int *b);
 void				ft_swap_char(char *a, char *b);
 
 int					endian();
-void				ft_printf(const char *format, ...);
+int     			ft_printf(const char *format, ...);
 
 #endif

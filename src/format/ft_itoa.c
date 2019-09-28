@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-uint		ft_count_int_digits(long int n, uint base)
+uint		ft_count_int_digits(long long int n, uint base)
 {
 	uint i;
 
@@ -31,7 +31,7 @@ uint		ft_count_int_digits(long int n, uint base)
 	return (i);
 }
 
-uint		ft_itoa_stack(char *s, long int n, uint base)
+uint		ft_itoa_stack(char *s, long long int n, uint base)
 {
 	uint	r;
 	uint	d;
@@ -60,7 +60,7 @@ uint		ft_itoa_stack(char *s, long int n, uint base)
 	return (r);
 }
 
-char				*ft_itoa(long int n)
+char				*ft_itoa(long long int n)
 {
 	size_t	d;
 	char	*s;
@@ -72,7 +72,7 @@ char				*ft_itoa(long int n)
 	return (s);
 }
 
-char				*ft_itoa_base(long int n, uint base)
+char				*ft_itoa_base(long long int n, uint base)
 {
 	uint	d;
 	char	*s;
