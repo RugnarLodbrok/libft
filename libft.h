@@ -28,6 +28,8 @@ typedef unsigned long ulong;
 typedef unsigned int uint;
 # endif
 
+# define ABS(x) (((x) < 0) ? (-(x)) : (x))
+
 # define OR(a, b) (a) ? (a) : (b)
 # define AND(a, b) !(a) ? (a) : (b)
 

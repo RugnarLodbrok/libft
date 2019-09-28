@@ -58,17 +58,25 @@ int comapre_prints(char *format, ...)
 			printf("\tgot:\t\t`%s`\n\texpected:\t`%s`\n", buff1, buff2);
 	}
 	else
-		printf("[OK]: \t\t%s\n", format);
+		printf("[OK]: \t\t%s -> %s\n", format, buff1);
 	return (0);
 }
 
 void ft_printf_tests()
 {
-
 	comapre_prints("abc");
 	comapre_prints("abc%dqqq", 123);
 	comapre_prints("abc%ffff", 32.5435434);
 	comapre_prints("%f", 55.555555555);
+	comapre_prints("%f", -55.555555555);
 	comapre_prints("abc%fddd", 32.0);
 	comapre_prints("abc%cfds", 'c');
+	comapre_prints("%lu", (long int)-123456789 * 100);
+	comapre_prints("%lu", (ulong)123456789 * 100);
+	comapre_prints("%llu", (ulong)123456789 * 100);
+	comapre_prints("%hu", (ulong)123456789 * 100);
+	comapre_prints("%hhu", (ulong)123456789 * 100);
+	comapre_prints("%lo", (ulong)123456789 * 100);
+	comapre_prints("%lx", (ulong)123456789 * 100);
+	comapre_prints("%lX", (ulong)123456789 * 100);
 }

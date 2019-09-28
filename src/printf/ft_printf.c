@@ -47,15 +47,26 @@ t_printf_handler g_handler_tab[] =
 	{"c", &printf_handler_c, "char",  4/*sizeof(char)*/}
 };
 
+int parse_format(char *s)
+{
+	if (*s == 'h' || *s == 'l')
+		return (1 + parse_format(s + 1));
+	return 1;
+}
+
 t_printf_handler *get_handler(char **p)
 {
 	int i;
 	char r[8];
+	int len;
 
+	if (**p != '%')
+		return (0);
 	(*p)++;
-	r[0] = **p;
-	r[1] = 0;
-	(*p)++;
+	CHECK0RET0(len = parse_format(*p));
+	ft_memcpy(r, (const char *) *p, len);
+	r[len] = 0;
+	(*p) += len;
 	i = -1;
 	while (++i < (int) (sizeof(g_handler_tab) / sizeof(t_printf_handler)))
 		if (!ft_strcmp(r, g_handler_tab[i].literal))

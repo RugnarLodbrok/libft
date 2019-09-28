@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <float.h>
 #include "libft.h"
 
 static void trail_zeros(char *s, int n)
@@ -24,7 +23,7 @@ char *ft_ftoa(double n, int decimals)
 	base = 10;
 	decimal_part = (long int) ((n - (double) (long int) n) \
 			* ft_pow(base, decimals + 1));
-	decimal_part = (decimal_part + 5) / 10;
+	decimal_part = (ABS(decimal_part) + 5) / 10;
 	d = ft_count_int_digits((long int) n, base) + decimals + 1;
 	if (!(s = malloc(sizeof(char) * (d + 1))))
 		return (0);

@@ -24,8 +24,12 @@ void	test_printf()
 	ft_printf("hello! %d `%s` %c`%d` `%c` %d %f\n",
 			  999, s, '@', 42, '!', 666, 45543.3244231);
 
-	printf("%X\n", 412345);
-	ft_printf("%X\n", 412345);
+//	printf("%X\n", 412345);
+//	ft_printf("%X\n", 412345);
+	printf("%f\n", 32.0);
+	ft_printf("%f\n", 32.0);
+	printf("%f\n", 5.555555555);
+	ft_printf("%f\n", 5.555555555);
 //	printf("%s\n", ft_itoa_base(-123456, 16));
 //	printf("%lx\n", 335123123456);
 //	printf("%s\n", ft_ultoa_base(335123123456, 16));
