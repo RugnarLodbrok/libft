@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int nb, int fd)
+size_t	ft_putnbr_fd(int nb, int fd)
 {
 	char buff[12];
 
 	ft_itoa_stack(buff, nb, 10);
-	ft_putstr_fd(buff, fd);
+	return (ft_putstr_fd(buff, fd));
 }

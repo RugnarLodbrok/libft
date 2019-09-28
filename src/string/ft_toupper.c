@@ -22,8 +22,12 @@ int			ft_toupper(int c)
 	return (c);
 }
 
-void		ft_toupper_inplace(char *s)
+char		*ft_toupper_inplace(char *s)
 {
-	while ((*s = (char) ft_toupper(*s)))
-		s++;
+	char *p;
+
+	p = s;
+	while ((*p = (char) ft_toupper(*p)))
+		p++;
+	return (s);
 }

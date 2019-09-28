@@ -18,7 +18,7 @@
 # define CHECK0RET(x, r) if (!(x)) return (r);
 # define CHECK0RET0(x) CHECK0RET(x, 0);
 # define CHECK0RET1(x) CHECK0RET(x, -1);
-# define CHECK1RET1(x) if (x < 0) return (-1)
+# define CHECK1RET1(x) if ((x) < 0) return (-1)
 
 # ifndef ulong
 typedef unsigned long ulong;
@@ -88,7 +88,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
-void				ft_toupper_inplace(char *s);
+char				*ft_toupper_inplace(char *s);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 char				*ft_strnew(size_t size);
@@ -104,14 +104,14 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-void				ft_putchar(char c);
-void				ft_putstr(char *s);
-void				ft_putendl(char *s);
-void				ft_putnbr(int nb);
-void				ft_putchar_fd(char c, int fd);
-void				ft_putstr_fd(char *s, int fd);
-void				ft_putendl_fd(char *s, int fd);
-void				ft_putnbr_fd(int nb, int fd);
+size_t				ft_putchar(char c);
+size_t				ft_putstr(char *s);
+size_t				ft_putendl(char *s);
+size_t				ft_putnbr(int nb);
+size_t				ft_putchar_fd(char c, int fd);
+size_t				ft_putstr_fd(char *s, int fd);
+size_t				ft_putendl_fd(char *s, int fd);
+size_t				ft_putnbr_fd(int nb, int fd);
 
 size_t				ft_count_int_digits(long long int n, uint base);
 char				*ft_itoa(long long int n);

@@ -92,5 +92,5 @@ add_executable(libft_tests
 		src/endian.c
 
 		src/printf/ft_printf.c
-		src/printf/handlers.c
+		src/printf/format_selector.c
 		)
