@@ -110,7 +110,7 @@ test.o : $(NAME) $(TEST_OBJ)
 	@$(CC) -o test.o $(TEST_OBJ) $(OPTION) -L . -lft
 
 test: test.o
-	@./test
+	@./test.o
 
 %.o : %.c
 	$(CC) $(FLAGS) -c $(<) -o $(<:.c=.o) $(OPTION)

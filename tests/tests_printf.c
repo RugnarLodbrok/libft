@@ -30,7 +30,7 @@ int comapre_prints(char *format, ...)
 	char buff1[BUFF_SIZE];
 	char buff2[BUFF_SIZE];
 
-	if ((fd = open("tmp.txt", O_WRONLY)) < 0)
+	if ((fd = open("tmp.txt", O_CREAT | O_WRONLY | O_TRUNC)) < 0)
 	{
 		printf("[ERROR]\n");
 		return -1;
@@ -41,7 +41,7 @@ int comapre_prints(char *format, ...)
 	close(fd);
 	CHECK1RET1(read_to_buff("tmp.txt", buff1, BUFF_SIZE));
 
-	if ((fd = open("tmp.txt", O_WRONLY)) < 0)
+	if ((fd = open("tmp.txt", O_CREAT | O_WRONLY | O_TRUNC)) < 0)
 	{
 		printf("[ERROR]\n");
 		return -1;
@@ -52,7 +52,11 @@ int comapre_prints(char *format, ...)
 	close(fd);
 	CHECK1RET1(read_to_buff("tmp.txt", buff2, BUFF_SIZE));
 	if (ft_strcmp(buff1, buff2))
+	{
 		printf("[FAIL]: \t%s\n", format);
+		if (!ft_strchr(buff1, '\n') && !ft_strchr(buff2, '\n'))
+			printf("\tgot:\t\t`%s`\n\texpected:\t`%s`\n", buff1, buff2);
+	}
 	else
 		printf("[OK]: \t\t%s\n", format);
 	return (0);
@@ -61,10 +65,10 @@ int comapre_prints(char *format, ...)
 void ft_printf_tests()
 {
 
-	system("touch tmp.txt");
 	comapre_prints("abc");
 	comapre_prints("abc%dqqq", 123);
 	comapre_prints("abc%ffff", 32.5435434);
+	comapre_prints("%f", 55.555555555);
 	comapre_prints("abc%fddd", 32.0);
 	comapre_prints("abc%cfds", 'c');
 }
