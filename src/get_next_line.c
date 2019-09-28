@@ -134,8 +134,9 @@ int		get_next_line(const int fd, char **line)
 		return (1);
 	}
 	else
+	{
 		free(buff.data);
-	if (ret == 0)
 		gnl_state_remove(&state_lst, fd);
+	}
 	return (ret);
 }
