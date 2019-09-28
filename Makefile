@@ -93,6 +93,7 @@ SRC = \
 OBJ = $(SRC:.c=.o)
 
 TEST_SRC = \
+      tests/tests_printf.c \
       tests/tests_main.c \
       tests/gnl.c
 TEST_OBJ = $(TEST_SRC:.c=.o)
@@ -105,10 +106,10 @@ $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-test : $(NAME) $(TEST_OBJ)
-	@$(CC) -o test $(TEST_OBJ) $(OPTION) -L . -lft
+test.o : $(NAME) $(TEST_OBJ)
+	@$(CC) -o test.o $(TEST_OBJ) $(OPTION) -L . -lft
 
-run : test
+test: test.o
 	@./test
 
 %.o : %.c

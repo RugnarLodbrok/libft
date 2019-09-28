@@ -63,7 +63,7 @@ t_printf_handler *get_handler(char **p)
 	return (0);
 }
 
-void ft_printf_make_print(const char *format, va_list ap)
+int ft_printf_ap(int fd, const char *format, va_list ap)
 {
 	t_printf_arg arg;
 	t_printf_handler *h;
@@ -74,24 +74,37 @@ void ft_printf_make_print(const char *format, va_list ap)
 	ptr1 = ptr;
 	while ((ptr = ft_strchr(ptr, '%')))
 	{
-		write(1, ptr1, ptr - ptr1);
+		write(fd, ptr1, ptr - ptr1);
 		h = get_handler(&ptr);
 		if (!ft_strcmp(h->literal, "f"))
 			arg.f = va_arg(ap, double);
 		else
 			arg = va_arg(ap, t_printf_arg);
-		h->f(arg);
+		h->f(arg, fd);
 		ptr1 = ptr;
 	}
-	ft_putstr(ptr1);
+	ft_putstr_fd(ptr1, fd);
+	return (1);
 }
 
 int	ft_printf(const char *format, ...)
 {
+	int r;
 	va_list ap;
 
 	va_start(ap, format);
-	ft_printf_make_print(format, ap);
+	r = ft_printf_ap(1, format, ap);
 	va_end(ap);
-	return (1);
+	return (r);
+}
+
+int	ft_fprintf(int fd, const char *format, ...)
+{
+	int r;
+	va_list ap;
+
+	va_start(ap, format);
+	r = ft_printf_ap(fd, format, ap);
+	va_end(ap);
+	return (r);
 }
