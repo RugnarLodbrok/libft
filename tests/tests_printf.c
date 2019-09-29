@@ -68,6 +68,7 @@ void ft_printf_tests()
 {
 	comapre_prints("abc");
 	comapre_prints("abc%dqqq", 123);
+	comapre_prints("123%%abc", 123);
 	comapre_prints("abc%ffff", 32.5435434);
 	comapre_prints("%f", 0.999999999);
 	comapre_prints("%f", -9.99999999);

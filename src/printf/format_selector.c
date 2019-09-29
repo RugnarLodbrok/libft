@@ -75,5 +75,7 @@ int ft_printf_item(int fd, va_list ap, char *f)
 		return (put(ft_ftoa((long double) va_arg(ap, double), 6), fd));
 	if (!ft_strcmp("Lf", f))
 		return (put(ft_ftoa(va_arg(ap, long double), 6), fd));
+	if (!ft_strcmp("%", f))
+		return ft_putchar_fd('%', fd);
 	return (-1);
 }
