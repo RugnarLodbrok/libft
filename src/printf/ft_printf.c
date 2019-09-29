@@ -6,7 +6,7 @@
 
 int parse_format(char *s)
 {
-	if (*s == 'h' || *s == 'l' || *s == 'L')
+	if (*s == 'h' || *s == 'l' || *s == 'L' || *s == '#')
 		return (1 + parse_format(s + 1));
 	return 1;
 }

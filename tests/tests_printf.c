@@ -80,14 +80,22 @@ void ft_printf_tests()
 	comapre_prints("%Lf", (long double) -55.555555555);
 	comapre_prints("abc%fddd", 32.0);
 	comapre_prints("abc%cfds", 'c');
+	comapre_prints("%li", (long int) -123456789 * 100);
 	comapre_prints("%lu", (long int) -123456789 * 100);
 	comapre_prints("%lu", (ulong) 123456789 * 100);
 	comapre_prints("%llu", (ulong) 123456789 * 100);
 	comapre_prints("%hu", (ulong) 123456789 * 100);
 	comapre_prints("%hhu", (ulong) 123456789 * 100);
+	comapre_prints("%o", 0);
+	comapre_prints("%lo", 0);
 	comapre_prints("%lo", (ulong) 123456789 * 100);
+	comapre_prints("%#lo", (ulong) 123456789 * 100);
+	comapre_prints("%#lo", (ulong) 0);
 	comapre_prints("%lx", (ulong) 123456789 * 100);
 	comapre_prints("%lX", (ulong) 123456789 * 100);
+	comapre_prints("%#lx", (ulong) 123456789 * 100);
+	comapre_prints("%#lX", (ulong) 123456789 * 100);
+//TODO: test for %#f
 	comapre_prints("%p", &comapre_prints);
 	comapre_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
 			123, (double)4, &comapre_prints, "", '~',
