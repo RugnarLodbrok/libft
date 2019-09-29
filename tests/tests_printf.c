@@ -60,13 +60,16 @@ static int comapre_prints(char *format, ...)
 	} else if (ret1 != ret2)
 		printf("[FAIL]:\t%s\treturn expected %d got %d\n", format, ret2, ret1);
 	else
-		printf("[OK]:\t\t%s -> %s\n", format, buff1);
+		printf("[OK]:\t\t%s -> `%s`\n", format, buff1);
 	return (0);
 }
 
 void ft_printf_tests()
 {
 	comapre_prints("abc");
+	comapre_prints("%#+3lc", '!');
+	comapre_prints("%3lc", '!');
+//	comapre_prints("%03lc", '!');
 	comapre_prints("abc%dqqq", 123);
 	comapre_prints("123%%abc", 123);
 	comapre_prints("abc%ffff", 32.5435434);
@@ -79,7 +82,7 @@ void ft_printf_tests()
 	comapre_prints("%Lf", (long double) 55.555555555);
 	comapre_prints("%Lf", (long double) -55.555555555);
 	comapre_prints("abc%fddd", 32.0);
-	comapre_prints("abc%cfds", 'c');
+	comapre_prints("abc%cfds", '!');
 	comapre_prints("%li", (long int) -123456789 * 100);
 	comapre_prints("%lu", (long int) -123456789 * 100);
 	comapre_prints("%lu", (ulong) 123456789 * 100);
@@ -106,6 +109,7 @@ void ft_printf_tests()
 	comapre_prints("% d", 123);
 	comapre_prints("%-10d", 123);
 	comapre_prints("%3d", 12345);
+	comapre_prints("%3c", '!');
 	comapre_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
 			123, (double)4, &comapre_prints, "", '~',
 			(ulong)432543, (unsigned long long int)54935734,

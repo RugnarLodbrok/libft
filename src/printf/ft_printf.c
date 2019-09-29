@@ -11,12 +11,12 @@ int parse_field_width(char **s)
 	r = 0;
 	if (**s != '0' && ft_isdigit(**s))
 	{
-		r++;
+		r = (10 * r) + (**s - '0');
 		(*s)++;
 	}
 	while (ft_isdigit(**s))
 	{
-		r++;
+		r = (10 * r) + (**s - '0');
 		(*s)++;
 	}
 	return (r);
@@ -44,13 +44,14 @@ uint parse_flags(char **s)
 	return (flags);
 }
 
-void parse_format(char *dst, char **s)
+char parse_format(char *dst, char **s)
 {
 	while (ft_strchr("lhL", **s))
 		*dst++ = *(*s)++;
 	if (ft_strchr("diouxXscpf%", **s))
 		*dst++ = *(*s)++;
 	*dst = 0;
+	return (*(*s - 1));
 }
 
 static int printf_conversion(int fd, va_list ap, char **ptr)
@@ -61,7 +62,7 @@ static int printf_conversion(int fd, va_list ap, char **ptr)
 	(*ptr)++;
 	spec.flags = parse_flags(ptr);
 	spec.field_width = parse_field_width(ptr);
-	parse_format(spec.format, ptr);
+	spec.type = parse_format(spec.format, ptr);
 	if ((n = ft_printf_item(fd, ap, spec)) >= 0)
 		return (n);
 	ft_putchar_fd('%', fd);

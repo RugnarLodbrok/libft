@@ -16,15 +16,13 @@ static size_t	count_digits(ulong n, uint base)
 	return (i);
 }
 
-size_t			ft_ultoa_stack(char *s, ulong n, uint base)
+char			*ft_ultoa_stack(char *s, ulong n, uint base)
 {
 	size_t	d;
-	size_t	r;
 	char	c;
 	int		rem;
 
 	d = count_digits(n, base);
-	r = d;
 	s[d] = 0;
 	if (n == 0)
 		s[0] = '0';
@@ -38,7 +36,7 @@ size_t			ft_ultoa_stack(char *s, ulong n, uint base)
 		s[d-- - 1] = c;
 		n /= base;
 	}
-	return (r);
+	return (s);
 }
 
 char		*ft_ultoa(ulong n)

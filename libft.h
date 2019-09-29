@@ -119,7 +119,9 @@ char				*ft_itoa_base(long long int n, uint base);
 char				*ft_itoa_stack(char *s, long long int n, uint base);
 char				*ft_ultoa(ulong n);
 char				*ft_ultoa_base(ulong n, uint base);
+char				*ft_ultoa_stack(char *s, ulong n, uint base);
 char				*ft_ftoa(long double n, int decimals);
+char				*ft_ftoa_stack(char *s, long double n, int decimals);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
