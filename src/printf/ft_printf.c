@@ -4,18 +4,41 @@
 #include "unistd_compat.h"
 #include "ft_printf.h"
 
-int parse_format(char *s)
+int parse_format(char *s, uint *flags)
 {
-	if (*s == 'h' || *s == 'l' || *s == 'L' || *s == '#')
-		return (1 + parse_format(s + 1));
+	if (*s == '#')
+		*flags |= PRINTF_HASH;
+	else if (*s == '0')
+		*flags |= PRINTF_ZERO;
+	else if (*s == '-')
+		*flags |= PRINTF_MINUS;
+	else if (*s == '+')
+		*flags |= PRINTF_PLUS;
+	else if (*s == ' ')
+		*flags |= PRINTF_SPACE;
+	if (ft_strchr("lhL#0+- ", *s))
+		return (1 + parse_format(s + 1, flags));
 	return 1;
+}
+
+static int printf_conversion(int fd, va_list ap, char **ptr)
+{
+	char s[64];
+	int n;
+	uint flags;
+
+	flags = 0;
+	n = parse_format(++(*ptr), &flags);
+	ft_memcpy(s, *ptr, n);
+	s[n] = 0;
+	*ptr += n;
+	return ft_printf_item(fd, ap, s);
 }
 
 int ft_printf_ap(int fd, const char *format, va_list ap)
 {
 	char *ptr;
 	char *ptr1;
-	char s[8];
 	int n;
 	int r;
 
@@ -25,11 +48,7 @@ int ft_printf_ap(int fd, const char *format, va_list ap)
 	while ((ptr = ft_strchr(ptr, '%')))
 	{
 		r += write(fd, ptr1, ptr - ptr1);
-		n = parse_format(ptr + 1);
-		ft_memcpy(s, ptr + 1, n);
-		s[n] = 0;
-		ptr += n + 1;
-		CHECK1RET1(n = ft_printf_item(fd, ap, s));
+		CHECK1RET1(n = printf_conversion(fd, ap, &ptr));
 		r += n;
 		ptr1 = ptr;
 	}
