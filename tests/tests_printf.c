@@ -8,7 +8,7 @@
 
 #define BUFF_SIZE 1024
 
-int read_to_buff(const char *fn, char *buff, size_t len)
+static int read_to_buff(const char *fn, char *buff, size_t len)
 {
 	int fd;
 	int n;
@@ -22,7 +22,7 @@ int read_to_buff(const char *fn, char *buff, size_t len)
 	return 0;
 }
 
-int comapre_prints(char *format, ...)
+static int comapre_prints(char *format, ...)
 {
 	va_list ap;
 	int fd;
@@ -95,12 +95,19 @@ void ft_printf_tests()
 	comapre_prints("%lX", (ulong) 123456789 * 100);
 	comapre_prints("%#lx", (ulong) 123456789 * 100);
 	comapre_prints("%#lX", (ulong) 123456789 * 100);
-	comapre_prints("%l#X", (ulong) 123456789 * 100); //not copying undefined behaviour
+	comapre_prints("undefined %l#X behaviour", (ulong) 123456789 * 100); //not copying undefined behaviour
 	comapre_prints("%yX", (ulong) 123456789 * 100);
 //TODO: test for %#f
 	comapre_prints("%p", &comapre_prints);
+	comapre_prints("%10d", 123);
+	comapre_prints("%010d", 123);
+	comapre_prints("%+10d", 123);
+	comapre_prints("%+d", 123);
+	comapre_prints("% d", 123);
+	comapre_prints("%-10d", 123);
+	comapre_prints("%3d", 12345);
 	comapre_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
 			123, (double)4, &comapre_prints, "", '~',
 			(ulong)432543, (unsigned long long int)54935734,
-			(long double)945.1232387665, (double)0.9999999);
+			(long double)-945.1232387665, (double)0.99999999);
 }

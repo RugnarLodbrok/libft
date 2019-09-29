@@ -31,15 +31,13 @@ uint		ft_count_int_digits(long long int n, uint base)
 	return (i);
 }
 
-uint		ft_itoa_stack(char *s, long long int n, uint base)
+char		*ft_itoa_stack(char *s, long long int n, uint base)
 {
-	uint	r;
 	uint	d;
 	char	c;
 	int		rem;
 
 	d = ft_count_int_digits(n, base);
-	r = d;
 	if (n >= 0)
 		n *= -1;
 	else
@@ -57,7 +55,7 @@ uint		ft_itoa_stack(char *s, long long int n, uint base)
 		s[d-- - 1] = c;
 		n /= base;
 	}
-	return (r);
+	return (s);
 }
 
 char				*ft_itoa(long long int n)

@@ -59,8 +59,8 @@ static int printf_conversion(int fd, va_list ap, char **ptr)
 	int n;
 
 	(*ptr)++;
-	spec.field_width = parse_field_width(ptr);
 	spec.flags = parse_flags(ptr);
+	spec.field_width = parse_field_width(ptr);
 	parse_format(spec.format, ptr);
 	if ((n = ft_printf_item(fd, ap, spec)) >= 0)
 		return (n);

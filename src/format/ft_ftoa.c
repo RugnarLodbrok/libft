@@ -28,11 +28,11 @@ char *ft_ftoa(long double n, int decimals)
 	if (!(s = malloc(sizeof(char) * (d + 1))))
 		return (0);
 	if (decimal_part < ft_pow(base, decimals))
-		ptr = s + ft_itoa_stack(s, (long int) n, 10);
+		ptr = s + ft_strlen(ft_itoa_stack(s, (long int) n, 10));
 	else if (n > 0)
-		ptr = s + ft_itoa_stack(s, ((long int) n) + 1, 10);
+		ptr = s + ft_strlen(ft_itoa_stack(s, ((long int) n) + 1, 10));
 	else
-		ptr = s + ft_itoa_stack(s, ((long int) n) - 1, 10);
+		ptr = s + ft_strlen(ft_itoa_stack(s, ((long int) n) - 1, 10));
 	decimal_part %= ft_pow(base, decimals);
 	ptr[0] = '.';
 	ft_itoa_stack(ptr + 1, decimal_part, 10);
