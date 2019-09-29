@@ -12,13 +12,13 @@ static int put(char *s, int fd)
 	return (len);
 }
 
-static char *hex(unsigned long long int v, int alt)
+static char *hex(unsigned long long int v, uint flags)
 {
 	char *s;
 	char *r;
 
 	s = ft_ultoa_base(v, 16);
-	if (!alt)
+	if (!(flags & PRINTF_HASH))
 		return (s);
 	r = ft_strnew(ft_strlen(s) + 2);
 	ft_strcpy(r, "0x");
@@ -27,13 +27,13 @@ static char *hex(unsigned long long int v, int alt)
 	return r;
 }
 
-static char *oct(unsigned long long int v, int alt)
+static char *oct(unsigned long long int v, uint flags)
 {
 	char *s;
 	char *r;
 
 	s = ft_ultoa_base(v, 8);
-	if (!alt || !v)
+	if (!(flags & PRINTF_HASH) || !v)
 		return (s);
 	r = ft_strnew(ft_strlen(s) + 1);
 	ft_strcpy(r, "0");
@@ -44,11 +44,6 @@ static char *oct(unsigned long long int v, int alt)
 
 int ft_printf_item(int fd, va_list ap, char *f, uint flags)
 {
-	int alt;
-
-	if ((alt = (*f == '#')))
-		f++;
-	flags++;
 	if (!ft_strcmp("d", f) || !ft_strcmp("i", f))
 		return (put(ft_itoa(va_arg(ap, int)), fd));
 	if (!ft_strcmp("hi", f))
@@ -70,35 +65,35 @@ int ft_printf_item(int fd, va_list ap, char *f, uint flags)
 	if (!ft_strcmp("llu", f))
 		return (put(ft_ultoa_base(va_arg(ap, long long int), 10), fd));
 	if (!ft_strcmp("o", f))
-		return (put(oct(va_arg(ap, uint), alt), fd));
+		return (put(oct(va_arg(ap, uint), flags), fd));
 	if (!ft_strcmp("ho", f))
-		return (put(oct((short int) va_arg(ap, uint), alt), fd));
+		return (put(oct((short int) va_arg(ap, uint), flags), fd));
 	if (!ft_strcmp("hho", f))
-		return (put(oct((signed char) va_arg(ap, uint), alt), fd));
+		return (put(oct((signed char) va_arg(ap, uint), flags), fd));
 	if (!ft_strcmp("lo", f))
-		return (put(oct(va_arg(ap, ulong), alt), fd));
+		return (put(oct(va_arg(ap, ulong), flags), fd));
 	if (!ft_strcmp("llo", f))
-		return (put(oct(va_arg(ap, long long int), alt), fd));
+		return (put(oct(va_arg(ap, long long int), flags), fd));
 	if (!ft_strcmp("x", f))
-		return (put(hex(va_arg(ap, uint), alt), fd));
+		return (put(hex(va_arg(ap, uint), flags), fd));
 	if (!ft_strcmp("hx", f))
-		return (put(hex((short int) va_arg(ap, uint), alt), fd));
+		return (put(hex((short int) va_arg(ap, uint), flags), fd));
 	if (!ft_strcmp("hhx", f))
-		return (put(hex((signed char) va_arg(ap, uint), alt), fd));
+		return (put(hex((signed char) va_arg(ap, uint), flags), fd));
 	if (!ft_strcmp("lx", f))
-		return (put(hex(va_arg(ap, ulong), alt), fd));
+		return (put(hex(va_arg(ap, ulong), flags), fd));
 	if (!ft_strcmp("llx", f))
-		return (put(hex(va_arg(ap, long long int), alt), fd));
+		return (put(hex(va_arg(ap, long long int), flags), fd));
 	if (!ft_strcmp("X", f))
-		return (put(ft_toupper_inplace(hex(va_arg(ap, uint), alt)), fd));
+		return (put(ft_toupper_inplace(hex(va_arg(ap, uint), flags)), fd));
 	if (!ft_strcmp("hX", f))
-		return (put(ft_toupper_inplace(hex((short int) va_arg(ap, uint), alt)), fd));
+		return (put(ft_toupper_inplace(hex((short int) va_arg(ap, uint), flags)), fd));
 	if (!ft_strcmp("hhX", f))
-		return (put(ft_toupper_inplace(hex((signed char) va_arg(ap, uint), alt)), fd));
+		return (put(ft_toupper_inplace(hex((signed char) va_arg(ap, uint), flags)), fd));
 	if (!ft_strcmp("lX", f))
-		return (put(ft_toupper_inplace(hex(va_arg(ap, ulong), alt)), fd));
+		return (put(ft_toupper_inplace(hex(va_arg(ap, ulong), flags)), fd));
 	if (!ft_strcmp("llX", f))
-		return (put(ft_toupper_inplace(hex(va_arg(ap, long long int), alt)), fd));
+		return (put(ft_toupper_inplace(hex(va_arg(ap, long long int), flags)), fd));
 	if (!ft_strcmp("c", f))
 		return ft_putchar_fd(va_arg(ap, int), fd);
 	if (!ft_strcmp("s", f))

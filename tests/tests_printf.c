@@ -95,7 +95,7 @@ void ft_printf_tests()
 	comapre_prints("%lX", (ulong) 123456789 * 100);
 	comapre_prints("%#lx", (ulong) 123456789 * 100);
 	comapre_prints("%#lX", (ulong) 123456789 * 100);
-//	comapre_prints("%l#X", (ulong) 123456789 * 100); //not copying undefined behaviour
+	comapre_prints("%l#X", (ulong) 123456789 * 100); //not copying undefined behaviour
 	comapre_prints("%yX", (ulong) 123456789 * 100);
 //TODO: test for %#f
 	comapre_prints("%p", &comapre_prints);
