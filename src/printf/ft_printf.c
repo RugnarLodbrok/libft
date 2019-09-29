@@ -4,6 +4,24 @@
 #include "unistd_compat.h"
 #include "ft_printf.h"
 
+int parse_field_width(char **s)
+{
+	int r;
+
+	r = 0;
+	if (**s != '0' && ft_isdigit(**s))
+	{
+		r++;
+		(*s)++;
+	}
+	while (ft_isdigit(**s))
+	{
+		r++;
+		(*s)++;
+	}
+	return (r);
+}
+
 uint parse_flags(char **s)
 {
 	uint flags;
@@ -37,14 +55,14 @@ void parse_format(char *dst, char **s)
 
 static int printf_conversion(int fd, va_list ap, char **ptr)
 {
-	char s[64];
+	t_printf_spec spec;
 	int n;
-	uint flags;
 
 	(*ptr)++;
-	flags = parse_flags(ptr);
-	parse_format(s, ptr);
-	if ((n = ft_printf_item(fd, ap, s, flags)) >= 0)
+	spec.field_width = parse_field_width(ptr);
+	spec.flags = parse_flags(ptr);
+	parse_format(spec.format, ptr);
+	if ((n = ft_printf_item(fd, ap, spec)) >= 0)
 		return (n);
 	ft_putchar_fd('%', fd);
 	return 1;

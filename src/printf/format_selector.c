@@ -42,8 +42,13 @@ static char *oct(unsigned long long int v, uint flags)
 	return r;
 }
 
-int ft_printf_item(int fd, va_list ap, char *f, uint flags)
+int ft_printf_item(int fd, va_list ap, t_printf_spec s)
 {
+	char *f;
+	uint flags;
+
+	f = s.format;
+	flags = s.flags;
 	if (!ft_strcmp("d", f) || !ft_strcmp("i", f))
 		return (put(ft_itoa(va_arg(ap, int)), fd));
 	if (!ft_strcmp("hi", f))
