@@ -12,7 +12,7 @@ static void trail_zeros(char *s, int n)
 	*s = 0;
 }
 
-char *ft_ftoa(double n, int decimals)
+char *ft_ftoa(long double n, int decimals)
 {
 	size_t d;
 	char *s;
@@ -27,11 +27,15 @@ char *ft_ftoa(double n, int decimals)
 	d = ft_count_int_digits((long int) n, base) + decimals + 1;
 	if (!(s = malloc(sizeof(char) * (d + 1))))
 		return (0);
-	ptr = s + ft_itoa_stack(s, (long int) n, 10);
+	if (decimal_part < ft_pow(base, decimals))
+		ptr = s + ft_itoa_stack(s, (long int) n, 10);
+	else if (n > 0)
+		ptr = s + ft_itoa_stack(s, ((long int) n) + 1, 10);
+	else
+		ptr = s + ft_itoa_stack(s, ((long int) n) - 1, 10);
+	decimal_part %= ft_pow(base, decimals);
 	ptr[0] = '.';
-	ft_itoa_stack(ptr + 1,
-				  decimal_part,
-				  10);
+	ft_itoa_stack(ptr + 1, decimal_part, 10);
 	trail_zeros(ptr + 1, decimals);
 	return (s);
 }
