@@ -25,14 +25,20 @@ static int printf_conversion(int fd, va_list ap, char **ptr)
 {
 	char s[64];
 	int n;
+	int m;
 	uint flags;
 
 	flags = 0;
 	n = parse_format(++(*ptr), &flags);
 	ft_memcpy(s, *ptr, n);
 	s[n] = 0;
+	if ((m = ft_printf_item(fd, ap, s, flags)) < 0)
+	{
+		ft_putchar_fd('%', fd);
+		return 1;
+	}
 	*ptr += n;
-	return ft_printf_item(fd, ap, s);
+	return (m);
 }
 
 int ft_printf_ap(int fd, const char *format, va_list ap)

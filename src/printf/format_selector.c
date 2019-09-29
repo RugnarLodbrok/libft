@@ -42,13 +42,13 @@ static char *oct(unsigned long long int v, int alt)
 	return r;
 }
 
-int ft_printf_item(int fd, va_list ap, char *f)
+int ft_printf_item(int fd, va_list ap, char *f, uint flags)
 {
 	int alt;
 
 	if ((alt = (*f == '#')))
 		f++;
-
+	flags++;
 	if (!ft_strcmp("d", f) || !ft_strcmp("i", f))
 		return (put(ft_itoa(va_arg(ap, int)), fd));
 	if (!ft_strcmp("hi", f))
