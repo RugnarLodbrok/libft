@@ -113,7 +113,7 @@ size_t				ft_putstr_fd(char *s, int fd);
 size_t				ft_putendl_fd(char *s, int fd);
 size_t				ft_putnbr_fd(int nb, int fd);
 
-size_t				ft_count_int_digits(long long int n, uint base);
+uint				ft_count_int_digits(long long int n, uint base);
 char				*ft_itoa(long long int n);
 char				*ft_itoa_base(long long int n, uint base);
 char				*ft_itoa_stack(char *s, long long int n, uint base);

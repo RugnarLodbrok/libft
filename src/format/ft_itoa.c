@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 uint		ft_count_int_digits(long long int n, uint base)
 {

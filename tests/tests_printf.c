@@ -69,7 +69,6 @@ void ft_printf_tests()
 	comapre_prints("abc");
 	comapre_prints("%#+3lc", '!');
 	comapre_prints("%3lc", '!');
-//	comapre_prints("%03lc", '!');
 	comapre_prints("abc%dqqq", 123);
 	comapre_prints("123%%abc", 123);
 	comapre_prints("abc%ffff", 32.5435434);
@@ -98,8 +97,6 @@ void ft_printf_tests()
 	comapre_prints("%lX", (ulong) 123456789 * 100);
 	comapre_prints("%#lx", (ulong) 123456789 * 100);
 	comapre_prints("%#lX", (ulong) 123456789 * 100);
-	comapre_prints("undefined %l#X behaviour", (ulong) 123456789 * 100); //not copying undefined behaviour
-	comapre_prints("%yX", (ulong) 123456789 * 100);
 //TODO: test for %#f
 	comapre_prints("%p", &comapre_prints);
 	comapre_prints("%10d", 123);
@@ -114,4 +111,9 @@ void ft_printf_tests()
 			123, (double)4, &comapre_prints, "", '~',
 			(ulong)432543, (unsigned long long int)54935734,
 			(long double)-945.1232387665, (double)0.99999999);
+	printf("\n----OS dependant and undefined behavoiur tests----\n\n");
+	comapre_prints("%03lc", '!');
+	comapre_prints("undefined %l#X behaviour", (ulong) 123456789 * 100); //not copying undefined behaviour
+	comapre_prints("%yX", (ulong) 123456789 * 100);
+
 }
