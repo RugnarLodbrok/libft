@@ -107,6 +107,8 @@ void ft_printf_tests()
 	comapre_prints("%-10d", 123);
 	comapre_prints("%3d", 12345);
 	comapre_prints("%3c", '!');
+	comapre_prints("%010d", -123);
+	comapre_prints("%10d", -123);
 	comapre_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
 			123, (double)4, &comapre_prints, "", '~',
 			(ulong)432543, (unsigned long long int)54935734,

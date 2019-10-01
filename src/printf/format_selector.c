@@ -87,11 +87,11 @@ int ft_printf_item(int fd, va_list ap, t_printf_spec s)
 		else if (ft_strstr(s.format, "l"))
 			v.d = va_arg(ap, long int);
 		else if (ft_strstr(s.format, "hh"))
-			v.d = (signed char) va_arg(ap, uint);
+			v.d = (signed char) va_arg(ap, int);
 		else if (ft_strstr(s.format, "h"))
-			v.d = (short int) va_arg(ap, uint);
+			v.d = (short int) va_arg(ap, int);
 		else
-			v.d = va_arg(ap, uint);
+			v.d = va_arg(ap, int);
 		convert_int(b, v.d, s);
 	}
 	else if (ft_strchr("uoxX", s.type))
