@@ -1,38 +1,27 @@
 #include "libft.h"
+#include <stdio.h>
 
 double ft_cos(double x)
 {
-	int i = 1;
-	double r = x;
+	int k = 1;
+	double r = 1;
 	double acc = 1;
 	double den = 1;
-	double num = x;
+	double num = 1;
 
-	while (ft_fabs(acc) > .0000000001 && i < 100)
+	while (x > PI)
+		x -= PI;
+	while (x < -PI)
+		x += PI;
+	while (acc > EPSILON || acc < -EPSILON)
 	{
-		den *= ((2 * i) * (2 * i + 1));
 		num *= -1 * x * x;
-		acc = num / den;
+		den /= k * (k + 1);
+		acc = num * den;
 		r += acc;
-		i++;
+		k += 2;
 	}
 	return r;
-}
-
-double ft_cos2(double x)
-{
-	double t, s;
-	int p;
-	p = 0;
-	s = 1.0;
-	t = 1.0;
-	while (ft_fabs(t / s) > .00000000001)
-	{
-		p++;
-		t = (-t * x * x) / ((2 * p - 1) * (2 * p));
-		s += t;
-	}
-	return s;
 }
 
 double ft_sin(double x)
@@ -43,11 +32,15 @@ double ft_sin(double x)
 	double den = 1;
 	double num = x;
 
-	while (ft_fabs(acc) > .0000000001 && k < 200)
+	while (x > PI)
+		x -= PI;
+	while (x < -PI)
+		x += PI;
+	while (acc > EPSILON || acc < -EPSILON)
 	{
-		den *= k * (k + 1);
 		num *= -1 * x * x;
-		acc = num / den;
+		den /= k * (k + 1);
+		acc = num * den;
 		r += acc;
 		k += 2;
 	}

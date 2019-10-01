@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+#include "ft_math.h"
 
 # define CHECK0RET(x, r) if (!(x)) return (r)
 # define CHECK0RET0(x) CHECK0RET(x, 0)
@@ -136,16 +137,6 @@ void				*ft_realloc(void *ptr, size_t n, size_t len);
 void				*t_buff_init(t_buff *b, size_t size);
 size_t				t_buff_extend(t_buff *b);
 int					t_buff_append(t_buff *b, void *data, size_t len);
-
-int					ft_sqrt_int(int nb);
-int					ft_sqrt_ceil(int nb);
-double				ft_sqrt(double nb);
-int					ft_pow(int a, int b);
-int					ft_abs(int a);
-double				ft_fabs(double a);
-double				ft_sin(double a);
-double				ft_cos(double a);
-double				ft_cos2(double a);
 
 void				ft_swap(void **a, void **b);
 void				ft_swap_int(int *a, int *b);

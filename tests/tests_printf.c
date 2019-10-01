@@ -114,6 +114,8 @@ void ft_printf_tests()
 			(ulong)432543, (unsigned long long int)54935734,
 			(long double)-945.1232387665, (double)0.99999999);
 	printf("\n----OS dependant and undefined behavoiur tests----\n\n");
+	comapre_prints("%5+c", '!'); //alex
+	comapre_prints("|%5+d|", 5); //alex
 	comapre_prints("%03lc", '!');
 	comapre_prints("undefined %l#X behaviour", (ulong) 123456789 * 100); //not copying undefined behaviour
 	comapre_prints("%yX", (ulong) 123456789 * 100);
