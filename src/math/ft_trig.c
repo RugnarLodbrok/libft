@@ -3,11 +3,17 @@
 
 double ft_cos(double x)
 {
-	int k = 1;
-	double r = 1;
-	double acc = 1;
-	double den = 1;
-	double num = 1;
+	int k;
+	double r;
+	double acc;
+	double den;
+	double num;
+
+	k = 1;
+	r = 1;
+	acc = 1;
+	den = 1;
+	num = 1;
 
 	while (x > PI)
 		x -= PI;
@@ -26,12 +32,17 @@ double ft_cos(double x)
 
 double ft_sin(double x)
 {
-	int k = 2;
-	double r = x;
-	double acc = 1;
-	double den = 1;
-	double num = x;
+	int k;
+	double r;
+	double acc;
+	double den;
+	double num;
 
+	k = 2;
+	r = x;
+	acc = 1;
+	den = 1;
+	num = x;
 	while (x > PI)
 		x -= PI;
 	while (x < -PI)
