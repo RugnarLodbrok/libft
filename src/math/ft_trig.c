@@ -14,14 +14,13 @@ double ft_cos(double x)
 	acc = 1;
 	den = 1;
 	num = 1;
-
 	while (x > PI)
 		x -= PI;
 	while (x < -PI)
 		x += PI;
 	while (acc > EPSILON || acc < -EPSILON)
 	{
-		num *= -1 * x * x;
+		num *= -x * x;
 		den /= k * (k + 1);
 		acc = num * den;
 		r += acc;
@@ -49,7 +48,7 @@ double ft_sin(double x)
 		x += PI;
 	while (acc > EPSILON || acc < -EPSILON)
 	{
-		num *= -1 * x * x;
+		num *= -x * x;
 		den /= k * (k + 1);
 		acc = num * den;
 		r += acc;
