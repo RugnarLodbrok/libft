@@ -15,9 +15,9 @@
 
 # include <stdlib.h>
 
-# define CHECK0RET(x, r) if (!(x)) return (r);
-# define CHECK0RET0(x) CHECK0RET(x, 0);
-# define CHECK0RET1(x) CHECK0RET(x, -1);
+# define CHECK0RET(x, r) if (!(x)) return (r)
+# define CHECK0RET0(x) CHECK0RET(x, 0)
+# define CHECK0RET1(x) CHECK0RET(x, -1)
 # define CHECK1RET1(x) if ((x) < 0) return (-1)
 
 # ifndef ulong
@@ -140,6 +140,7 @@ int					t_buff_append(t_buff *b, void *data, size_t len);
 int					ft_sqrt_int(int nb);
 int					ft_sqrt_ceil(int nb);
 int					ft_pow(int a, int b);
+int					ft_abs(int a);
 
 void				ft_swap(void **a, void **b);
 void				ft_swap_int(int *a, int *b);

@@ -123,9 +123,9 @@ int		get_next_line(const int fd, char **line)
 	t_buff				buff;
 	int					ret;
 
-	CHECK0RET1(state = gnl_state_get(&state_lst, fd))
-	CHECK0RET1(t_buff_init(&buff, 16))
-	CHECK0RET1(line)
+	CHECK0RET1(state = gnl_state_get(&state_lst, fd));
+	CHECK0RET1(t_buff_init(&buff, 16));
+	CHECK0RET1(line);
 	ret = do_next_reads(fd, &buff, state);
 	if (ret > 0)
 	{
