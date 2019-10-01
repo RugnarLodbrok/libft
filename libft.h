@@ -139,6 +139,7 @@ int					t_buff_append(t_buff *b, void *data, size_t len);
 
 int					ft_sqrt_int(int nb);
 int					ft_sqrt_ceil(int nb);
+double				ft_sqrt(double nb);
 int					ft_pow(int a, int b);
 int					ft_abs(int a);
 

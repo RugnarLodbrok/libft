@@ -10,6 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+double ft_sqrt(double nb)
+{
+	double r;
+	double div;
+	double avg;
+
+	if (nb < 1)
+		return (0);
+	r = 1;
+	while (1)
+	{
+		div = nb / r;
+		avg = (r + div) / 2;
+		if (avg == r)
+			break;
+		r = avg;
+	}
+	return (avg);
+}
+
 int ft_sqrt_int(int nb)
 {
 	int r;
