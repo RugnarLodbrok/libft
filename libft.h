@@ -142,6 +142,10 @@ int					ft_sqrt_ceil(int nb);
 double				ft_sqrt(double nb);
 int					ft_pow(int a, int b);
 int					ft_abs(int a);
+double				ft_fabs(double a);
+double				ft_sin(double a);
+double				ft_cos(double a);
+double				ft_cos2(double a);
 
 void				ft_swap(void **a, void **b);
 void				ft_swap_int(int *a, int *b);
