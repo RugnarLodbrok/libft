@@ -1,5 +1,4 @@
 #include "libft.h"
-#include <stdio.h>
 
 double ft_cos(double x)
 {
@@ -18,6 +17,10 @@ double ft_cos(double x)
 		x -= PI;
 	while (x < -PI)
 		x += PI;
+	if (x > PI / 2)
+		return (-ft_cos(PI - x));
+	if (x < -PI / 2)
+		return (-ft_cos(-PI - x));
 	while (acc > EPSILON || acc < -EPSILON)
 	{
 		num *= -x * x;
@@ -26,7 +29,7 @@ double ft_cos(double x)
 		r += acc;
 		k += 2;
 	}
-	return r;
+	return (r);
 }
 
 double ft_sin(double x)
@@ -46,6 +49,10 @@ double ft_sin(double x)
 		x -= PI;
 	while (x < -PI)
 		x += PI;
+	if (x > PI / 2)
+		return (ft_sin(PI - x));
+	if (x < -PI / 2)
+		return (ft_sin(-PI - x));
 	while (acc > EPSILON || acc < -EPSILON)
 	{
 		num *= -x * x;
@@ -54,5 +61,5 @@ double ft_sin(double x)
 		r += acc;
 		k += 2;
 	}
-	return r;
+	return (r);
 }
