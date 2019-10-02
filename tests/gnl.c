@@ -20,9 +20,12 @@ void test_gnl()
 //	fd = open("nl", O_RDONLY);
 //	fd = open("KO", O_RDONLY);
 //	fd = open("stdarg_man.txt", O_RDONLY);
-	fd = open("empty", O_RDONLY);
+	fd = open("Makefile", O_RDONLY);
 	while ((status = get_next_line(fd, &s)) > 0)
+	{
 		printf("%s\n", s);
+		free(s);
+	}
 	if (status < 0)
 		printf("----ERROR----\n");
 	else

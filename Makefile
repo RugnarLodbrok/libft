@@ -97,6 +97,7 @@ OBJ = $(SRC:.c=.o)
 
 TEST_SRC = \
       tests/tests_printf.c \
+      tests/tests_math.c \
       tests/tests_main.c \
       tests/gnl.c
 TEST_OBJ = $(TEST_SRC:.c=.o)

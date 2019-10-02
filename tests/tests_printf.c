@@ -65,7 +65,7 @@ static int compare_prints(char *format, ...)
 	return (0);
 }
 
-void ft_printf_tests()
+void test_ft_printf()
 {
 	compare_prints("abc");
 	compare_prints("%#+3lc", '!');

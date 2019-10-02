@@ -17,6 +17,7 @@ add_executable(libft_tests
 		tests/tests_main.c
 		tests/gnl.c
 		tests/tests_printf.c
+		tests/tests_math.c
 
 		src/string/ft_atoi.c
 		src/string/ft_bzero.c
@@ -96,3 +97,4 @@ add_executable(libft_tests
 		src/printf/ft_printf.c
 		src/printf/format_selector.c
 		)
+target_link_libraries(libft_tests m)
