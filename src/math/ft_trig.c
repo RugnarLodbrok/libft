@@ -21,8 +21,8 @@ double ft_cos(double x)
 	while (acc > EPSILON || acc < -EPSILON)
 	{
 		num *= -x * x;
-		den /= k * (k + 1);
-		acc = num * den;
+		den *= k * (k + 1);
+		acc = num / den;
 		r += acc;
 		k += 2;
 	}
@@ -49,8 +49,8 @@ double ft_sin(double x)
 	while (acc > EPSILON || acc < -EPSILON)
 	{
 		num *= -x * x;
-		den /= k * (k + 1);
-		acc = num * den;
+		den *= k * (k + 1);
+		acc = num / den;
 		r += acc;
 		k += 2;
 	}
