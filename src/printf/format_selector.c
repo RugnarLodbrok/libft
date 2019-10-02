@@ -14,11 +14,11 @@ void prepend_str(char *buff, const char *s)
 char *convert_uint(char *b, unsigned long long int v, t_printf_spec s)
 {
 	if (s.type == 'u')
-		ft_ultoa_stack(b, v, 10);
+		ft_ultoa_buf(b, v, 10);
 	else if (s.type == 'o')
-		ft_ultoa_stack(b, v, 8);
+		ft_ultoa_buf(b, v, 8);
 	else if (ft_tolower(s.type) == 'x')
-		ft_ultoa_stack(b, v, 16);
+		ft_ultoa_buf(b, v, 16);
 	if ((s.flags & PRINTF_HASH) && v && s.type == 'o')
 		prepend_str(b, "0");
 	if ((s.flags & PRINTF_HASH) && ft_tolower(s.type) == 'x')
@@ -34,7 +34,7 @@ char *convert_uint(char *b, unsigned long long int v, t_printf_spec s)
 
 char *convert_int(char *b, long long int v, t_printf_spec s)
 {
-	ft_itoa_stack(b, v, 10);
+	ft_itoa_buf(b, v, 10);
 	if (s.flags & PRINTF_PLUS && v >= 0)
 		prepend_str(b, "+");
 	else if (s.flags & PRINTF_SPACE && v >= 0)
@@ -43,7 +43,7 @@ char *convert_int(char *b, long long int v, t_printf_spec s)
 }
 char *convert_double(char *b, long double v, t_printf_spec s)
 {
-	ft_ftoa_stack(b, v, 6);
+	ft_ftoa_buf(b, v, 6);
 	if (s.flags & PRINTF_PLUS && v >= 0)
 		prepend_str(b, "+");
 	else if (s.flags & PRINTF_SPACE && v >= 0)
@@ -121,7 +121,7 @@ int ft_printf_item(int fd, va_list ap, t_printf_spec s)
 	else if (!ft_strcmp("s", s.format))
 		ft_strcpy(b, va_arg(ap, char*));
 	else if (!ft_strcmp("p", s.format))
-		ft_ultoa_stack(ft_strcpy(b, "0x") + 2, (ulong) va_arg(ap, void*), 16);
+		ft_ultoa_buf(ft_strcpy(b, "0x") + 2, (ulong) va_arg(ap, void*), 16);
 	else if (!ft_strcmp("%", s.format))
 		return ft_putchar_fd('%', fd);
 	else

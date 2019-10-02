@@ -32,7 +32,7 @@ uint		ft_count_int_digits(long long int n, uint base)
 	return (i);
 }
 
-char		*ft_itoa_stack(char *s, long long int n, uint base)
+char		*ft_itoa_buf(char *s, long long int n, uint base)
 {
 	uint	d;
 	char	c;
@@ -67,7 +67,7 @@ char				*ft_itoa(long long int n)
 	d = ft_count_int_digits(n, 10);
 	if (!(s = malloc(sizeof(char) * (d + 1))))
 		return (0);
-	ft_itoa_stack(s, n, 10);
+	ft_itoa_buf(s, n, 10);
 	return (s);
 }
 
@@ -81,6 +81,6 @@ char				*ft_itoa_base(long long int n, uint base)
 	d = ft_count_int_digits(n, base);
 	if (!(s = malloc(sizeof(char) * (d + 1))))
 		return (0);
-	ft_itoa_stack(s, n, base);
+	ft_itoa_buf(s, n, base);
 	return (s);
 }

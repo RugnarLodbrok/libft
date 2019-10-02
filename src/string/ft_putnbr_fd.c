@@ -16,6 +16,6 @@ size_t	ft_putnbr_fd(int nb, int fd)
 {
 	char buff[12];
 
-	ft_itoa_stack(buff, nb, 10);
+	ft_itoa_buf(buff, nb, 10);
 	return (ft_putstr_fd(buff, fd));
 }

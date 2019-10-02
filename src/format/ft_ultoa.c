@@ -17,7 +17,7 @@ static size_t	count_digits(ulong n, uint base)
 	return (i);
 }
 
-char			*ft_ultoa_stack(char *s, ulong n, uint base)
+char			*ft_ultoa_buf(char *s, ulong n, uint base)
 {
 	size_t	d;
 	char	c;
@@ -48,7 +48,7 @@ char		*ft_ultoa(ulong n)
 	d = count_digits(n, 10);
 	if (!(s = malloc(sizeof(char) * (d + 1))))
 		return (0);
-	ft_ultoa_stack(s, n, 10);
+	ft_ultoa_buf(s, n, 10);
 	return (s);
 }
 
@@ -62,6 +62,6 @@ char		*ft_ultoa_base(ulong n, uint base)
 	d = count_digits(n, base);
 	if (!(s = malloc(sizeof(char) * (d + 1))))
 		return (0);
-	ft_ultoa_stack(s, n, base);
+	ft_ultoa_buf(s, n, base);
 	return (s);
 }
