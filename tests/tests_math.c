@@ -1,6 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "ft_math.h"
+#include <time.h>
 
 /*void performance()
 {
@@ -23,7 +24,7 @@
 */
 void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 					 double start, double stop, int n,
-					 double ref_max, double ref_avg)
+					 double ref_max, double ref_avg, double time_ref)
 {
 	double x;
 	double step = (stop - start) / n;
@@ -31,7 +32,10 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 	double max_err = 0;
 	double total_err = 0;
 	char *status = "OK";
+	clock_t t0;
+	double t;
 
+	t0 = clock();
 	for (x = start; x < stop; x += step)
 	{
 		v = ft_fabs(f(x) - f_ref(x));
@@ -41,25 +45,31 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 //		if (v > EPSILON)
 //			printf("[FAIL]: f(%f) error =\t%.30f\n\t\t\t\t\t%.30f", x, v, EPSILON);
 	}
+	t = (double) (clock() - t0) / CLOCKS_PER_SEC *100000000/ n;
+	if (t > time_ref * 1.1)
+		status = "WARNING";
 	if (max_err > ref_max * 1.1)
 		status = "WARNING";
-	if (max_err > ref_max * 2)
-		status = "FAIL";
 	if (total_err / n > ref_avg * 1.1)
 		status = "WARNING";
+	if (t > time_ref * 2)
+		status = "FAIL";
+	if (max_err > ref_max * 2)
+		status = "FAIL";
 	if (total_err / n > ref_avg * 2)
 		status = "FAIL";
 	printf("[%s] %s\n"
 		   "\tmax_err:\t%f Epsilon (ref: %f)\n"
 		   "\tavg_err:\t%f Epsilon (ref: %f)\n"
-		   "\tEpsilon:\t%.30f\n", status, f_name,
-		   max_err, ref_max, total_err / n, ref_avg, EPSILON);
+		   "\tEpsilon:\t%.30f\n"
+		   "\ttime:\t\t%f\t(ref: %f)\n", status, f_name,
+		   max_err, ref_max, total_err / n, ref_avg, EPSILON, t, time_ref);
 }
 
 void test_ft_math()
 {
-	test_double_f_x("ft_sin", &ft_sin, &sin, 0, PI, 1000, 0.0056, 0.00097);
-	test_double_f_x("ft_cos", &ft_cos, &cos, 0, PI, 1000, 0.0061, 0.00092);
-	test_double_f_x("ft_sqrt", &ft_sqrt, &sqrt, 0, 100, 1000, 0.018, 0.03);
-	test_double_f_x("ft_log", &ft_log, &log, .000001, 997, 1000, .55, .19);
+	test_double_f_x("ft_sin", &ft_sin, &sin, 0, PI, 1000000, 0.0078, 0.00097, 6.2);
+	test_double_f_x("ft_cos", &ft_cos, &cos, 0, PI, 1000000, 0.0078, 0.00092, 6.2);
+	test_double_f_x("ft_sqrt", &ft_sqrt, &sqrt, 0, 10000, 100000, 0.14, 0.03, 15.6);
+	test_double_f_x("ft_log", &ft_log, &log, .000001, 77777, 66666, .62, .19, 70.3);
 }
