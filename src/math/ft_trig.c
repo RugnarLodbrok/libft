@@ -66,3 +66,14 @@ double ft_sin(double x)
 	}
 	return (r);
 }
+
+double zx_sin(double x)
+{
+	double w;
+	double z;
+
+	x = trig_mod(x);
+	w = 4 * x;
+	z = 2 * w * w - 1;
+	return P(z) * w;
+}

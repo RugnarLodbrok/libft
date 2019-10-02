@@ -1,6 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "ft_math.h"
+
 /*void performance()
 {
 	int i;
@@ -60,4 +61,5 @@ void test_ft_math()
 	test_double_f_x("ft_sin", &ft_sin, &sin, 0, PI, 1000, 0.0056, 0.00097);
 	test_double_f_x("ft_cos", &ft_cos, &cos, 0, PI, 1000, 0.0061, 0.00092);
 	test_double_f_x("ft_sqrt", &ft_sqrt, &sqrt, 0, 100, 1000, 0.018, 0.03);
+	test_double_f_x("ft_log", &ft_log, &log, .000001, 997, 1000, .55, .19);
 }
