@@ -152,5 +152,4 @@ void test_ft_printf()
 	compare_prints("%03lc", '!');
 	compare_prints("undefined %l#X behaviour", (ulong) 123456789 * 100); //not copying undefined behaviour
 	compare_prints("%yX", (ulong) 123456789 * 100);
-
 }

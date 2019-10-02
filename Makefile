@@ -113,8 +113,11 @@ $(NAME): $(OBJ)
 test.o : $(NAME) $(TEST_OBJ)
 	$(CC) -o test.o $(TEST_OBJ) $(OPTION) -L . -lft $(LINK_FLAGS)
 
-test: test.o
+test : test.o
 	@./test.o
+
+valgrind_check : test.o
+	valgrind --leak-check=full --leak-resolution=med --track-origins=yes --vgdb=no ./test.o
 
 %.o : %.c
 	$(CC) $(FLAGS) -c $(<) -o $(<:.c=.o) $(OPTION)
