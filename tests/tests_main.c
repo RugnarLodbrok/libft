@@ -46,19 +46,18 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 			printf("[FAIL]: f(%f) error =\t%.30f\n\t\t\t\t\t%.30f", x, v, EPSILON);
 	}
 	printf("[OK] %s\n"
-		   "max_err:\t%f Epsilon (ref: 0.015543)\n"
-		   "avg_err:\t%f Epsilon (ref: 0.003160)\n"
-		   "Epsilon:\t%.30f\n", f_name,
+		   "\tmax_err:\t%f Epsilon (ref: 0.015)\n"
+		   "\tavg_err:\t%f Epsilon (ref: 0.003)\n"
+		   "\tEpsilon:\t%.30f\n", f_name,
 		   max_err, total_err / n, EPSILON);
 }
 
 int main(void)
 {
-//	ft_printf_tests();
+	ft_printf_tests();
 //	test_gnl();
 //	performance();
 	test_double_f_x("ft_sin", &ft_sin, &sin, 0, PI, 1000);
 	test_double_f_x("ft_cos", &ft_cos, &cos, 0, PI, 1000);
 	test_double_f_x("ft_sqrt", &ft_sqrt, &sqrt, 0, 100, 1000);
-//	printf("%f\n", ft_sin2(0.434));
 }
