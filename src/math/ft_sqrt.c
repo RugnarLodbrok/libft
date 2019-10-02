@@ -10,20 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_math.h"
+
 double ft_sqrt(double nb)
 {
 	double r;
 	double div;
 	double avg;
 
-	if (nb < 1)
+	if (nb <= 0)
 		return (0);
 	r = 1;
 	while (1)
 	{
 		div = nb / r;
 		avg = (r + div) / 2;
-		if (avg == r)
+		if (avg - r < EPSILON && r - avg < EPSILON)
 			break;
 		r = avg;
 	}
