@@ -62,7 +62,7 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 		   "\tmax_err:\t%f Epsilon (ref: %f)\n"
 		   "\tavg_err:\t%f Epsilon (ref: %f)\n"
 		   "\tEpsilon:\t%.30f\n"
-		   "\ttime:\t\t%f\t(ref: %f)\n", status, f_name,
+		   "\ttime:\t\t%.2fns\t\t(ref: %f)\n", status, f_name,
 		   max_err, ref_max, total_err / n, ref_avg, EPSILON, t, time_ref);
 }
 
@@ -70,6 +70,6 @@ void test_ft_math()
 {
 	test_double_f_x("ft_sin", &ft_sin, &sin, 0, PI, 1000000, 0.0078, 0.00097, 6.2);
 	test_double_f_x("ft_cos", &ft_cos, &cos, 0, PI, 1000000, 0.0078, 0.00092, 6.2);
-	test_double_f_x("ft_sqrt", &ft_sqrt, &sqrt, 0, 10000, 100000, 0.14, 0.03, 15.6);
-	test_double_f_x("ft_log", &ft_log, &log, .000001, 77777, 66666, .62, .19, 70.3);
+	test_double_f_x("ft_sqrt", &ft_sqrt, &sqrt, 0, 10000, 1000000, 0.14, 0.03, 12.5);
+	test_double_f_x("ft_log", &ft_log, &log, .000001, 77777, 666666, .14, .019, 16.4);
 }
