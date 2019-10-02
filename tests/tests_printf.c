@@ -22,7 +22,7 @@ static int read_to_buff(const char *fn, char *buff, size_t len)
 	return 0;
 }
 
-static int comapre_prints(char *format, ...)
+static int compare_prints(char *format, ...)
 {
 	va_list ap;
 	int fd;
@@ -57,7 +57,8 @@ static int comapre_prints(char *format, ...)
 		printf("[FAIL]:\t%s\n", format);
 		if (!ft_strchr(buff1, '\n') && !ft_strchr(buff2, '\n'))
 			printf("\tgot:\t\t`%s`\n\texpected:\t`%s`\n", buff1, buff2);
-	} else if (ret1 != ret2)
+	}
+	else if (ret1 != ret2)
 		printf("[FAIL]:\t%s\treturn expected %d got %d\n", format, ret2, ret1);
 	else
 		printf("[OK]:\t\t%s -> `%s`\n", format, buff1);
@@ -66,58 +67,90 @@ static int comapre_prints(char *format, ...)
 
 void ft_printf_tests()
 {
-	comapre_prints("abc");
-	comapre_prints("%#+3lc", '!');
-	comapre_prints("%3lc", '!');
-	comapre_prints("abc%dqqq", 123);
-	comapre_prints("123%%abc", 123);
-	comapre_prints("abc%ffff", 32.5435434);
-	comapre_prints("%f", 0.999999999);
-	comapre_prints("%f", -9.99999999);
-	comapre_prints("%f", 55.555555555);
-	comapre_prints("%f", -55.555555555);
-	comapre_prints("%f", (float) 55.555555555);
-	comapre_prints("%f", (float) -55.555555555);
-	comapre_prints("%Lf", (long double) 55.555555555);
-	comapre_prints("%Lf", (long double) -55.555555555);
-	comapre_prints("abc%fddd", 32.0);
-	comapre_prints("abc%cfds", '!');
-	comapre_prints("%li", (long int) -123456789 * 100);
-	comapre_prints("%lu", (long int) -123456789 * 100);
-	comapre_prints("%lu", (ulong) 123456789 * 100);
-	comapre_prints("%llu", (ulong) 123456789 * 100);
-	comapre_prints("%hu", (ulong) 123456789 * 100);
-	comapre_prints("%hhu", (ulong) 123456789 * 100);
-	comapre_prints("%o", 0);
-	comapre_prints("%lo", 0);
-	comapre_prints("%lo", (ulong) 123456789 * 100);
-	comapre_prints("%#lo", (ulong) 123456789 * 100);
-	comapre_prints("%#lo", (ulong) 0);
-	comapre_prints("%lx", (ulong) 123456789 * 100);
-	comapre_prints("%lX", (ulong) 123456789 * 100);
-	comapre_prints("%#lx", (ulong) 123456789 * 100);
-	comapre_prints("%#lX", (ulong) 123456789 * 100);
+	compare_prints("abc");
+	compare_prints("%#+3lc", '!');
+	compare_prints("%3lc", '!');
+	compare_prints("abc%dqqq", 123);
+	compare_prints("123%%abc", 123);
+	compare_prints("abc%ffff", 32.5435434);
+	compare_prints("%f", 0.999999999);
+	compare_prints("%f", -9.99999999);
+	compare_prints("%f", 55.555555555);
+	compare_prints("%f", -55.555555555);
+	compare_prints("%f", (float) 55.555555555);
+	compare_prints("%f", (float) -55.555555555);
+	compare_prints("%Lf", (long double) 55.555555555);
+	compare_prints("%Lf", (long double) -55.555555555);
+	compare_prints("abc%fddd", 32.0);
+	compare_prints("abc%cfds", '!');
+	compare_prints("%li", (long int) -123456789 * 100);
+	compare_prints("%lu", (long int) -123456789 * 100);
+	compare_prints("%lu", (ulong) 123456789 * 100);
+	compare_prints("%llu", (ulong) 123456789 * 100);
+	compare_prints("%hu", (ulong) 123456789 * 100);
+	compare_prints("%hhu", (ulong) 123456789 * 100);
+	compare_prints("%o", 0);
+	compare_prints("%lo", 0);
+	compare_prints("%lo", (ulong) 123456789 * 100);
+	compare_prints("%#lo", (ulong) 123456789 * 100);
+	compare_prints("%#lo", (ulong) 0);
+	compare_prints("%lx", (ulong) 123456789 * 100);
+	compare_prints("%lX", (ulong) 123456789 * 100);
+	compare_prints("%#lx", (ulong) 123456789 * 100);
+	compare_prints("%#lX", (ulong) 123456789 * 100);
 //TODO: test for %#f
-	comapre_prints("%p", &comapre_prints);
-	comapre_prints("%10d", 123);
-	comapre_prints("%010d", 123);
-	comapre_prints("%+10d", 123);
-	comapre_prints("%+d", 123);
-	comapre_prints("% d", 123);
-	comapre_prints("%-10d", 123);
-	comapre_prints("%3d", 12345);
-	comapre_prints("%3c", '!');
-	comapre_prints("%010d", -123);
-	comapre_prints("%10d", -123);
-	comapre_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
-			123, (double)4, &comapre_prints, "", '~',
-			(ulong)432543, (unsigned long long int)54935734,
-			(long double)-945.1232387665, (double)0.99999999);
+	compare_prints("%p", &compare_prints);
+	compare_prints("%10d", 123);
+	compare_prints("%010d", 123);
+	compare_prints("%+10d", 123);
+	compare_prints("%+d", 123);
+	compare_prints("% d", 123);
+	compare_prints("%-10d", 123);
+	compare_prints("%3d", 12345);
+	compare_prints("%3c", '!');
+	compare_prints("%010d", -123);
+	compare_prints("%10d", -123);
+	//alex
+	compare_prints("01 |%d|  ", 5);
+	compare_prints("02 |%d| ", -5);
+	compare_prints("03 |%+d| ", 5);
+	compare_prints("04 |%+d| ", -5);
+	compare_prints("05 |% d| ", 5);
+	compare_prints("06 |% d| ", -5);
+	compare_prints("07 |%5d| ", 5);
+	compare_prints("08 |%5d| ", -5);
+	compare_prints("09 |%05d| ", 5);
+	compare_prints("10 |%05d| ", -5);
+	compare_prints("11 |%0 5d| ", 5);
+	compare_prints("12 |%0 5d| ", -5);
+	compare_prints("13 |%0 +5d| ", 5);
+	compare_prints("14 |%0 +5d| ", -5);
+	compare_prints("15 |%-5d| ", 5);
+	compare_prints("16 |%-5d| ", -5);
+	compare_prints("17 |%-05d| ", 5);
+	compare_prints("18 |%-05d| ", -5);
+	compare_prints("19 |%- +05d| ", 5);
+	compare_prints("20 |%- +05d| ", -5);
+	compare_prints("21 |%-+5d| ", 5);
+	compare_prints("22 |%-+5d| ", -5);
+	compare_prints("23 |% 5d| ", 0);
+	compare_prints("24 |% 5d| ", -0);
+	compare_prints("25 |% 05d| ", 0);
+	compare_prints("26 |% 05d| ", -0);
+	compare_prints("27 |% 5d| ", 5);
+	compare_prints("28 |% 5d| ", -5);
+	compare_prints("29 |% +5d| ", 5);
+	compare_prints("30 |% +5d| ", -5);
+	//alex end
+	compare_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
+				   123, (double) 4, &compare_prints, "", '~',
+				   (ulong) 432543, (unsigned long long int) 54935734,
+				   (long double) -945.1232387665, (double) 0.99999999);
 	printf("\n----OS dependant and undefined behavoiur tests----\n\n");
-	comapre_prints("%5+c", '!'); //alex
-	comapre_prints("|%5+d|", 5); //alex
-	comapre_prints("%03lc", '!');
-	comapre_prints("undefined %l#X behaviour", (ulong) 123456789 * 100); //not copying undefined behaviour
-	comapre_prints("%yX", (ulong) 123456789 * 100);
+	compare_prints("%5+c", '!'); //alex
+	compare_prints("|%5+d|", 5); //alex
+	compare_prints("%03lc", '!');
+	compare_prints("undefined %l#X behaviour", (ulong) 123456789 * 100); //not copying undefined behaviour
+	compare_prints("%yX", (ulong) 123456789 * 100);
 
 }
