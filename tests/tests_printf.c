@@ -110,7 +110,7 @@ void ft_printf_tests()
 	compare_prints("%3c", '!');
 	compare_prints("%010d", -123);
 	compare_prints("%10d", -123);
-	//alex
+	// edrowzee
 	compare_prints("01 |%d|  ", 5);
 	compare_prints("02 |%d| ", -5);
 	compare_prints("03 |%+d| ", 5);
@@ -141,14 +141,14 @@ void ft_printf_tests()
 	compare_prints("28 |% 5d| ", -5);
 	compare_prints("29 |% +5d| ", 5);
 	compare_prints("30 |% +5d| ", -5);
-	//alex end
+	// edrowzee end
 	compare_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
 				   123, (double) 4, &compare_prints, "", '~',
 				   (ulong) 432543, (unsigned long long int) 54935734,
 				   (long double) -945.1232387665, (double) 0.99999999);
 	printf("\n----OS dependant and undefined behavoiur tests----\n\n");
-	compare_prints("%5+c", '!'); //alex
-	compare_prints("|%5+d|", 5); //alex
+	compare_prints("%5+c", '!'); // edrowzee
+	compare_prints("|%5+d|", 5); // edrowzee
 	compare_prints("%03lc", '!');
 	compare_prints("undefined %l#X behaviour", (ulong) 123456789 * 100); //not copying undefined behaviour
 	compare_prints("%yX", (ulong) 123456789 * 100);
