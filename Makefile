@@ -12,6 +12,7 @@
 
 CC = gcc
 NAME = libft.a
+LINK_FLAGS = -lm
 FLAGS = -Wall -Wextra -Werror
 SRC = \
 	  src/string/ft_atoi.c \
@@ -109,7 +110,7 @@ $(NAME): $(OBJ)
 	ranlib $(NAME)
 
 test.o : $(NAME) $(TEST_OBJ)
-	@$(CC) -o test.o $(TEST_OBJ) $(OPTION) -L . -lft
+	$(CC) -o test.o $(TEST_OBJ) $(OPTION) -L . -lft $(LINK_FLAGS)
 
 test: test.o
 	@./test.o
