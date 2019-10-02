@@ -1,5 +1,14 @@
 #include "libft.h"
 
+static double trig_mod(double x)
+{
+	while (x > PI)
+		x -= PI;
+	while (x < -PI)
+		x += PI;
+	return (x);
+}
+
 double ft_cos(double x)
 {
 	int k;
@@ -13,10 +22,7 @@ double ft_cos(double x)
 	acc = 1;
 	den = 1;
 	num = 1;
-	while (x > PI)
-		x -= PI;
-	while (x < -PI)
-		x += PI;
+	x = trig_mod(x);
 	if (x > PI / 2)
 		return (-ft_cos(PI - x));
 	if (x < -PI / 2)
@@ -45,10 +51,7 @@ double ft_sin(double x)
 	acc = 1;
 	den = 1;
 	num = x;
-	while (x > PI)
-		x -= PI;
-	while (x < -PI)
-		x += PI;
+	x = trig_mod(x);
 	if (x > PI / 2)
 		return (ft_sin(PI - x));
 	if (x < -PI / 2)
