@@ -1,6 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "ft_math.h"
+#include "tests.h"
 #include <time.h>
 
 /*void performance()
@@ -31,7 +32,7 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 	double v;
 	double max_err = 0;
 	double total_err = 0;
-	char *status = "OK";
+	char *status = OK;
 	clock_t t0;
 	double t;
 
@@ -47,18 +48,18 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 	}
 	t = (double) (clock() - t0) / CLOCKS_PER_SEC *100000000/ n;
 	if (t > time_ref * 1.1)
-		status = "WARNING";
+		status = WARN;
 	if (max_err > ref_max * 1.1)
-		status = "WARNING";
+		status = WARN;
 	if (total_err / n > ref_avg * 1.1)
-		status = "WARNING";
+		status = WARN;
 	if (t > time_ref * 2)
-		status = "FAIL";
+		status = FAIL;
 	if (max_err > ref_max * 2)
-		status = "FAIL";
+		status = FAIL;
 	if (total_err / n > ref_avg * 2)
-		status = "FAIL";
-	printf("[%s] %s\n"
+		status = FAIL;
+	printf("%s %s\n"
 		   "\tmax_err:\t%f Epsilon (ref: %f)\n"
 		   "\tavg_err:\t%f Epsilon (ref: %f)\n"
 		   "\tEpsilon:\t%.30f\n"

@@ -3,7 +3,7 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 #include "unistd_compat.h"
-
+#include "tests.h"
 #include "libft.h"
 
 #define BUFF_SIZE 1024
@@ -33,7 +33,7 @@ static int compare_prints(char *format, ...)
 
 	if ((fd = open("tmp.txt", O_CREAT | O_WRONLY | O_TRUNC)) < 0)
 	{
-		printf("[ERROR]\n");
+		printf("%s\n", ERROR);
 		return -1;
 	}
 	va_start(ap, format);
@@ -44,7 +44,7 @@ static int compare_prints(char *format, ...)
 
 	if ((fd = open("tmp.txt", O_CREAT | O_WRONLY | O_TRUNC)) < 0)
 	{
-		printf("[ERROR]\n");
+		printf("%s\n", ERROR);
 		return -1;
 	}
 	va_start(ap, format);
@@ -54,14 +54,14 @@ static int compare_prints(char *format, ...)
 	CHECK1RET1(read_to_buff("tmp.txt", buff2, BUFF_SIZE));
 	if (ft_strcmp(buff1, buff2))
 	{
-		printf("[FAIL]:\t%s\n", format);
+		printf("%s:\t%s\n", FAIL, format);
 		if (!ft_strchr(buff1, '\n') && !ft_strchr(buff2, '\n'))
 			printf("\tgot:\t\t`%s`\n\texpected:\t`%s`\n", buff1, buff2);
 	}
 	else if (ret1 != ret2)
-		printf("[FAIL]:\t%s\treturn expected %d got %d\n", format, ret2, ret1);
+		printf("%s:\t%s\treturn expected %d got %d\n", FAIL, format, ret2, ret1);
 	else
-		printf("[OK]:\t\t%s -> `%s`\n", format, buff1);
+		printf("%s:\t\t%s -> `%s`\n", OK, format, buff1);
 	return (0);
 }
 
@@ -141,6 +141,19 @@ void test_ft_printf()
 	compare_prints("28 |% 5d| ", -5);
 	compare_prints("29 |% +5d| ", 5);
 	compare_prints("30 |% +5d| ", -5);
+
+	compare_prints("01 |%#08x| ", 168);
+	compare_prints("01 |%#8x| ", 168);
+	compare_prints("01 |%#08.10x| ", 168);
+	compare_prints("01 |%#8.6x| ", 168);
+	compare_prints("01 |%#4.6x| ", 168);
+	compare_prints("01 |%-#8.6x| ", 168);
+	compare_prints("01 |%-#4.6x| ", 168);
+
+	compare_prints("01 |%#7.4o| ", 168);
+	compare_prints("01 |%-#7.4o| ", 168);
+	compare_prints("02 |%#7.4x| ", 168);
+	compare_prints("02 |%-#7.4x| ", 168);
 	// edrowzee end
 	compare_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
 				   123, (double) 4, &compare_prints, "", '~',

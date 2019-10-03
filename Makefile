@@ -85,6 +85,9 @@ SRC = \
       src/math/ft_trig.c \
       src/math/ft_log.c \
       \
+	  src/linalg/matrix.c \
+	  src/linalg/vector.c \
+      \
       src/ft_realloc.c \
       src/ft_swap.c \
       src/get_next_line.c \

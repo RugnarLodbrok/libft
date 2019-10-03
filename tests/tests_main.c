@@ -1,6 +1,4 @@
-void test_gnl();
-void test_ft_printf();
-void test_ft_math();
+#include "tests.h"
 
 int main(void)
 {
