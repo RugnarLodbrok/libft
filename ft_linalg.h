@@ -38,5 +38,6 @@ t_mat *t_mat_reset(t_mat *m);
 t_vec t_vec_transform(t_vec v, t_mat A);
 t_mat t_mat_mul(t_mat *A, t_mat *B);
 t_mat t_mat_rot(t_vec axis, double theta);
+t_mat t_mat_rot_point(t_vec axis, double theta, t_vec p);
 
 #endif

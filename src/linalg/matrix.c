@@ -29,9 +29,9 @@ t_mat t_mat_mul(t_mat *A, t_mat *B)
 	 * R = AB
 	 * r = Ab + a
 	*/
-	R.dx = A->dx + (A->x1 * B->dx + A->y1 * B->dy + A->z1 * B->dz) + A->dx;
-	R.dy = A->dy + (A->x2 * B->dx + A->y2 * B->dy + A->z2 * B->dz) + A->dy;
-	R.dz = A->dz + (A->x3 * B->dx + A->y3 * B->dy + A->z3 * B->dz) + A->dz;
+	R.dx = A->dx + (A->x1 * B->dx + A->y1 * B->dy + A->z1 * B->dz);
+	R.dy = A->dy + (A->x2 * B->dx + A->y2 * B->dy + A->z2 * B->dz);
+	R.dz = A->dz + (A->x3 * B->dx + A->y3 * B->dy + A->z3 * B->dz);
 
 	R.x1 = (A->x1 * B->x1 + A->x2 * B->y1 + A->x3 * B->z1);
 	R.y1 = (A->y1 * B->x1 + A->y2 * B->y1 + A->y3 * B->z1);
@@ -105,4 +105,16 @@ t_mat t_mat_rot(t_vec axis, double theta)
 	w.z3 += 1.;
 	t_mat_add(&w, &w2);
 	return (w);
+}
+
+t_mat t_mat_rot_point(t_vec axis, double theta, t_vec p)
+{
+	t_mat m;
+
+
+	m = t_mat_rot(axis, theta);
+	m.dx -= -p.x + p.x * m.x1 + p.y * m.y1 + p.z * m.z1;
+	m.dy -= -p.y + p.x * m.x2 + p.y * m.y2 + p.z * m.z2;
+	m.dz -= -p.z + p.x * m.x3 + p.y * m.y3 + p.z * m.z3;
+	return (m);
 }
