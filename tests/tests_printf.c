@@ -102,6 +102,14 @@ void test_ft_printf()
 	compare_prints("%p", &compare_prints);
 	compare_prints("%10d", 123);
 	compare_prints("%010d", 123);
+	compare_prints("%010d", -123);
+	compare_prints("%+010d", 123);
+	compare_prints("%+010u", 123);
+	compare_prints("% 010u", 123);
+	compare_prints("%010s", "-10");
+	compare_prints("%020p", &compare_prints);
+	compare_prints("%#020x", &compare_prints);
+	compare_prints("%020x", &compare_prints);
 	compare_prints("%+10d", 123);
 	compare_prints("%+d", 123);
 	compare_prints("% d", 123);

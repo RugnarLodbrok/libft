@@ -16,6 +16,7 @@ typedef struct
 	uint flags;
 	size_t field_width;
 	char type;
+	unsigned char prefix_w;
 	char format[4];
 } t_printf_spec;
 

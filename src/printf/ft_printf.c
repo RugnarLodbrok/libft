@@ -60,6 +60,7 @@ static int printf_conversion(int fd, va_list ap, char **ptr)
 	int n;
 
 	(*ptr)++;
+	spec.prefix_w = 0;
 	spec.flags = parse_flags(ptr);
 	spec.field_width = parse_field_width(ptr);
 	spec.type = parse_format(spec.format, ptr);
