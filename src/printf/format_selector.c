@@ -24,6 +24,8 @@ char *convert_uint(char *b, unsigned long long int v, t_printf_spec *s)
 		prepend_str(b, "0");
 		s->prefix_w = 1;
 	}
+	while (s->precision > (int) ft_strlen(b))
+		prepend_str(b, "0");
 	if ((s->flags & PRINTF_HASH) && ft_tolower(s->type) == 'x')
 	{
 		prepend_str(b, "0x");
@@ -43,8 +45,11 @@ char *convert_int(char *b, long long int v, t_printf_spec *s)
 		prepend_str(b, " ");
 	if (v < 0 || (s->flags & (PRINTF_SPACE | PRINTF_PLUS)))
 		s->prefix_w = 1;
+	while (s->precision > (int) ft_strlen(b + s->prefix_w))
+		prepend_str(b + s->prefix_w, "0");
 	return (b);
 }
+
 char *convert_double(char *b, long double v, t_printf_spec *s)
 {
 	ft_ftoa_buf(b, v, s->precision >= 0 ? s->precision : 6);

@@ -122,6 +122,11 @@ void test_ft_printf()
 	compare_prints("%-#7.4o", 169);
 	compare_prints("%.6d", 168);
 	compare_prints("%.06d", 168);
+	compare_prints("%10.06d", 168);
+	compare_prints("%10.6d", 168);
+	compare_prints("%#10.6x", 168);
+	compare_prints("%#.5o", 123);
+	compare_prints("%#10.6x", 123123);
 	compare_prints("%.0d", 168);
 	compare_prints("%-#7f", -1.3432356542323);
 	compare_prints("%-#7.0f", -123.3432356542323);
