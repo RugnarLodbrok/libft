@@ -49,6 +49,19 @@ t_vec t_vec_mul(t_vec a, double n)
 	return (r);
 }
 
+void t_vec_decay(t_vec *v, double x)
+{
+	double len;
+
+	len = t_vec_len(*v);
+	if (len <= x)
+	{
+		ft_bzero(v, sizeof(t_vec));
+		return;
+	}
+	*v = t_vec_mul(*v, (len - x) / len);
+}
+
 t_vec t_vec_cross(t_vec a, t_vec b)
 {
 	t_vec r;

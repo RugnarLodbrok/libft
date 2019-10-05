@@ -38,6 +38,7 @@ t_vec t_vec_add(t_vec a, t_vec b);
 t_vec t_vec_mul(t_vec a, double n);
 t_vec *t_vec_normalize(t_vec *v);
 t_vec t_vec_transform(t_vec v, t_mat A);
+void t_vec_decay(t_vec *v, double x);
 t_mat *t_mat_reset(t_mat *m);
 t_mat t_mat_mul(t_mat *A, t_mat *B);
 t_mat t_mat_rot(t_vec axis, double theta);
