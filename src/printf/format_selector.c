@@ -47,7 +47,7 @@ char *convert_int(char *b, long long int v, t_printf_spec *s)
 }
 char *convert_double(char *b, long double v, t_printf_spec *s)
 {
-	ft_ftoa_buf(b, v, 6);
+	ft_ftoa_buf(b, v, s->precision >= 0 ? s->precision : 6);
 	if (s->flags & PRINTF_PLUS && v >= 0)
 		prepend_str(b, "+");
 	else if (s->flags & PRINTF_SPACE && v >= 0)

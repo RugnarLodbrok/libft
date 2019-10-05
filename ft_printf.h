@@ -17,6 +17,7 @@ typedef struct
 	size_t field_width;
 	char type;
 	unsigned char prefix_w;
+	int precision;
 	char format[4];
 } t_printf_spec;
 

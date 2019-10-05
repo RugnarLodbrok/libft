@@ -54,6 +54,24 @@ char parse_format(char *dst, char **s)
 	return (*(*s - 1));
 }
 
+int parse_precision(char **s)
+{
+	int r;
+
+	r = 0;
+	if (**s != '.')
+		return (-1);
+	else
+		(*s)++;
+	while (ft_isdigit(**s))
+	{
+		r *= 10;
+		r += **s - '0';
+		(*s)++;
+	}
+	return (r);
+}
+
 static int printf_conversion(int fd, va_list ap, char **ptr)
 {
 	t_printf_spec spec;
@@ -63,6 +81,7 @@ static int printf_conversion(int fd, va_list ap, char **ptr)
 	spec.prefix_w = 0;
 	spec.flags = parse_flags(ptr);
 	spec.field_width = parse_field_width(ptr);
+	spec.precision = parse_precision(ptr);
 	spec.type = parse_format(spec.format, ptr);
 	if ((n = ft_printf_item(fd, ap, spec)) >= 0)
 		return (n);

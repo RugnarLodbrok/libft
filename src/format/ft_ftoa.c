@@ -3,6 +3,8 @@
 
 static void trail_zeros(char *s, int n)
 {
+	if (n <= 0)
+		return;
 	while (*s++)
 		if(!--n)
 			return;
@@ -29,6 +31,8 @@ char *ft_ftoa_buf(char *s, long double n, int decimals)
 	else
 		ptr = s + ft_strlen(ft_itoa_buf(s, ((long int) n) - 1, 10));
 	decimal_part %= ft_pow(base, decimals);
+	if (!decimals)
+		return (s);
 	ptr[0] = '.';
 	ft_itoa_buf(ptr + 1, decimal_part, 10);
 	trail_zeros(ptr + 1, decimals);
