@@ -111,7 +111,6 @@ t_mat t_mat_rot_point(t_vec axis, double theta, t_vec p)
 {
 	t_mat m;
 
-
 	m = t_mat_rot(axis, theta);
 	m.dx -= -p.x + p.x * m.x1 + p.y * m.y1 + p.z * m.z1;
 	m.dy -= -p.y + p.x * m.x2 + p.y * m.y2 + p.z * m.z2;

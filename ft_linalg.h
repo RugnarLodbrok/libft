@@ -33,9 +33,12 @@ typedef struct
 	double dz;
 } t_mat;
 
+double t_vec_len(t_vec v);
+t_vec t_vec_add(t_vec a, t_vec b);
+t_vec t_vec_mul(t_vec a, double n);
 t_vec *t_vec_normalize(t_vec *v);
-t_mat *t_mat_reset(t_mat *m);
 t_vec t_vec_transform(t_vec v, t_mat A);
+t_mat *t_mat_reset(t_mat *m);
 t_mat t_mat_mul(t_mat *A, t_mat *B);
 t_mat t_mat_rot(t_vec axis, double theta);
 t_mat t_mat_rot_point(t_vec axis, double theta, t_vec p);
