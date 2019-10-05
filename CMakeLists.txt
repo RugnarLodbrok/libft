@@ -99,6 +99,7 @@ add_executable(libft_tests
 		src/endian.c
 
 		src/printf/ft_printf.c
-		src/printf/format_selector.c
+		src/printf/spec_parse.c
+		src/printf/conversion.c
 		)
 target_link_libraries(libft_tests m)

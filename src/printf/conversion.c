@@ -93,7 +93,7 @@ char *apply_fw(char *b, t_printf_spec s)
 	return (b_initial);
 }
 
-int ft_printf_item(int fd, va_list ap, t_printf_spec s)
+int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 {
 	char b[64];
 	t_printf_arg v;

@@ -94,7 +94,8 @@ SRC = \
       src/t_buff.c \
       src/endian.c \
       \
-      src/printf/format_selector.c \
+      src/printf/conversion.c \
+      src/printf/spec_parse.c \
       src/printf/ft_printf.c
 
 OBJ = $(SRC:.c=.o)
