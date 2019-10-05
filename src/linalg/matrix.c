@@ -33,17 +33,17 @@ t_mat t_mat_mul(t_mat *A, t_mat *B)
 	R.dy = A->dy + (A->x2 * B->dx + A->y2 * B->dy + A->z2 * B->dz);
 	R.dz = A->dz + (A->x3 * B->dx + A->y3 * B->dy + A->z3 * B->dz);
 
-	R.x1 = (A->x1 * B->x1 + A->x2 * B->y1 + A->x3 * B->z1);
-	R.y1 = (A->y1 * B->x1 + A->y2 * B->y1 + A->y3 * B->z1);
-	R.z1 = (A->z1 * B->x1 + A->z2 * B->y1 + A->z3 * B->z1);
+	R.x1 = (B->x1 * A->x1 + B->x2 * A->y1 + B->x3 * A->z1);
+	R.y1 = (B->y1 * A->x1 + B->y2 * A->y1 + B->y3 * A->z1);
+	R.z1 = (B->z1 * A->x1 + B->z2 * A->y1 + B->z3 * A->z1);
 
-	R.x2 = (A->x1 * B->x2 + A->x2 * B->y2 + A->x3 * B->z2);
-	R.y2 = (A->y1 * B->x2 + A->y2 * B->y2 + A->y3 * B->z2);
-	R.z2 = (A->z1 * B->x2 + A->z2 * B->y2 + A->z3 * B->z2);
+	R.x2 = (B->x1 * A->x2 + B->x2 * A->y2 + B->x3 * A->z2);
+	R.y2 = (B->y1 * A->x2 + B->y2 * A->y2 + B->y3 * A->z2);
+	R.z2 = (B->z1 * A->x2 + B->z2 * A->y2 + B->z3 * A->z2);
 
-	R.x3 = (A->x1 * B->x3 + A->x2 * B->y3 + A->x3 * B->z3);
-	R.y3 = (A->y1 * B->x3 + A->y2 * B->y3 + A->y3 * B->z3);
-	R.z3 = (A->z1 * B->x3 + A->z2 * B->y3 + A->z3 * B->z3);
+	R.x3 = (B->x1 * A->x3 + B->x2 * A->y3 + B->x3 * A->z3);
+	R.y3 = (B->y1 * A->x3 + B->y2 * A->y3 + B->y3 * A->z3);
+	R.z3 = (B->z1 * A->x3 + B->z2 * A->y3 + B->z3 * A->z3);
 
 	return (R);
 }
