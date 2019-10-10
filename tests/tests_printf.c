@@ -182,6 +182,34 @@ void test_ft_printf()
 	compare_prints("|%-#7.4o|", 168);
 	compare_prints("|%#7.4x|", 168);
 	compare_prints("|%-#7.4x|", 168);
+
+	compare_prints("|%#.4x|", 0);
+	compare_prints("|%.0x|", 0);
+	compare_prints("|%.1x|", 0);
+	compare_prints("|%.0x|", 1);
+	compare_prints("|%.1x|", 1);
+	compare_prints("|%.2x|", 1);
+	compare_prints("|%.3x|", 1);
+	compare_prints("|%#.0x|", 0);
+	compare_prints("|%#.1x|", 0);
+	compare_prints("|%#.0x|", 1);
+	compare_prints("|%#.1x|", 1);
+	compare_prints("|%#.2x|", 1);
+	compare_prints("|%#.3x|", 1);
+	compare_prints("|%.0o|", 0);
+	compare_prints("|%.1o|", 0);
+	compare_prints("|%.0o|", 1);
+	compare_prints("|%.1o|", 1);
+	compare_prints("|%.2o|", 1);
+	compare_prints("|%.3o|", 1);
+	compare_prints("|%#.0o|", 0);
+	compare_prints("|%#.1o|", 0);
+	compare_prints("|%#.0o|", 1);
+	compare_prints("|%#.1o|", 1);
+	compare_prints("|%#.2o|", 1);
+	compare_prints("|%#.3o|", 1);
+	compare_prints("%5.o %5.0o", 0, 0);
+	compare_prints("|%5.d %5.0d|", 100, 100);
 	// edrowzee end
 	compare_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
 				   123, (double) 4, &compare_prints, "", '~',
