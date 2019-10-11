@@ -2,21 +2,14 @@
 # define FT_LINALG_H
 
 # define MAT_RANK 4
-# define MAT_INVERT_EPS 0.01
+# define MAT_INVERT_EPS 0.1
 
 typedef struct
 {
 	double x;
 	double y;
 	double z;
-} t_vec;
-
-/*
- * | x1 x2 x3 dx |
- * | y1 y2 y3 dy |
- * | z1 z2 z3 dz |
- * | 0  0  0  1  |
- */
+}		t_vec;
 
 typedef struct
 {
