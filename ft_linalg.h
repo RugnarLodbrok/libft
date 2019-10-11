@@ -1,6 +1,9 @@
 #ifndef FT_LINALG_H
 # define FT_LINALG_H
 
+# define MAT_RANK 4
+# define MAT_INVERT_EPS 0.01
+
 typedef struct
 {
 	double x;
@@ -17,20 +20,7 @@ typedef struct
 
 typedef struct
 {
-	double x1;
-	double x2;
-	double x3;
-	double dx;
-
-	double y1;
-	double y2;
-	double y3;
-	double dy;
-
-	double z1;
-	double z2;
-	double z3;
-	double dz;
+	double data[MAT_RANK][MAT_RANK];
 } t_mat;
 
 double t_vec_len(t_vec v);
@@ -40,8 +30,10 @@ t_vec *t_vec_normalize(t_vec *v);
 t_vec t_vec_transform(t_vec v, t_mat A);
 void t_vec_decay(t_vec *v, double x);
 t_mat *t_mat_reset(t_mat *m);
-t_mat t_mat_mul(t_mat *A, t_mat *B);
+t_mat t_mat_mul(t_mat A, t_mat B);
 t_mat t_mat_rot(t_vec axis, double theta);
 t_mat t_mat_rot_point(t_vec axis, double theta, t_vec p);
+t_mat t_mat_inverted(t_mat M);
+void t_mat_printf(t_mat m);
 
 #endif

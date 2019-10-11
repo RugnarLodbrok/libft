@@ -90,6 +90,7 @@ add_executable(libft_tests
 		src/math/ft_log.c
 
 		src/linalg/matrix.c
+		src/linalg/matrix_invert.c
 		src/linalg/vector.c
 
 		src/ft_realloc.c

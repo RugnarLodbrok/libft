@@ -71,4 +71,14 @@ t_vec t_vec_cross(t_vec a, t_vec b)
 	r.z = a.x * b.y - a.y * b.x;
 	return (r);
 }
+/*
+t_vec t_vec_transform(t_vec v, t_mat A)
+{
+	t_vec r;
 
+	r.x = (A.x1 * v.x + A.y1 * v.y + A.z1 * v.z) + A.dx;
+	r.y = (A.x2 * v.x + A.y2 * v.y + A.z2 * v.z) + A.dy;
+	r.z = (A.x3 * v.x + A.y3 * v.y + A.z3 * v.z) + A.dz;
+	return (r);
+}
+*/

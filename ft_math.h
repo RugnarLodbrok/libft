@@ -37,5 +37,6 @@ double				ft_sin(double a);
 double				ft_cos(double a);
 double				zx_sin(double x);
 double				ft_log(double x);
+double				radians(double degrees);
 
 #endif
