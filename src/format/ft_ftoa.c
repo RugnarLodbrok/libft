@@ -1,14 +1,23 @@
-#include <stdlib.h>
 #include <limits.h>
 #include "libft.h"
 
 static unsigned long long mod(long double a, int b)
 {
-	unsigned long long c;
-
-	c = (ULONG_LONG_MAX / b) * b;
-	a -= ((unsigned long long int)(a / c)) * c;
+	if (a > (long double)(ULONG_LONG_MAX))
+		return (0);
 	return (((unsigned long long)a) % b);
+}
+
+static long double round(long double x, int decimals, int base)
+{
+	long double y;
+	unsigned long long pow;
+
+	pow = ft_ullpow(base, decimals);
+	y = .5/pow + (long double)((unsigned long long)(x * pow)) / pow;
+	if (y - x)
+		return (x + .5 /pow);
+	return (x);
 }
 
 char *ft_ftoa_buf(char *s, long double n, int decimals)
@@ -24,7 +33,7 @@ char *ft_ftoa_buf(char *s, long double n, int decimals)
 		*ptr++ = '-';
 		n *= -1;
 	}
-	n += 5 * ft_fpow(base, -(decimals + 1));
+	n = round(n, decimals, base);
 	m = n;
 	if (m < 1.)
 		*ptr++ = '0';
