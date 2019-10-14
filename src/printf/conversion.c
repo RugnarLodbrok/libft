@@ -1,6 +1,7 @@
 #include <stdarg.h>
 #include "libft.h"
 #include "ft_printf.h"
+#include "unistd_compat.h"
 
 void prepend_str(char *buff, const char *s)
 {
@@ -79,11 +80,14 @@ char *apply_fw(char *b, t_printf_spec s)
 
 	fill_c = ' ';
 	b_initial = b;
-	if (s.flags & PRINTF_ZERO && (ft_strchr("diouxXpf", s.type) || MACOS) && s.precision < 0)
+	if (s.flags & PRINTF_ZERO && (ft_strchr("diouxXpf", s.type) || MACOS) && (s.type == 'f' || s.precision < 0))
 	{
 		fill_c = '0';
 		b += s.prefix_w;
-		s.field_width -= s.prefix_w;
+		if (s.field_width < s.prefix_w)
+			s.field_width = 0;
+		else
+			s.field_width -= s.prefix_w;
 	}
 	len = ft_strlen(b);
 	if (s.field_width > len)
@@ -100,11 +104,41 @@ char *apply_fw(char *b, t_printf_spec s)
 	return (b_initial);
 }
 
+static int convert_string(int fd, t_printf_spec s, char *str)
+{
+	int ret;
+	size_t len;
+	char fill_c;
+
+	ret = 0;
+	fill_c = ' ';
+	if ((s.flags & PRINTF_ZERO) && MACOS)
+		fill_c = '0';
+	if (!str)
+		str = "(null)";
+	len = ft_strlen(str);
+	if (s.precision >= 0 && s.precision < (int)len)
+		len = s.precision;
+	if (s.flags & PRINTF_MINUS)
+	{
+		ret += write(fd, str, len);
+		while (s.field_width-- > len)
+			ret += write(fd, &fill_c, 1);
+	}
+	else
+	{
+		while (s.field_width-- > len)
+			ret += write(fd, &fill_c, 1);
+		ret += write(fd, str, len);
+	}
+	return (ret);
+}
+
 int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 {
-	char b[64];
+	char b[256];
 	t_printf_arg v;
-	char *str;
+	int ret;
 
 	ft_bzero(b, sizeof(b));
 	if (ft_strchr("di", s.type))
@@ -150,16 +184,16 @@ int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 		convert_double(b, v.f, &s);
 	}
 	else if (s.type == 'c')
-		b[0] = (char)va_arg(ap, int);
-	else if (s.type == 's')
 	{
-		if (!(str = va_arg(ap, char*)))
-			str = "(null)";
-		if (s.precision >= 0)
-			ft_strlcpy(b, str, s.precision + 1);
-		else
-			ft_strcpy(b, str);
+		b[0] = 'Q';
+		apply_fw(b, s);
+		ret = ft_strlen(b);
+		*ft_strchr(b, 'Q') = (char)va_arg(ap, int);
+		ft_putstr_fd(b, fd);
+		return (ret);
 	}
+	else if (s.type == 's')
+		return (convert_string(fd, s, va_arg(ap, char*)));
 	else if (s.type == 'p')
 	{
 		ft_ultoa_buf(ft_strcpy(b, "0x") + 2, (ulong)va_arg(ap, void*), 16);
