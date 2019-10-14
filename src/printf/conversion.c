@@ -124,7 +124,7 @@ int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 		else if (ft_strstr(s.format, "hh"))
 			v.u = (unsigned char) va_arg(ap, uint);
 		else if (ft_strstr(s.format, "h"))
-			v.u = (short int) va_arg(ap, uint);
+			v.u = (unsigned short int) va_arg(ap, uint);
 		else
 			v.u = va_arg(ap, uint);
 		convert_uint(b, v.u, &s);
