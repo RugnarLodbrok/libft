@@ -19,7 +19,7 @@ char *convert_uint(char *b, unsigned long long int v, t_printf_spec *s)
 		ft_ultoa_buf(b, v, 8);
 	else if (ft_tolower(s->type) == 'x')
 		ft_ultoa_buf(b, v, 16);
-	if (!s->precision && !v && (!(s->flags & PRINTF_HASH) | (s->type == 'x')))
+	if (!s->precision && !v && (!(s->flags & PRINTF_HASH) | (ft_tolower(s->type) == 'x')))
 		b[0] = 0;
 	if ((s->flags & PRINTF_HASH) && v && s->type == 'o')
 	{
@@ -47,6 +47,11 @@ char *convert_int(char *b, long long int v, t_printf_spec *s)
 		prepend_str(b, " ");
 	if (v < 0 || (s->flags & (PRINTF_SPACE | PRINTF_PLUS)))
 		s->prefix_w = 1;
+	if (s->precision == 0 && !v && ft_strchr(b, '0'))
+	{
+		*ft_strchr(b, '0') = 0;
+		return (b);
+	}
 	while (s->precision > (int)ft_strlen(b + s->prefix_w))
 		prepend_str(b + s->prefix_w, "0");
 	return (b);
