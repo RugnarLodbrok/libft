@@ -26,6 +26,8 @@ char *ft_ftoa_buf(char *s, long double n, int decimals)
 	}
 	n += 5 * ft_fpow(base, -(decimals + 1));
 	m = n;
+	if (m < 1.)
+		*ptr++ = '0';
 	while (m >= 1.)
 	{
 		*ptr++ = '0' + (int)mod(m, base);
