@@ -42,8 +42,16 @@ static uint parse_flags(char **s)
 
 static char parse_format(char *modifiers, char **s)
 {
+	int i;
+
+	i = 0;
 	while (**s && ft_strchr("lhL", **s))
-		*modifiers++ = *(*s)++;
+	{
+		if (i < 2)
+			*modifiers++ = **s;
+		i++;
+		(*s)++;
+	}
 	if (**s && ft_strchr("diouxXscpf%", **s))
 	{
 		*modifiers = 0;
