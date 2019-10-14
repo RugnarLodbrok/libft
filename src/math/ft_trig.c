@@ -67,6 +67,11 @@ double ft_sin(double x)
 	return (r);
 }
 
+double radians(double degrees)
+{
+	return (degrees * PI / 180.0);
+}
+
 double zx_sin(double x)
 {
 	double w;
