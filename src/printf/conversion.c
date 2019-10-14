@@ -26,7 +26,7 @@ char *convert_uint(char *b, unsigned long long int v, t_printf_spec *s)
 		prepend_str(b, "0");
 		s->prefix_w = 1;
 	}
-	while (s->precision > (int) ft_strlen(b))
+	while (s->precision > (int)ft_strlen(b))
 		prepend_str(b, "0");
 	if ((s->flags & PRINTF_HASH) && ft_tolower(s->type) == 'x' && v)
 	{
@@ -47,7 +47,7 @@ char *convert_int(char *b, long long int v, t_printf_spec *s)
 		prepend_str(b, " ");
 	if (v < 0 || (s->flags & (PRINTF_SPACE | PRINTF_PLUS)))
 		s->prefix_w = 1;
-	while (s->precision > (int) ft_strlen(b + s->prefix_w))
+	while (s->precision > (int)ft_strlen(b + s->prefix_w))
 		prepend_str(b + s->prefix_w, "0");
 	return (b);
 }
@@ -103,50 +103,56 @@ int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 	ft_bzero(b, sizeof(b));
 	if (ft_strchr("di", s.type))
 	{
-		if (ft_strstr(s.format, "ll"))
+		if (!ft_strcmp(s.modifiers, "ll"))
 			v.d = va_arg(ap, long long int);
-		else if (ft_strstr(s.format, "l"))
+		else if (!ft_strcmp(s.modifiers, "l"))
 			v.d = va_arg(ap, long int);
-		else if (ft_strstr(s.format, "hh"))
-			v.d = (signed char) va_arg(ap, int);
-		else if (ft_strstr(s.format, "h"))
-			v.d = (short int) va_arg(ap, int);
-		else
+		else if (!ft_strcmp(s.modifiers, "hh"))
+			v.d = (signed char)va_arg(ap, int);
+		else if (!ft_strcmp(s.modifiers, "h"))
+			v.d = (short int)va_arg(ap, int);
+		else if (!ft_strcmp(s.modifiers, ""))
 			v.d = va_arg(ap, int);
+		else
+			return (-1);
 		convert_int(b, v.d, &s);
 	}
 	else if (ft_strchr("uoxX", s.type))
 	{
-		if (ft_strstr(s.format, "ll"))
+		if (!ft_strcmp(s.modifiers, "ll"))
 			v.u = va_arg(ap, unsigned long long int);
-		else if (ft_strstr(s.format, "l"))
+		else if (!ft_strcmp(s.modifiers, "l"))
 			v.u = va_arg(ap, ulong);
-		else if (ft_strstr(s.format, "hh"))
-			v.u = (unsigned char) va_arg(ap, uint);
-		else if (ft_strstr(s.format, "h"))
-			v.u = (unsigned short int) va_arg(ap, uint);
-		else
+		else if (!ft_strcmp(s.modifiers, "hh"))
+			v.u = (unsigned char)va_arg(ap, uint);
+		else if (!ft_strcmp(s.modifiers, "h"))
+			v.u = (unsigned short int)va_arg(ap, uint);
+		else if (!ft_strcmp(s.modifiers, ""))
 			v.u = va_arg(ap, uint);
+		else
+			return (-1);
 		convert_uint(b, v.u, &s);
 	}
 	else if (s.type == 'f')
 	{
-		if (!ft_strcmp("f", s.format))
+		if (!ft_strcmp("", s.modifiers))
 			v.f = va_arg(ap, double);
-		else if (!ft_strcmp("Lf", s.format))
+		else if (!ft_strcmp("L", s.modifiers))
 			v.f = va_arg(ap, long double);
+		else
+			return (-1);
 		convert_double(b, v.f, &s);
 	}
-	else if ('c' == s.type)
-		b[0] = (char) va_arg(ap, int);
-	else if (!ft_strcmp("s", s.format))
+	else if (s.type == 'c')
+		b[0] = (char)va_arg(ap, int);
+	else if (s.type == 's')
 		ft_strcpy(b, va_arg(ap, char*));
-	else if (!ft_strcmp("p", s.format))
+	else if (s.type == 'p')
 	{
-		ft_ultoa_buf(ft_strcpy(b, "0x") + 2, (ulong) va_arg(ap, void*), 16);
+		ft_ultoa_buf(ft_strcpy(b, "0x") + 2, (ulong)va_arg(ap, void*), 16);
 		s.prefix_w = 2;
 	}
-	else if (!ft_strcmp("%", s.format))
+	else if (s.type == '%')
 		return ft_putchar_fd('%', fd);
 	else
 		return (-1);

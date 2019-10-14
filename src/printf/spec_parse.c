@@ -40,18 +40,22 @@ static uint parse_flags(char **s)
 	return (flags);
 }
 
-static char parse_format(char *dst, char **s)
+static char parse_format(char *modifiers, char **s)
 {
+	if (!**s)
+	{
+		*modifiers = 0;
+		return ('%');
+	}
 	while (ft_strchr("lhL", **s))
-		*dst++ = *(*s)++;
+		*modifiers++ = *(*s)++;
 	if (ft_strchr("diouxXscpf%", **s))
 	{
-		*dst++ = *(*s)++;
-		*dst = 0;
-		return (*(*s - 1));
+		*modifiers = 0;
+		return (*(*s)++);
 	}
-	*dst = 0;
-	return (0);
+	*modifiers = 0;
+	return ('%');
 }
 
 static int parse_precision(char **s)
@@ -81,6 +85,7 @@ t_printf_spec parse_printf_spec(char **ptr)
 	spec.flags = parse_flags(ptr);
 	spec.field_width = parse_field_width(ptr);
 	spec.precision = parse_precision(ptr);
-	spec.type = parse_format(spec.format, ptr);
+	spec.type = parse_format(spec.modifiers, ptr);
+//	todo: validate modifiers, then remove `return -1 in conversion`
 	return (spec);
 }

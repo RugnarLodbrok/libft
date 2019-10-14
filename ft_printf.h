@@ -17,7 +17,7 @@ typedef struct
 	char type;
 	unsigned char prefix_w;
 	int precision;
-	char format[4];
+	char modifiers[4];
 } t_printf_spec;
 
 typedef union {
