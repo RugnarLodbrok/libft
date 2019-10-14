@@ -23,7 +23,7 @@ static uint parse_flags(char **s)
 	uint flags;
 
 	flags = 0;
-	while (ft_strchr("#0+- ", **s))
+	while (**s && ft_strchr("#0+- ", **s))
 	{
 		if (**s == '#')
 			flags |= PRINTF_HASH;
@@ -42,20 +42,15 @@ static uint parse_flags(char **s)
 
 static char parse_format(char *modifiers, char **s)
 {
-	if (!**s)
-	{
-		*modifiers = 0;
-		return ('%');
-	}
-	while (ft_strchr("lhL", **s))
+	while (**s && ft_strchr("lhL", **s))
 		*modifiers++ = *(*s)++;
-	if (ft_strchr("diouxXscpf%", **s))
+	if (**s && ft_strchr("diouxXscpf%", **s))
 	{
 		*modifiers = 0;
 		return (*(*s)++);
 	}
 	*modifiers = 0;
-	return ('%');
+	return (0);
 }
 
 static int parse_precision(char **s)

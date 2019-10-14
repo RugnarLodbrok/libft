@@ -153,7 +153,7 @@ int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 		s.prefix_w = 2;
 	}
 	else if (s.type == '%')
-		return ft_putchar_fd('%', fd);
+		ft_strcpy(b, "%");
 	else
 		return (-1);
 	return ft_putstr_fd(apply_fw(b, s), fd);

@@ -19,8 +19,6 @@ int ft_printf_ap(int fd, const char *format, va_list ap)
 		spec = parse_printf_spec(&ptr);
 		if (spec.type)
 			r += ft_printf_conversion(fd, ap, spec);
-		else
-			r += ft_putchar_fd('%', fd);
 		ptr1 = ptr;
 	}
 	r += ft_putstr_fd(ptr1, fd);
