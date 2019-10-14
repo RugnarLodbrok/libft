@@ -243,6 +243,8 @@ void test_ft_printf()
 	compare_prints("%Lf", -56.2012685l); //fucking shit
 	compare_prints("%Lf", -56.20126850000000001l);
 	compare_prints("%Lf", -56.201268500000000001l);
+	compare_prints("%.0Lf", 56.50000000000000001l);
+	compare_prints("%.0Lf", 56.500000000000000001l);
 	compare_prints("%c", 0);
 	compare_prints("%5c", 0);
 	compare_prints("%05c", 0);
