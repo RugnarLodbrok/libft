@@ -210,6 +210,7 @@ void test_ft_printf()
 	compare_prints("|%#.3o|", 1);
 	compare_prints("%5.o %5.0o", 0, 0);
 	compare_prints("|%5.d %5.0d|", 100, 100);
+	compare_prints("%c", 0);
 	// edrowzee end
 	compare_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
 				   123, (double) 4, &compare_prints, "", '~',
