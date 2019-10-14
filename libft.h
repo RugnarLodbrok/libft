@@ -39,6 +39,12 @@ typedef unsigned int uint;
 #  define BIG_ENDIAN 4321
 # endif
 
+# ifdef __APPLE__
+#  define MACOS 1
+# else
+#  define MACOS 0
+# endif
+
 typedef struct		s_list
 {
 	void			*content;

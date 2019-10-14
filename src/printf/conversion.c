@@ -74,7 +74,7 @@ char *apply_fw(char *b, t_printf_spec s)
 
 	fill_c = ' ';
 	b_initial = b;
-	if (s.flags & PRINTF_ZERO && ft_strchr("diouxXpf", s.type))
+	if (s.flags & PRINTF_ZERO && (ft_strchr("diouxXpf", s.type) || MACOS))
 	{
 		fill_c = '0';
 		b += s.prefix_w;
