@@ -31,6 +31,7 @@ int					ft_sqrt_int(int nb);
 int					ft_sqrt_ceil(int nb);
 double				ft_sqrt(double nb);
 int					ft_pow(int a, int b);
+double				ft_fpow(double a, int b);
 int					ft_abs(int a);
 double				ft_fabs(double a);
 double				ft_sin(double a);
