@@ -123,6 +123,7 @@ void test_ft_printf()
 	compare_prints("%.6d", 168);
 	compare_prints("%.2d", 168);
 	compare_prints("%.2s", "abcdef");
+	compare_prints("%.2s", 0);
 	compare_prints("%.2p", &compare_prints);
 	compare_prints("%.06d", 168);
 	compare_prints("%10.06d", 168);

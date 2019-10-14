@@ -99,6 +99,7 @@ int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 {
 	char b[64];
 	t_printf_arg v;
+	char *str;
 
 	ft_bzero(b, sizeof(b));
 	if (ft_strchr("di", s.type))
@@ -114,7 +115,7 @@ int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 		else if (!ft_strcmp(s.modifiers, ""))
 			v.d = va_arg(ap, int);
 		else
-			return (-1);
+			return (0);
 		convert_int(b, v.d, &s);
 	}
 	else if (ft_strchr("uoxX", s.type))
@@ -130,7 +131,7 @@ int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 		else if (!ft_strcmp(s.modifiers, ""))
 			v.u = va_arg(ap, uint);
 		else
-			return (-1);
+			return (0);
 		convert_uint(b, v.u, &s);
 	}
 	else if (s.type == 'f')
@@ -140,17 +141,19 @@ int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 		else if (!ft_strcmp("L", s.modifiers))
 			v.f = va_arg(ap, long double);
 		else
-			return (-1);
+			return (0);
 		convert_double(b, v.f, &s);
 	}
 	else if (s.type == 'c')
 		b[0] = (char)va_arg(ap, int);
 	else if (s.type == 's')
 	{
+		if (!(str = va_arg(ap, char*)))
+			str = "(null)";
 		if (s.precision >= 0)
-			ft_strlcpy(b, va_arg(ap, char*), s.precision + 1);
+			ft_strlcpy(b, str, s.precision + 1);
 		else
-			ft_strcpy(b, va_arg(ap, char*));
+			ft_strcpy(b, str);
 	}
 	else if (s.type == 'p')
 	{
@@ -160,6 +163,6 @@ int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 	else if (s.type == '%')
 		ft_strcpy(b, "%");
 	else
-		return (-1);
+		return (0);
 	return ft_putstr_fd(apply_fw(b, s), fd);
 }
