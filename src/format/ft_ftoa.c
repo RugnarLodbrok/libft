@@ -21,20 +21,26 @@ char *ft_ftoa_buf(char *s, long double n, int decimals)
 	long int decimal_part;
 
 	base = 10;
+	ptr = s;
+	if (n < 0)
+	{
+		*ptr++ = '-';
+		n *= -1;
+	}
 	decimal_part = (long int) ((n - (double) (long int) n) \
 			* ft_pow(base, decimals + 1));
 	decimal_part = (ABS(decimal_part) + 5) / 10;
 	if (decimal_part < ft_pow(base, decimals))
-		ptr = s + ft_strlen(ft_itoa_buf(s, (long int) n, 10));
+		ptr += ft_strlen(ft_ultoa_buf(ptr, (long int) n, 10));
 	else if (n > 0)
-		ptr = s + ft_strlen(ft_itoa_buf(s, ((long int) n) + 1, 10));
+		ptr += ft_strlen(ft_ultoa_buf(ptr, ((long int) n) + 1, 10));
 	else
-		ptr = s + ft_strlen(ft_itoa_buf(s, ((long int) n) - 1, 10));
+		ptr += ft_strlen(ft_ultoa_buf(s, ((long int) n) - 1, 10));
 	decimal_part %= ft_pow(base, decimals);
 	if (!decimals)
 		return (s);
 	ptr[0] = '.';
-	ft_itoa_buf(ptr + 1, decimal_part, 10);
+	ft_ultoa_buf(ptr + 1, decimal_part, 10);
 	trail_zeros(ptr + 1, decimals);
 	return (s);
 }
