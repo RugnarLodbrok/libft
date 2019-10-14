@@ -214,8 +214,41 @@ void test_ft_printf()
 	compare_prints("|%#.3o|", 1);
 	compare_prints("%5.o %5.0o", 0, 0);
 	compare_prints("|%5.d %5.0d|", 100, 100);
-	compare_prints("%c", 0);
 	// edrowzee end
+	compare_prints("%5%");
+	compare_prints("%-5%");
+	compare_prints("%5");
+	compare_prints("%-5");
+	compare_prints("%");
+	compare_prints("%llllllllllllllld", 10);
+
+	compare_prints("%08.5i", 34);
+	compare_prints("%08i", 34);
+	compare_prints("%08.i", 34);
+	compare_prints("%.0i", 0);
+	compare_prints("%.0i", 1);
+	compare_prints("%.1i", 0);
+	compare_prints("%.0x", 0);
+	compare_prints("%#.0x", 0);
+	compare_prints("%#.0X", 0);
+	compare_prints("%f", -0.0123);
+	compare_prints("%.2f", 0.999);
+	compare_prints("%.2f", -0.999);
+	compare_prints("%.20f", 1.025978548534310422034);
+	compare_prints("%.20f", 123456789012345678901234567890.00000);
+	compare_prints("%Lf", 123456789012345678901234567890.55555L);
+	compare_prints("%0p", &compare_prints);
+	compare_prints("%05.0f", 7.3);
+	compare_prints("%Lf", 56.2012685l); //fucking shit
+	compare_prints("%Lf", -56.2012685l); //fucking shit
+	compare_prints("%Lf", -56.20126850000000001l);
+	compare_prints("%Lf", -56.201268500000000001l);
+	compare_prints("%c", 0);
+	compare_prints("%5c", 0);
+	compare_prints("%05c", 0);
+	compare_prints("%7.5s", "yolo");
+	compare_prints("%-7.5s", "yolo");
+
 	compare_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
 				   123, (double) 4, &compare_prints, "", '~',
 				   (ulong) 432543, (unsigned long long int) 54935734,
