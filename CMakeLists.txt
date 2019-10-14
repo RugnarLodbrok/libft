@@ -54,6 +54,7 @@ add_executable(libft_tests
 		src/string/ft_striteri.c
 		src/string/ft_strjoin.c
 		src/string/ft_strlcat.c
+		src/string/ft_strlcpy.c
 		src/string/ft_strlen.c
 		src/string/ft_strmap.c
 		src/string/ft_strmapi.c

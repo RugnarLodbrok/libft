@@ -146,7 +146,12 @@ int ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 	else if (s.type == 'c')
 		b[0] = (char)va_arg(ap, int);
 	else if (s.type == 's')
-		ft_strcpy(b, va_arg(ap, char*));
+	{
+		if (s.precision >= 0)
+			ft_strlcpy(b, va_arg(ap, char*), s.precision + 1);
+		else
+			ft_strcpy(b, va_arg(ap, char*));
+	}
 	else if (s.type == 'p')
 	{
 		ft_ultoa_buf(ft_strcpy(b, "0x") + 2, (ulong)va_arg(ap, void*), 16);
