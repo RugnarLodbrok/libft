@@ -39,6 +39,13 @@ double t_vec_dot(t_vec a, t_vec b)
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
+void t_vec_scale(t_vec *v, double n)
+{
+	v->x *= n;
+	v->y *= n;
+	v->z *= n;
+}
+
 t_vec t_vec_mul(t_vec a, double n)
 {
 	t_vec r;
