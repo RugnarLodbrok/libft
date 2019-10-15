@@ -10,13 +10,13 @@ static unsigned long long mod(long double a, int b)
 
 static long double round(long double x, int decimals, int base)
 {
-	long double y;
-	unsigned long long pow;
+	long double pow;
 
-	pow = ft_ullpow(base, decimals);
-	y = .5/pow + (long double)((unsigned long long)(x * pow)) / pow;
-	if (y - x)
-		return (x + .5 /pow);
+	pow = (long double)ft_ullpow(base, decimals);
+	if ((int)x != (((int)x) / 2) * 2)
+		return (x + .5 / pow);
+	if (.5 / pow + (long double)((unsigned long long)(x * pow)) / pow - x)
+		return (x + .5 / pow);
 	return (x);
 }
 
