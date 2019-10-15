@@ -77,27 +77,27 @@ void test_ft_printf()
 	compare_prints("%f", -9.99999999);
 	compare_prints("%f", 55.555555555);
 	compare_prints("%f", -55.555555555);
-	compare_prints("%f", (float) 55.555555555);
-	compare_prints("%f", (float) -55.555555555);
-	compare_prints("%Lf", (long double) 55.555555555);
-	compare_prints("%Lf", (long double) -55.555555555);
+	compare_prints("%f", (float)55.555555555);
+	compare_prints("%f", (float)-55.555555555);
+	compare_prints("%Lf", (long double)55.555555555);
+	compare_prints("%Lf", (long double)-55.555555555);
 	compare_prints("abc%fddd", 32.0);
 	compare_prints("abc%cfds", '!');
-	compare_prints("%li", (long int) -123456789 * 100);
-	compare_prints("%lu", (long int) -123456789 * 100);
-	compare_prints("%lu", (ulong) 123456789 * 100);
-	compare_prints("%llu", (ulong) 123456789 * 100);
-	compare_prints("%hu", (ulong) 123456789 * 100);
-	compare_prints("%hhu", (ulong) 123456789 * 100);
+	compare_prints("%li", (long int)-123456789 * 100);
+	compare_prints("%lu", (long int)-123456789 * 100);
+	compare_prints("%lu", (ulong)123456789 * 100);
+	compare_prints("%llu", (ulong)123456789 * 100);
+	compare_prints("%hu", (ulong)123456789 * 100);
+	compare_prints("%hhu", (ulong)123456789 * 100);
 	compare_prints("%o", 0);
 	compare_prints("%lo", 0);
-	compare_prints("%lo", (ulong) 123456789 * 100);
-	compare_prints("%#lo", (ulong) 123456789 * 100);
-	compare_prints("%#lo", (ulong) 0);
-	compare_prints("%lx", (ulong) 123456789 * 100);
-	compare_prints("%lX", (ulong) 123456789 * 100);
-	compare_prints("%#lx", (ulong) 123456789 * 100);
-	compare_prints("%#lX", (ulong) 123456789 * 100);
+	compare_prints("%lo", (ulong)123456789 * 100);
+	compare_prints("%#lo", (ulong)123456789 * 100);
+	compare_prints("%#lo", (ulong)0);
+	compare_prints("%lx", (ulong)123456789 * 100);
+	compare_prints("%lX", (ulong)123456789 * 100);
+	compare_prints("%#lx", (ulong)123456789 * 100);
+	compare_prints("%#lX", (ulong)123456789 * 100);
 //TODO: test for %#f
 	compare_prints("%p", &compare_prints);
 	compare_prints("%10d", 123);
@@ -243,8 +243,15 @@ void test_ft_printf()
 	compare_prints("%Lf", -56.2012685l); //fucking shit
 	compare_prints("%Lf", -56.20126850000000001l);
 	compare_prints("%Lf", -56.201268500000000001l);
-	compare_prints("%.0Lf", 56.50000000000000001l);
-	compare_prints("%.0Lf", 56.500000000000000001l);
+	compare_prints("%.0Lf", 56.50000000000000001l); // 57
+	compare_prints("%.0Lf", 56.500000000000000001l);  // 56
+	compare_prints("%.0Lf", 57.500000000000000001l);  // 58
+	compare_prints("%.0Lf", -56.500000000000000001l);  // 56
+	compare_prints("%.0Lf", -57.500000000000000001l);  // 58
+	compare_prints("%.10f", 0.47852012685);
+	compare_prints("%.10Lf", 0.47852012685l);
+	compare_prints("%.10Lf", -56.47852012685l);  // 58
+	compare_prints("%.10Lf", 56.47852012685l);  // 58
 	compare_prints("%c", 0);
 	compare_prints("%5c", 0);
 	compare_prints("%05c", 0);
@@ -252,13 +259,29 @@ void test_ft_printf()
 	compare_prints("%-7.5s", "yolo");
 
 	compare_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
-				   123, (double) 4, &compare_prints, "", '~',
-				   (ulong) 432543, (unsigned long long int) 54935734,
-				   (long double) -945.1232387665, (double) 0.99999999);
+				   123, (double)4, &compare_prints, "", '~',
+				   (ulong)432543, (unsigned long long int)54935734,
+				   (long double)-945.1232387665, (double)0.99999999);
 	printf("\n----OS dependant and undefined behavoiur tests----\n\n");
 	compare_prints("%5+c", '!'); // edrowzee
 	compare_prints("|%5+d|", 5); // edrowzee
 	compare_prints("%03lc", '!');
-	compare_prints("undefined %l#X behaviour", (ulong) 123456789 * 100); //not copying undefined behaviour
-	compare_prints("%yX", (ulong) 123456789 * 100);
+	compare_prints("undefined %l#X behaviour", (ulong)123456789 * 100); //not copying undefined behaviour
+	compare_prints("%yX", (ulong)123456789 * 100);
+
+	double d;
+
+
+	printf("\n\n\n");
+	int s;
+	d = 1.;
+	int i;
+	s = (int)sizeof(d);
+	unsigned char data[s];
+	ft_bzero(data, s);
+	double numbers[10] = {-1., 1., 2., 3., 4., 5., 6., 7., 0.47852012685, 0.47852012685000004};
+
+	printf("size: %d\n", s);
+	for (i = 0; i < (int)10; ++i)
+		printf("%f\t%s\n", numbers[i], ft_double_to_bin(numbers[i]));
 }
