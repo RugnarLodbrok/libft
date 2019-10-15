@@ -89,6 +89,8 @@ char				*ft_strnstr(const char *haystack,
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strrev(char *str);
+char				*ft_memrev(char *str, size_t len);
+unsigned char		ft_bitrev(unsigned char b);
 int					ft_atoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -131,6 +133,8 @@ char				*ft_ultoa_base(ulong n, uint base);
 char				*ft_ultoa_buf(char *s, ulong n, uint base);
 char				*ft_ftoa(long double n, int decimals);
 char				*ft_ftoa_buf(char *s, long double n, int decimals);
+char				*ft_double_to_bin(double x);
+char				*ft_double_to_bin_buf(char *b, double x);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));

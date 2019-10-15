@@ -76,6 +76,7 @@ add_executable(libft_tests
 		src/format/ft_itoa.c
 		src/format/ft_ultoa.c
 		src/format/ft_ftoa.c
+		src/format/ft_ftobin.c
 
 		src/list/ft_lstadd.c
 		src/list/ft_lstaddend.c
