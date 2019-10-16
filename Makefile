@@ -6,7 +6,7 @@
 #    By: ksticks <ksticks@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/05 20:27:05 by ksticks           #+#    #+#              #
-#    Updated: 2019/09/20 14:35:50 by edrowzee         ###   ########.fr        #
+#    Updated: 2019/10/16 13:42:57 by edrowzee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,7 +99,9 @@ SRC = \
       \
       src/printf/conversion.c \
       src/printf/spec_parse.c \
-      src/printf/ft_printf.c
+      src/printf/ft_printf.c \
+      src/printf/convert.c \
+      src/printf/apply_fw.c
 
 OBJ = $(SRC:.c=.o)
 
