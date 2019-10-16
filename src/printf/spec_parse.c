@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   spec_parse.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: edrowzee <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/16 12:22:26 by edrowzee          #+#    #+#             */
+/*   Updated: 2019/10/16 12:29:49 by edrowzee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static int parse_field_width(char **s)
+static int		parse_field_width(char **s)
 {
 	int r;
 
@@ -18,7 +30,7 @@ static int parse_field_width(char **s)
 	return (r);
 }
 
-static uint parse_flags(char **s)
+static uint		parse_flags(char **s)
 {
 	uint flags;
 
@@ -40,7 +52,7 @@ static uint parse_flags(char **s)
 	return (flags);
 }
 
-static char parse_format(char *modifiers, char **s)
+static char		parse_format(char *modifiers, char **s)
 {
 	int i;
 
@@ -61,7 +73,7 @@ static char parse_format(char *modifiers, char **s)
 	return (0);
 }
 
-static int parse_precision(char **s)
+static int		parse_precision(char **s)
 {
 	int r;
 
@@ -79,7 +91,7 @@ static int parse_precision(char **s)
 	return (r);
 }
 
-t_printf_spec parse_printf_spec(char **ptr)
+t_printf_spec	parse_printf_spec(char **ptr)
 {
 	t_printf_spec spec;
 
@@ -89,6 +101,5 @@ t_printf_spec parse_printf_spec(char **ptr)
 	spec.field_width = parse_field_width(ptr);
 	spec.precision = parse_precision(ptr);
 	spec.type = parse_format(spec.modifiers, ptr);
-//	todo: validate modifiers, then remove `return -1 in conversion`
 	return (spec);
 }
