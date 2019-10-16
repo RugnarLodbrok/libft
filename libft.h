@@ -14,7 +14,8 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-#include "ft_math.h"
+# include <limits.h>
+# include "ft_math.h"
 
 # define CHECK0RET(x, r) if (!(x)) return (r)
 # define CHECK0RET0(x) CHECK0RET(x, 0)
@@ -27,6 +28,10 @@ typedef unsigned long ulong;
 
 # ifndef uint
 typedef unsigned int uint;
+# endif
+
+# ifndef ULLONG_MAX
+# define ULLONG_MAX ULONG_LONG_MAX
 # endif
 
 # define ABS(x) (((x) < 0) ? (-(x)) : (x))

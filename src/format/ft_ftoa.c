@@ -3,12 +3,12 @@
 
 static unsigned long long mod(long double a, int b)
 {
-	if (a > (long double)(ULONG_LONG_MAX))
+	if (a > (long double)ULLONG_MAX)
 		return (0);
 	return (((unsigned long long)a) % b);
 }
 
-static long double round(long double x, int decimals, int base)
+static long double round_to_even(long double x, int decimals, int base)
 {
 	long double pow;
 
@@ -33,7 +33,7 @@ char *ft_ftoa_buf(char *s, long double n, int decimals)
 		*ptr++ = '-';
 		n *= -1;
 	}
-	n = round(n, decimals, base);
+	n = round_to_even(n, decimals, base);
 	m = n;
 	if (m < 1.)
 		*ptr++ = '0';
