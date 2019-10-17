@@ -19,9 +19,6 @@ char *ft_double_to_bin_buf(char *b, double x)
 	ft_memcpy(data, &x, 8);
 	if (endian() == LITTLE_ENDIAN)
 		ft_memrev((char *)data, 8);
-//	else // this is not needed probably
-//		for (i = 0; i < 8; ++i)
-//			data[i] = ft_bitrev(data[i]);
 	btoa_buf(&ptr, data[0], 1);
 	*ptr++ = ' ';
 	btoa_buf(&ptr, data[0] << 1, 7);
@@ -30,6 +27,7 @@ char *ft_double_to_bin_buf(char *b, double x)
 	btoa_buf(&ptr, data[1] << 4, 4);
 	for (i = 2; i < 8; ++i)
 		btoa_buf(&ptr, data[i], 8);
+	*ptr++ = 0;
 
 	return (b);
 }
