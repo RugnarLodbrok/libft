@@ -250,19 +250,29 @@ void test_ft_printf()
 	compare_prints("%.0Lf", -57.500000000000000001l);  // 58
 	compare_prints("%.10f", 0.47852012685);
 	compare_prints("%.10Lf", 0.47852012685l);
-	compare_prints("%.10Lf", -56.47852012685l);  // 58
-	compare_prints("%.10Lf", 56.47852012685l);  // 58
 	compare_prints("%c", 0);
 	compare_prints("%5c", 0);
 	compare_prints("%05c", 0);
 	compare_prints("%7.5s", "yolo");
 	compare_prints("%-7.5s", "yolo");
 
+	compare_prints("%.2c", 0);
+	compare_prints("@moulitest: %c", 0);
+	compare_prints("% c", 0);
+	compare_prints("{%f}", -1.42, -1.42, -1.42l);
+	compare_prints("{%lf}", -1.42, -1.42, -1.42l);
+	compare_prints("{%f}{%lf}{%Lf}", -1.42, -1.42, -1.42l);
+	compare_prints("%p", 0);
+	compare_prints("%.0p, %.p", 0, 0);
+	compare_prints("%#.0x, %#.x", 0, 0);
+
 	compare_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
 				   123, (double)4, &compare_prints, "", '~',
 				   (ulong)432543, (ullong)54935734,
 				   (long double)-945.1232387665, (double)0.99999999);
 	printf("\n----OS dependant and undefined behavoiur tests----\n\n");
+	compare_prints("%.10Lf", -56.47852012685l);  // 58
+	compare_prints("%.10Lf", 56.47852012685l);  // 58
 	compare_prints("%5+c", '!'); // edrowzee
 	compare_prints("|%5+d|", 5); // edrowzee
 	compare_prints("%03lc", '!');

@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC = gcc
-NAME = libftprintf.a
+NAME = libft.a
 FLAGS = -Wall -Wextra -Werror
 SRC = \
 	  src/string/ft_atoi.c \
