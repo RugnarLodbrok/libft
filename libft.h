@@ -24,12 +24,6 @@
 # define CHECK0RET1(x) CHECK0RET(x, -1)
 # define CHECK1RET1(x) if ((x) < 0) return (-1)
 
-
-# define ABS(x) (((x) < 0) ? (-(x)) : (x))
-
-# define OR(a, b) (a) ? (a) : (b)
-# define AND(a, b) !(a) ? (a) : (b)
-
 typedef struct		s_list
 {
 	void			*content;

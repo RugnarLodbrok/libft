@@ -1,25 +1,41 @@
-#ifndef LIBFT_COMPAT
-# define LIBFT_COMPAT
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft_compat.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksticks <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/17 16:31:42 by ksticks           #+#    #+#             */
+/*   Updated: 2019/10/17 16:31:43 by ksticks          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef LIBFT_COMPAT_H
+# define LIBFT_COMPAT_H
+
 # ifdef _WIN32
-# include <io.h>
+#  include <io.h>
 # else
-# include <unistd.h>
-#endif
+#  include <unistd.h>
+# endif
 
 # ifndef ulong
-typedef unsigned long ulong;
+
+typedef unsigned long		ulong;
 # endif
 
 # ifndef ullong
-typedef unsigned long long int ullong;
+
+typedef unsigned long long	ullong;
 # endif
 
 # ifndef uint
-typedef unsigned int uint;
+
+typedef unsigned int		uint;
 # endif
 
 # ifndef ULLONG_MAX
-# define ULLONG_MAX ULONG_LONG_MAX
+#  define ULLONG_MAX ULONG_LONG_MAX
 # endif
 
 # ifdef __APPLE__

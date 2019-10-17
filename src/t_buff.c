@@ -34,7 +34,7 @@ size_t	t_buff_extend(t_buff *b)
 int		t_buff_append(t_buff *b, void *data, size_t len)
 {
 	while (b->len + len > b->size)
-		if(!t_buff_extend(b))
+		if (!t_buff_extend(b))
 			return (0);
 	ft_memcpy(b->data + b->len, data, len);
 	b->len += len;

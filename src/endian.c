@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   endian.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksticks <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/17 16:33:52 by ksticks           #+#    #+#             */
+/*   Updated: 2019/10/17 16:33:54 by ksticks          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int endian()
+int	endian(void)
 {
-	int i = 1;
-	char *p;
+	int		i;
+	char	*p;
 
+	i = 1;
 	p = (char *)&i;
 	if (p[0] == 1)
-		return LITTLE_ENDIAN;
+		return (LITTLE_ENDIAN);
 	else
-		return BIG_ENDIAN;
+		return (BIG_ENDIAN);
 }

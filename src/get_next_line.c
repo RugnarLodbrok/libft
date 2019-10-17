@@ -116,7 +116,7 @@ void		gnl_state_remove(t_list **lst, const int fd)
 	}
 }
 
-int		get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	static t_list		*state_lst;
 	t_gnl_state			*state;
