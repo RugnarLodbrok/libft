@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <limits.h>
-# include "ft_math.h"
 
 # define CHECK0RET(x, r) if (!(x)) return (r)
 # define CHECK0RET0(x) CHECK0RET(x, 0)

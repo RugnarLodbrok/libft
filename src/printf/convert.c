@@ -24,8 +24,7 @@ static void		prepend_str(char *buff, const char *s)
 	ft_memcpy(buff, s, len);
 }
 
-char			*convert_uint(char *b, unsigned long long int v,
-				t_printf_spec *s)
+char			*convert_uint(char *b, ullong v, t_printf_spec *s)
 {
 	if (s->type == 'u')
 		ft_ultoa_buf(b, v, 10);

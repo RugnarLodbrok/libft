@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void btoa_buf(char **ptr, unsigned char c, size_t len)
+void	btoa_buf(char **ptr, unsigned char c, size_t len)
 {
 	while (len--)
 	{
@@ -21,11 +21,11 @@ void btoa_buf(char **ptr, unsigned char c, size_t len)
 	}
 }
 
-char *ft_double_to_bin_buf(char *b, double x)
+char	*ft_double_to_bin_buf(char *b, double x)
 {
-	char *ptr;
-	int i;
-	unsigned char data[8];
+	char			*ptr;
+	int				i;
+	unsigned char	data[8];
 
 	ptr = b;
 	ft_memcpy(data, &x, 8);
@@ -37,16 +37,17 @@ char *ft_double_to_bin_buf(char *b, double x)
 	btoa_buf(&ptr, data[1], 4);
 	*ptr++ = ' ';
 	btoa_buf(&ptr, data[1] << 4, 4);
-	for (i = 2; i < 8; ++i)
+	i = 2 - 1;
+	while (++i < 8)
 		btoa_buf(&ptr, data[i], 8);
 	*ptr++ = 0;
-
 	return (b);
 }
 
-char *ft_double_to_bin(double x)
+char	*ft_double_to_bin(double x)
 {
 	char *s;
+
 	CHECK0RET0(s = malloc(sizeof(char) * 67));
 	ft_double_to_bin_buf(s, x);
 	return (s);

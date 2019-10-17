@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "ft_linalg.h"
 
-static void swap_rows(t_mat *A, t_mat *B, int i, int j)
+static void	swap_rows(t_mat *A, t_mat *B, int i, int j)
 {
 	double tmp[MAT_RANK];
 	size_t s;
@@ -15,7 +15,7 @@ static void swap_rows(t_mat *A, t_mat *B, int i, int j)
 	ft_memcpy(B->data[j], tmp, s);
 }
 
-static void div_row(t_mat *A, t_mat *B, int i, double c)
+static void	div_row(t_mat *A, t_mat *B, int i, double c)
 {
 	int j;
 
@@ -27,7 +27,7 @@ static void div_row(t_mat *A, t_mat *B, int i, double c)
 	}
 }
 
-static void sub_row(t_mat *A, t_mat *B, int i, int k, double c)
+static void	sub_row(t_mat *A, t_mat *B, int i, int k, double c)
 {
 	int j;
 
@@ -39,7 +39,7 @@ static void sub_row(t_mat *A, t_mat *B, int i, int k, double c)
 	}
 }
 
-t_mat t_mat_inverted(t_mat M)
+t_mat		t_mat_inverted(t_mat M)
 {
 	int i;
 	int m;

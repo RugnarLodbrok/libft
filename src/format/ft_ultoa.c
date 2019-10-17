@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultoa.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksticks <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/17 15:47:51 by ksticks           #+#    #+#             */
+/*   Updated: 2019/10/17 15:47:57 by ksticks          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
@@ -29,7 +40,7 @@ char			*ft_ultoa_buf(char *s, ulong n, uint base)
 		s[0] = '0';
 	while (n)
 	{
-		rem = (int ) (n % base);
+		rem = (int)(n % base);
 		if (rem > 9)
 			c = 'a' + rem - 10;
 		else
@@ -40,7 +51,7 @@ char			*ft_ultoa_buf(char *s, ulong n, uint base)
 	return (s);
 }
 
-char		*ft_ultoa(ulong n)
+char			*ft_ultoa(ulong n)
 {
 	size_t	d;
 	char	*s;
@@ -52,7 +63,7 @@ char		*ft_ultoa(ulong n)
 	return (s);
 }
 
-char		*ft_ultoa_base(ulong n, uint base)
+char			*ft_ultoa_base(ulong n, uint base)
 {
 	size_t	d;
 	char	*s;

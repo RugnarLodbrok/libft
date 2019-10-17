@@ -1,4 +1,18 @@
-int ft_pow(int a, int b)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksticks <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/17 15:44:05 by ksticks           #+#    #+#             */
+/*   Updated: 2019/10/17 15:44:07 by ksticks          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <libft.h>
+
+int		ft_pow(int a, int b)
 {
 	int r;
 
@@ -10,9 +24,9 @@ int ft_pow(int a, int b)
 	return (r);
 }
 
-unsigned long long ft_ullpow(unsigned long long a, unsigned long long b)
+ullong	ft_ullpow(ullong a, ullong b)
 {
-	unsigned long long r;
+	ullong r;
 
 	r = 1;
 	while (b--)
@@ -20,7 +34,7 @@ unsigned long long ft_ullpow(unsigned long long a, unsigned long long b)
 	return (r);
 }
 
-double ft_fpow(double a, int b)
+double	ft_fpow(double a, int b)
 {
 	double r;
 

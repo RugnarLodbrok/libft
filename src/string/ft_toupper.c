@@ -27,7 +27,7 @@ char		*ft_toupper_inplace(char *s)
 	char *p;
 
 	p = s;
-	while ((*p = (char) ft_toupper(*p)))
+	while ((*p = (char)ft_toupper(*p)))
 		p++;
 	return (s);
 }

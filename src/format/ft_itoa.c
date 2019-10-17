@@ -48,7 +48,7 @@ char		*ft_itoa_buf(char *s, long long int n, uint base)
 		s[0] = '0';
 	while (n)
 	{
-		rem = (int ) (- (n % base));
+		rem = (int)(-(n % base));
 		if (rem > 9)
 			c = 'a' + rem - 10;
 		else
@@ -59,7 +59,7 @@ char		*ft_itoa_buf(char *s, long long int n, uint base)
 	return (s);
 }
 
-char				*ft_itoa(long long int n)
+char		*ft_itoa(long long int n)
 {
 	size_t	d;
 	char	*s;
@@ -71,7 +71,7 @@ char				*ft_itoa(long long int n)
 	return (s);
 }
 
-char				*ft_itoa_base(long long int n, uint base)
+char		*ft_itoa_base(long long int n, uint base)
 {
 	uint	d;
 	char	*s;

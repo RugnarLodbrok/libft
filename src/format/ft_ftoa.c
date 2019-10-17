@@ -12,12 +12,13 @@
 
 #include <limits.h>
 #include "libft.h"
+#include "ft_math.h"
 
 static ullong		mod(long double a, int b)
 {
 	if (a > (long double)ULLONG_MAX)
 		return (0);
-	return (((unsigned long long)a) % b);
+	return (((ullong)a) % b);
 }
 
 static long double	round_to_even(long double x, int decimals, int base)
@@ -27,7 +28,7 @@ static long double	round_to_even(long double x, int decimals, int base)
 	pow = (long double)ft_ullpow(base, decimals);
 	if (mod((x > 0 ? x : -x) * pow, 2))
 		return (x + .5 / pow);
-	if (.5 / pow + (long double)((unsigned long long)(x * pow)) / pow - x)
+	if (.5 / pow + (long double)((ullong)(x * pow)) / pow - x)
 		return (x + .5 / pow);
 	return (x);
 }

@@ -36,7 +36,7 @@ static int	ft_printf_conversion_uox(char *b, t_printf_arg *v,
 			t_printf_spec *s, va_list ap)
 {
 	if (!ft_strcmp(s->modifiers, "ll"))
-		v->u = va_arg(ap, unsigned long long int);
+		v->u = va_arg(ap, ullong);
 	else if (!ft_strcmp(s->modifiers, "l"))
 		v->u = va_arg(ap, ulong);
 	else if (!ft_strcmp(s->modifiers, "hh"))

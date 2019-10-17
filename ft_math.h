@@ -27,18 +27,20 @@
 
 # define P(z) ( C0 * T0(z) + C1 * T1(z) + C2 * T2(z) + C3 * T3(z) + C4 * T4(z) + C5 * T5(z) )
 
-int					ft_sqrt_int(int nb);
-int					ft_sqrt_ceil(int nb);
-double				ft_sqrt(double nb);
-int					ft_pow(int a, int b);
-double				ft_fpow(double a, int b);
-unsigned long long	ft_ullpow(unsigned long long a, unsigned long long b);
-int					ft_abs(int a);
-double				ft_fabs(double a);
-double				ft_sin(double a);
-double				ft_cos(double a);
-double				zx_sin(double x);
-double				ft_log(double x);
-double				radians(double degrees);
+# include "libft.h"
+
+int		ft_sqrt_int(int nb);
+int		ft_sqrt_ceil(int nb);
+double	ft_sqrt(double nb);
+int		ft_pow(int a, int b);
+double	ft_fpow(double a, int b);
+ullong	ft_ullpow(ullong a, ullong b);
+int		ft_abs(int a);
+double	ft_fabs(double a);
+double	ft_sin(double a);
+double	ft_cos(double a);
+double	zx_sin(double x);
+double	ft_log(double x);
+double	radians(double degrees);
 
 #endif

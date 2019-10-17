@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksticks <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/17 15:51:34 by ksticks           #+#    #+#             */
+/*   Updated: 2019/10/17 15:51:35 by ksticks          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char *ft_strrev(char *str)
+char			*ft_strrev(char *str)
 {
 	int len;
 	int i;
@@ -15,7 +27,7 @@ char *ft_strrev(char *str)
 	return (str);
 }
 
-char *ft_memrev(char *str, size_t len)
+char			*ft_memrev(char *str, size_t len)
 {
 	int i;
 
@@ -28,10 +40,10 @@ char *ft_memrev(char *str, size_t len)
 	return (str);
 }
 
-unsigned char ft_bitrev(unsigned char b)
+unsigned char	ft_bitrev(unsigned char b)
 {
-	int i;
-	unsigned char r;
+	int				i;
+	unsigned char	r;
 
 	i = 8;
 	r = 0;
