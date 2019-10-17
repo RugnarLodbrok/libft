@@ -26,6 +26,10 @@
 typedef unsigned long ulong;
 # endif
 
+# ifndef ullong
+typedef unsigned long long int ullong;
+# endif
+
 # ifndef uint
 typedef unsigned int uint;
 # endif

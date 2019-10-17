@@ -13,14 +13,14 @@
 #include <limits.h>
 #include "libft.h"
 
-static unsigned long long mod(long double a, int b)
+static ullong		mod(long double a, int b)
 {
 	if (a > (long double)ULLONG_MAX)
 		return (0);
 	return (((unsigned long long)a) % b);
 }
 
-static long double round_to_even(long double x, int decimals, int base)
+static long double	round_to_even(long double x, int decimals, int base)
 {
 	long double pow;
 
@@ -32,11 +32,36 @@ static long double round_to_even(long double x, int decimals, int base)
 	return (x);
 }
 
-char *ft_ftoa_buf(char *s, long double n, int decimals)
+void				ftoa_inner(long double x, char *b, int decimals, int base)
 {
-	char *ptr;
-	int base;
-	long double m;
+	long double	y;
+	char		*ptr;
+
+	ptr = b;
+	y = x;
+	if (y < 1.)
+		*ptr++ = '0';
+	while (y >= 1.)
+	{
+		*ptr++ = '0' + (int)mod(y, base);
+		y /= base;
+	}
+	*ptr = 0;
+	ft_strrev(b);
+	if (!decimals)
+		*ptr++ = '.';
+	while (decimals--)
+	{
+		x *= base;
+		*ptr++ = '0' + (int)(mod(x, base));
+	}
+	*ptr = 0;
+}
+
+char				*ft_ftoa_buf(char *s, long double n, int decimals)
+{
+	char		*ptr;
+	int			base;
 
 	base = 10;
 	ptr = s;
@@ -45,34 +70,15 @@ char *ft_ftoa_buf(char *s, long double n, int decimals)
 		*ptr++ = '-';
 		n *= -1;
 	}
-	n = round_to_even(n, decimals, base);
-	m = n;
-	if (m < 1.)
-		*ptr++ = '0';
-	while (m >= 1.)
-	{
-		*ptr++ = '0' + (int)mod(m, base);
-		m /= base;
-	}
-	*ptr = 0;
-	ft_strrev(*s == '-' ? s + 1 : s);
-	if (!decimals)
-		return (s);
-	*ptr++ = '.';
-	while (decimals--)
-	{
-		n *= base;
-		*ptr++ = '0' + (int)(mod(n, base));
-	}
-	*ptr = 0;
+	ftoa_inner(round_to_even(n, decimals, base), ptr, decimals, base);
 	return (s);
 }
 
-char *ft_ftoa(long double n, int decimals)
+char				*ft_ftoa(long double n, int decimals)
 {
-	size_t d;
-	char *s;
-	int base;
+	size_t	d;
+	char	*s;
+	int		base;
 
 	base = 10;
 	d = ft_count_int_digits((long int)n, base) + decimals + 1;
