@@ -92,7 +92,10 @@ int			ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 		return (convert_string(fd, 0, s, va_arg(ap, char*)));
 	else if (s.type == 'p')
 	{
-		ft_ultoa_buf(ft_strcpy(b, "0x") + 2, (ulong)va_arg(ap, void*), 16);
+		v.u = (ulong)va_arg(ap, void*);
+		ft_strcpy(b, "0x");
+		if (v.u || s.precision)
+			ft_ultoa_buf(b + 2, v.u, 16);
 		s.prefix_w = 2;
 	}
 	else if (s.type == '%')
