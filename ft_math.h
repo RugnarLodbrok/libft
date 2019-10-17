@@ -27,7 +27,7 @@
 
 # define P(z) ( C0 * T0(z) + C1 * T1(z) + C2 * T2(z) + C3 * T3(z) + C4 * T4(z) + C5 * T5(z) )
 
-# include "libft.h"
+# include "libft_compat.h"
 
 int		ft_sqrt_int(int nb);
 int		ft_sqrt_ceil(int nb);

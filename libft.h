@@ -16,42 +16,19 @@
 # include <stdlib.h>
 # include <limits.h>
 
+# include "libft_compat.h"
+# include "ft_math.h"
+
 # define CHECK0RET(x, r) if (!(x)) return (r)
 # define CHECK0RET0(x) CHECK0RET(x, 0)
 # define CHECK0RET1(x) CHECK0RET(x, -1)
 # define CHECK1RET1(x) if ((x) < 0) return (-1)
 
-# ifndef ulong
-typedef unsigned long ulong;
-# endif
-
-# ifndef ullong
-typedef unsigned long long int ullong;
-# endif
-
-# ifndef uint
-typedef unsigned int uint;
-# endif
-
-# ifndef ULLONG_MAX
-# define ULLONG_MAX ULONG_LONG_MAX
-# endif
 
 # define ABS(x) (((x) < 0) ? (-(x)) : (x))
 
 # define OR(a, b) (a) ? (a) : (b)
 # define AND(a, b) !(a) ? (a) : (b)
-
-# ifndef LITTLE_ENDIAN
-#  define LITTLE_ENDIAN 1234
-#  define BIG_ENDIAN 4321
-# endif
-
-# ifdef __APPLE__
-#  define MACOS 1
-# else
-#  define MACOS 0
-# endif
 
 typedef struct		s_list
 {
