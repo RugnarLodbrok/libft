@@ -105,5 +105,7 @@ add_executable(libft_tests
 		src/printf/ft_printf.c
 		src/printf/spec_parse.c
 		src/printf/conversion.c
+		src/printf/convert.c
+		src/printf/apply_fw.c
 		)
 target_link_libraries(libft_tests m)
