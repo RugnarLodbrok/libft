@@ -15,7 +15,7 @@
 #include "ft_printf.h"
 #include "libft_compat.h"
 
-static int	ft_printf_conversion_di(char *b, t_printf_arg *v,
+static void	ft_printf_conversion_di(char *b, t_printf_arg *v,
 			t_printf_spec *s, va_list ap)
 {
 	if (!ft_strcmp(s->modifiers, "ll"))
@@ -29,10 +29,9 @@ static int	ft_printf_conversion_di(char *b, t_printf_arg *v,
 	else if (!ft_strcmp(s->modifiers, ""))
 		v->d = va_arg(ap, int);
 	convert_int(b, v->d, s);
-	return (0);
 }
 
-static int	ft_printf_conversion_uox(char *b, t_printf_arg *v,
+static void	ft_printf_conversion_uox(char *b, t_printf_arg *v,
 			t_printf_spec *s, va_list ap)
 {
 	if (!ft_strcmp(s->modifiers, "ll"))
@@ -46,18 +45,27 @@ static int	ft_printf_conversion_uox(char *b, t_printf_arg *v,
 	else if (!ft_strcmp(s->modifiers, ""))
 		v->u = va_arg(ap, uint);
 	convert_uint(b, v->u, s);
-	return (0);
 }
 
-static int	ft_printf_conversion_f(char *b, t_printf_arg *v,
+static void	ft_printf_conversion_fp(char *b, t_printf_arg *v,
 			t_printf_spec *s, va_list ap)
 {
-	if (!ft_strcmp("L", s->modifiers))
-		v->f = va_arg(ap, long double);
+	if (s->type == 'f')
+	{
+		if (!ft_strcmp("L", s->modifiers))
+			v->f = va_arg(ap, long double);
+		else
+			v->f = va_arg(ap, double);
+		convert_double(b, v->f, s);
+	}
 	else
-		v->f = va_arg(ap, double);
-	convert_double(b, v->f, s);
-	return (0);
+	{
+		v->u = (ulong)va_arg(ap, void*);
+		ft_strcpy(b, "0x");
+		if (v->u || s->precision)
+			ft_ultoa_buf(b + 2, v->u, 16);
+		s->prefix_w = 2;
+	}
 }
 
 static int	ft_printf_conversion_c(int fd, t_printf_spec *s, va_list ap)
@@ -84,20 +92,12 @@ int			ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 		ft_printf_conversion_di(b, &v, &s, ap);
 	else if (ft_strchr("uoxX", s.type))
 		ft_printf_conversion_uox(b, &v, &s, ap);
-	else if (s.type == 'f')
-		ft_printf_conversion_f(b, &v, &s, ap);
+	else if (s.type == 'f' || s.type == 'p')
+		ft_printf_conversion_fp(b, &v, &s, ap);
 	else if (s.type == 'c')
 		return (ft_printf_conversion_c(fd, &s, ap));
 	else if (s.type == 's')
 		return (convert_string(fd, 0, s, va_arg(ap, char*)));
-	else if (s.type == 'p')
-	{
-		v.u = (ulong)va_arg(ap, void*);
-		ft_strcpy(b, "0x");
-		if (v.u || s.precision)
-			ft_ultoa_buf(b + 2, v.u, 16);
-		s.prefix_w = 2;
-	}
 	else if (s.type == '%')
 		ft_strcpy(b, "%");
 	else
