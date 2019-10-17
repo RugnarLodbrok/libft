@@ -61,9 +61,11 @@ static void	ft_printf_conversion_fp(char *b, t_printf_arg *v,
 	else
 	{
 		v->u = (ulong)va_arg(ap, void*);
-		ft_strcpy(b, "0x");
 		if (v->u || s->precision)
-			ft_ultoa_buf(b + 2, v->u, 16);
+			ft_ultoa_buf(b, v->u, 16);
+		while ((int)ft_strlen(b) < s->precision)
+			prepend_str(b, "0");
+		prepend_str(b, "0x");
 		s->prefix_w = 2;
 	}
 }

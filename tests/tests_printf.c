@@ -265,6 +265,7 @@ void test_ft_printf()
 	compare_prints("%p", 0);
 	compare_prints("%.0p, %.p", 0, 0);
 	compare_prints("%#.0x, %#.x", 0, 0);
+	compare_prints("%.5p", 0);
 
 	compare_prints("%d %f %p `%s` %c %lX %llx %Lf %f",
 				   123, (double)4, &compare_prints, "", '~',

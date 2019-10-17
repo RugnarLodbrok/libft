@@ -15,7 +15,7 @@
 #include "ft_printf.h"
 #include "libft_compat.h"
 
-static void		prepend_str(char *buff, const char *s)
+void			prepend_str(char *buff, const char *s)
 {
 	int len;
 
