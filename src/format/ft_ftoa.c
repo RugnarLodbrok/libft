@@ -13,7 +13,7 @@ static long double round(long double x, int decimals, int base)
 	long double pow;
 
 	pow = (long double)ft_ullpow(base, decimals);
-	if ((int)x != (((int)x) / 2) * 2)
+	if (mod((x > 0 ? x : -x) * pow, 2))
 		return (x + .5 / pow);
 	if (.5 / pow + (long double)((unsigned long long)(x * pow)) / pow - x)
 		return (x + .5 / pow);
