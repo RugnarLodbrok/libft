@@ -14,11 +14,8 @@
 #include "libft.h"
 #include "get_next_line.h"
 
-static int	copy_until_break(
-		t_buff	*buff,
-		char	*chunk,
-		size_t	chunk_size,
-		char	**ptr)
+static int	copy_until_break(t_buff *buff, char *chunk, size_t chunk_size,
+		char **ptr)
 {
 	size_t	line_size;
 
@@ -39,8 +36,8 @@ static int	copy_until_break(
 
 static int	do_next_reads(int fd, t_buff *b, t_gnl_state *s)
 {
-	int n;
-	size_t offset;
+	int		n;
+	size_t	offset;
 
 	while (1)
 	{
@@ -65,8 +62,8 @@ static int	do_next_reads(int fd, t_buff *b, t_gnl_state *s)
 
 t_gnl_state	*gnl_state_get(t_list **lst, const int fd)
 {
-	t_list *e;
-	t_gnl_state *s;
+	t_list		*e;
+	t_gnl_state	*s;
 
 	e = *lst;
 	while (e)

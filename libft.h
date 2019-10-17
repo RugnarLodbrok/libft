@@ -133,7 +133,7 @@ void				ft_swap(void **a, void **b);
 void				ft_swap_int(int *a, int *b);
 void				ft_swap_char(char *a, char *b);
 
-int 				endian();
+int					endian();
 int					ft_printf(const char *format, ...);
 int					ft_fprintf(int fd, const char *format, ...);
 
