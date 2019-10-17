@@ -52,10 +52,10 @@ static int	ft_printf_conversion_uox(char *b, t_printf_arg *v,
 static int	ft_printf_conversion_f(char *b, t_printf_arg *v,
 			t_printf_spec *s, va_list ap)
 {
-	if (!ft_strcmp("", s->modifiers))
-		v->f = va_arg(ap, double);
-	else if (!ft_strcmp("L", s->modifiers))
+	if (!ft_strcmp("L", s->modifiers))
 		v->f = va_arg(ap, long double);
+	else
+		v->f = va_arg(ap, double);
 	convert_double(b, v->f, s);
 	return (0);
 }
@@ -63,13 +63,15 @@ static int	ft_printf_conversion_f(char *b, t_printf_arg *v,
 static int	ft_printf_conversion_c(int fd, t_printf_spec *s, va_list ap)
 {
 	char			b[256];
+	size_t			len;
 
 	ft_bzero(b, sizeof(b));
 	b[0] = 'Q';
 	apply_fw(b, *s);
+	len = ft_strlen(b);
 	*ft_strchr(b, 'Q') = (char)va_arg(ap, int);
 	ft_putstr_fd(b, fd);
-	return (ft_strlen(b));
+	return (len);
 }
 
 int			ft_printf_conversion(int fd, va_list ap, t_printf_spec s)

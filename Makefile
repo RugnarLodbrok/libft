@@ -97,9 +97,9 @@ SRC = \
       src/t_buff.c \
       src/endian.c \
       \
-      src/printf/conversion.c \
-      src/printf/spec_parse.c \
       src/printf/ft_printf.c \
+      src/printf/spec_parse.c \
+      src/printf/conversion.c \
       src/printf/convert.c \
       src/printf/apply_fw.c
 

@@ -284,4 +284,8 @@ void test_ft_printf()
 	printf("size: %d\n", s);
 	for (i = 0; i < (int)10; ++i)
 		printf("%f\t%s\n", numbers[i], ft_double_to_bin(numbers[i]));
+
+	printf("{%f}\n", -1.42);
+	ft_printf("{%f}\n", -1.42);
+	ft_printf("{%lf}\n", -1.42);
 }

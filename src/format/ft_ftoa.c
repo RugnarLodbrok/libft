@@ -49,7 +49,7 @@ void				ftoa_inner(long double x, char *b, int decimals, int base)
 	}
 	*ptr = 0;
 	ft_strrev(b);
-	if (!decimals)
+	if (decimals)
 		*ptr++ = '.';
 	while (decimals--)
 	{
