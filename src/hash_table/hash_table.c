@@ -1,21 +1,10 @@
 #include "libft.h"
+#include "hash_table.h"
 
-int next_prime(int n);
-
-typedef struct
+static int next_prime(int n)
 {
-	char *k;
-	char *v;
-} t_ht_item;
-
-typedef struct
-{
-	int base_size;
-	int size;
-	int count;
-	t_ht_item **items;
-	t_ht_item null_item;
-} t_ht;
+	return (n);
+}
 
 void t_ht_init(t_ht *t, int base_size)
 {
@@ -23,6 +12,7 @@ void t_ht_init(t_ht *t, int base_size)
 	t->size = next_prime(base_size);
 	t->count = 0;
 	t->items = malloc(sizeof(t_ht_item *) * t->size);
+	ft_bzero(t->items, sizeof(t_ht_item *) * t->size);
 	t->null_item = (t_ht_item){0, 0};
 }
 
