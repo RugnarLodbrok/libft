@@ -26,5 +26,6 @@ void test_ht()
 	t_ht_remove(&t, "x");
 	t_ht_print(&t);
 	ft_printf("t[\"123\"] = %s\n", t_ht_get(&t, "123"));
+	ft_printf("t[\"1234\"] = %s\n", t_ht_get(&t, "1234"));
 	t_ht_del(&t);
 }

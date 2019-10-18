@@ -14,6 +14,7 @@ typedef struct
 	int count;
 	t_ht_item **items;
 	t_ht_item null_item;
+	int (*hash_f_str)(const char *s, int i);
 } t_ht;
 
 void t_ht_init(t_ht *t, int base_size);

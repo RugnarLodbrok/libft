@@ -6,6 +6,12 @@ static int next_prime(int n)
 	return (n);
 }
 
+static int hash_function(const char *s, int i)
+{
+	(void)s;
+	return (i);
+}
+
 void t_ht_init(t_ht *t, int base_size)
 {
 	t->base_size = base_size;
@@ -14,6 +20,7 @@ void t_ht_init(t_ht *t, int base_size)
 	t->items = malloc(sizeof(t_ht_item *) * t->size);
 	ft_bzero(t->items, sizeof(t_ht_item *) * t->size);
 	t->null_item = (t_ht_item){0, 0};
+	t->hash_f_str = &hash_function;
 }
 
 static void t_ht_item_del(t_ht_item *ti)
@@ -51,13 +58,6 @@ static void t_ht_resize(t_ht *t, int new_size)
 	(void)new_size;
 }
 
-static int t_ht_hash(t_ht *t, const char *s, int i)
-{
-	(void)t;
-	(void)s;
-	return (i);
-}
-
 void t_ht_set(t_ht *t, const char *k, const char *v)
 {
 	int i;
@@ -69,7 +69,7 @@ void t_ht_set(t_ht *t, const char *k, const char *v)
 	item->k = ft_strdup(k);
 	item->v = ft_strdup(v);
 	i = 0;
-	while ((cur = t->items[(hash = t_ht_hash(t, item->k, i++))]))
+	while ((cur = t->items[(hash = t->hash_f_str(item->k, i++))]))
 		if (cur != &t->null_item && !ft_strcmp(cur->k, k))
 		{
 			t_ht_item_del(cur);
@@ -88,7 +88,7 @@ static int t_ht_get_idx(t_ht *t, const char *k)
 	int hash;
 
 	i = 0;
-	while ((item = t->items[hash = t_ht_hash(t, k, i++)]))
+	while ((item = t->items[hash = t->hash_f_str(k, i++)]))
 		if (item != &t->null_item && !ft_strcmp(item->k, k))
 			return (hash);
 	return -1;
