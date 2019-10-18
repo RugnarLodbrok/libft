@@ -90,6 +90,8 @@ SRC = \
 	  src/linalg/matrix.c \
 	  src/linalg/matrix_invert.c \
 	  src/linalg/vector.c \
+	  \
+	  src/hash_table/hash_table.c \
       \
       src/ft_realloc.c \
       src/ft_swap.c \
@@ -109,7 +111,8 @@ TEST_SRC = \
       tests/tests_printf.c \
       tests/tests_math.c \
       tests/tests_main.c \
-      tests/gnl.c
+      tests/gnl.c \
+      tests/ht.c
 TEST_OBJ = $(TEST_SRC:.c=.o)
 
 OPTION = -I.

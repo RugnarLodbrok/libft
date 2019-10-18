@@ -18,6 +18,7 @@ add_executable(libft_tests
 		tests/gnl.c
 		tests/tests_printf.c
 		tests/tests_math.c
+		tests/ht.c
 
 		src/string/ft_atoi.c
 		src/string/ft_bzero.c
@@ -95,6 +96,8 @@ add_executable(libft_tests
 		src/linalg/matrix.c
 		src/linalg/matrix_invert.c
 		src/linalg/vector.c
+
+		src/hash_table/hash_table.c
 
 		src/ft_realloc.c
 		src/ft_swap.c

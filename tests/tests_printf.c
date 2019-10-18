@@ -279,24 +279,4 @@ void test_ft_printf()
 	compare_prints("%03lc", '!');
 	compare_prints("undefined %l#X behaviour", (ulong)123456789 * 100); //not copying undefined behaviour
 	compare_prints("%yX", (ulong)123456789 * 100);
-
-	double d;
-
-
-	printf("\n\n\n");
-	int s;
-	d = 1.;
-	int i;
-	s = (int)sizeof(d);
-	unsigned char data[s];
-	ft_bzero(data, s);
-	double numbers[10] = {-1., 1., 2., 3., 4., 5., 6., 7., 0.47852012685, 0.47852012685000004};
-
-	printf("size: %d\n", s);
-	for (i = 0; i < (int)10; ++i)
-		printf("%f\t%s\n", numbers[i], ft_double_to_bin(numbers[i]));
-
-	printf("{%f}\n", -1.42);
-	ft_printf("{%f}\n", -1.42);
-	ft_printf("{%lf}\n", -1.42);
 }
