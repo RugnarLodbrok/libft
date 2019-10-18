@@ -5,9 +5,9 @@ void t_ht_print(t_ht *t)
 {
 	int i;
 	ft_printf("Hash_table {\n");
-	for (i = 0; i < t->count; ++i)
+	for (i = 0; i < t->size; ++i)
 	{
-		if (t->items[i] == &t->null_item)
+		if (!t->items[i] || t->items[i] == &t->null_item)
 			continue;
 		ft_printf("\t\"%s\": \"%s\"\n", t->items[i]->k, t->items[i]->v);
 	}

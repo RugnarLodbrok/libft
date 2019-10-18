@@ -92,6 +92,7 @@ SRC = \
 	  src/linalg/vector.c \
 	  \
 	  src/hash_table/hash_table.c \
+	  src/hash_table/hash.c \
       \
       src/ft_realloc.c \
       src/ft_swap.c \
