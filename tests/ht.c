@@ -9,6 +9,7 @@ void t_ht_print(t_ht *t)
 {
 	int i;
 	t_ht_item *item;
+
 	ft_printf("Hash_table {\n");
 	for (i = 0; i < t->size; ++i)
 	{
@@ -20,6 +21,29 @@ void t_ht_print(t_ht *t)
 		}
 	}
 	ft_printf("}\n");
+}
+
+int t_ht_count_collisions(t_ht *t)
+{
+	int i;
+	int n;
+	t_ht_item *item;
+
+	n = 0;
+	for (i = 0; i < t->size; ++i)
+	{
+		item = t->items[i];
+		if (item)
+		{
+			item = item->next;
+			while (item)
+			{
+				n++;
+				item = item->next;
+			}
+		}
+	}
+	return (n);
 }
 
 void test_ht_basic()
@@ -38,7 +62,7 @@ void test_ht_basic()
 	t_ht_del(&t);
 }
 
-void test_ht_perf(double time_ref)
+void test_ht_perf(double time_ref, double coll_ratio_ref)
 {
 	int i;
 	t_ht t;
@@ -49,6 +73,7 @@ void test_ht_perf(double time_ref)
 	int count;
 	clock_t t0;
 	double time;
+	double coll_ratio;
 
 	if (access(f_name, F_OK) == -1)
 		system("wget https://raw.githubusercontent.com/dwyl/english-words/master/words.txt");
@@ -79,7 +104,7 @@ void test_ht_perf(double time_ref)
 		if (assert(!ft_strcmp(t_ht_get(&t, word), word), word))
 			return;
 
-		if (i % 10000 != 0)
+		if (i % 2)
 		{
 			t_ht_remove(&t, word);
 			count--;
@@ -102,16 +127,20 @@ void test_ht_perf(double time_ref)
 	close(fd);
 	time = ((double)(clock() - t0)) / CLOCKS_PER_SEC;
 	assert(t.count == count, "invalid count after removes");
-	if(assert(time < 1.1 * time_ref, "slow!"))
-	{
-		ft_printf("time: %f\n", time);
-		return;
-	}
+	coll_ratio = (double)t.size / t_ht_count_collisions(&t);
+	if (coll_ratio * 1.1 < coll_ratio_ref)
+		ft_printf(FAIL);
 	else
-		ft_printf("%s: time: %f\n", OK, time);
+		ft_printf(OK);
+	ft_printf(": coll ratio: %.0f; ref: %.0f\n", coll_ratio, coll_ratio_ref);
+	if (time > 1.1 * time_ref)
+		ft_printf(FAIL);
+	else
+		ft_printf(OK);
+	ft_printf(": time: %.3f; ref: %.3f\n", time, time_ref);
 }
 
 void test_ht()
 {
-	test_ht_perf(.8);
+	test_ht_perf(.7, 21.);
 }
