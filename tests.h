@@ -11,6 +11,7 @@
 # define ERROR RED "[ERROR]" COLOR_END
 # define FAIL RED "[FAIL]" COLOR_END
 
+int assert(int expr, const char *msg);
 void test_gnl();
 void test_ft_printf();
 void test_ft_math();

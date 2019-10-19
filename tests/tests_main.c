@@ -1,4 +1,12 @@
+#include "libft.h"
 #include "tests.h"
+
+int assert(int expr, const char *msg)
+{
+	if (!expr)
+		ft_printf("%s: %s\n", FAIL, msg);
+	return (!expr);
+}
 
 int main(void)
 {
