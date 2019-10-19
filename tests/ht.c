@@ -142,5 +142,5 @@ void test_ht_perf(double time_ref, double coll_ratio_ref)
 
 void test_ht()
 {
-	test_ht_perf(.7, 21.);
+	test_ht_perf(.59, 21.);
 }
