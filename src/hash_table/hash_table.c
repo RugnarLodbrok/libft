@@ -1,15 +1,31 @@
 #include "libft.h"
 #include "hash_table.h"
 
-static int next_prime(int n)
+static inline int next_prime(int n)
 {
+//	ft_printf("get next prime\n");
+//	while (1)
+//	{
+//		if (n / 2 * 2 != n)
+//			if (n / 3 * 3 != n)
+//				if (n / 5 * 5 != n)
+//					if (n / 7 * 7 != n)
+//						if (n / 11 * 11 != n)
+//							break;
+//		n++;
+//		ft_printf("inc!\n");
+//	}
+//	const int m = 32;
+//	n = (((n - 1) / m + 1) * m);
+//	n+=1;
+//	ft_printf("n: %d\n", n);
 	return (n);
 }
 
-void t_ht_init(t_ht *t, int base_size)
+void t_ht_init(t_ht *t, int size)
 {
-	t->base_size = base_size < HT_MIN_SIZE ? HT_MIN_SIZE : base_size;
-	t->size = next_prime(t->base_size);
+	t->size = (size < HT_MIN_SIZE) ? HT_MIN_SIZE : size;
+	t->size = t->size;
 	t->count = 0;
 	t->items = malloc(sizeof(t_ht_item *) * t->size);
 	ft_bzero(t->items, sizeof(t_ht_item *) * t->size);

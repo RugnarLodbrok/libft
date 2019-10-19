@@ -128,15 +128,9 @@ void test_ht_perf(double time_ref, double coll_ratio_ref)
 	time = ((double)(clock() - t0)) / CLOCKS_PER_SEC;
 	assert(t.count == count, "invalid count after removes");
 	coll_ratio = (double)t.size / t_ht_count_collisions(&t);
-	if (coll_ratio * 1.1 < coll_ratio_ref)
-		ft_printf(FAIL);
-	else
-		ft_printf(OK);
+	ft_printf(coll_ratio * 1.1 < coll_ratio_ref ? FAIL : OK);
 	ft_printf(": coll ratio: %.0f; ref: %.0f\n", coll_ratio, coll_ratio_ref);
-	if (time > 1.1 * time_ref)
-		ft_printf(FAIL);
-	else
-		ft_printf(OK);
+	ft_printf(time > 1.1 * time_ref ? FAIL : OK);
 	ft_printf(": time: %.3f; ref: %.3f\n", time, time_ref);
 }
 

@@ -24,18 +24,21 @@ typedef struct s_ht_item
 
 typedef struct
 {
-	int base_size;
 	int size;
 	int count;
 	t_ht_item **items;
 	uint (*hash_f_str)(const char *s);
 } t_ht;
 
-void t_ht_init(t_ht *t, int base_size);
+void t_ht_init(t_ht *t, int size);
 void t_ht_del(t_ht *t);
 void t_ht_set(t_ht *t, const char *k, const char *v);
 char *t_ht_get(t_ht *t, const char *k);
 void t_ht_remove(t_ht *t, const char *k);
 uint hash_fnv1a(const char *s);
+uint hash_djb2(const char *str);
+uint hash_djb2a(const char *str);
+uint hash_sdbm(const char *str);
+uint hash_lose_lose(const char *str);
 
 #endif
