@@ -14,10 +14,11 @@ typedef struct
 	char s[5];
 } u_uint_string;
 
-typedef struct
+typedef struct s_ht_item
 {
 	char *k;
 	char *v;
+	struct s_ht_item *next;
 } t_ht_item;
 
 typedef struct
@@ -26,7 +27,6 @@ typedef struct
 	int size;
 	int count;
 	t_ht_item **items;
-	t_ht_item null_item;
 	uint (*hash_f_str)(const char *s);
 } t_ht;
 

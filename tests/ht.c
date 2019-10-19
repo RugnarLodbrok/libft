@@ -4,12 +4,15 @@
 void t_ht_print(t_ht *t)
 {
 	int i;
+	t_ht_item *item;
 	ft_printf("Hash_table {\n");
 	for (i = 0; i < t->size; ++i)
 	{
-		if (!t->items[i] || t->items[i] == &t->null_item)
-			continue;
-		ft_printf("\t\"%s\": \"%s\"\n", t->items[i]->k, t->items[i]->v);
+		item = t->items[i];
+		while (item){
+			ft_printf("\t\"%s\": \"%s\"\n", item->k, item->v);
+			item = item->next;
+		}
 	}
 	ft_printf("}\n");
 }
