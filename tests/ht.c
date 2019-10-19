@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <fcntl.h>
 #include <time.h>
 #include "libft.h"
@@ -121,6 +120,5 @@ void test_ht_perf(double time_ref)
 
 void test_ht()
 {
-	test_ht_basic();
 	test_ht_perf(.8);
 }
