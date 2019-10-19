@@ -46,7 +46,7 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 //		if (v > EPSILON)
 //			printf("[FAIL]: f(%f) error =\t%.30f\n\t\t\t\t\t%.30f", x, v, EPSILON);
 	}
-	t = (double) (clock() - t0) / CLOCKS_PER_SEC *100000000/ n;
+	t = (double)(clock() - t0) / CLOCKS_PER_SEC * 100000000 / n;
 	if (t > time_ref * 1.1)
 		status = WARN;
 	if (max_err > ref_max * 1.1)

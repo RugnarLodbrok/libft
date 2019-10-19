@@ -8,8 +8,8 @@ static int next_prime(int n)
 
 void t_ht_init(t_ht *t, int base_size)
 {
-	t->base_size = base_size;
-	t->size = next_prime(base_size);
+	t->base_size = base_size < HT_MIN_SIZE ? HT_MIN_SIZE : base_size;
+	t->size = next_prime(t->base_size);
 	t->count = 0;
 	t->items = malloc(sizeof(t_ht_item *) * t->size);
 	ft_bzero(t->items, sizeof(t_ht_item *) * t->size);
@@ -43,8 +43,28 @@ void t_ht_del(t_ht *t)
 
 static void t_ht_resize(t_ht *t, int new_size)
 {
-	(void)t;
-	(void)new_size;
+	t_ht t2;
+	int i;
+	t_ht_item *item;
+
+	if (new_size < HT_MIN_SIZE)
+		return;
+	t_ht_init(&t2, new_size);
+	i = 0;
+	while (i < t->size)
+	{
+		item = t->items[i];
+		while (item)
+		{
+			t_ht_set(&t2, item->k, item->v);
+			t_ht_item_del(item);
+			item = item->next;
+		}
+		i++;
+	}
+	free(t->items);
+	t->items = t2.items;
+	t->size = t2.size;
 }
 
 void t_ht_set(t_ht *t, const char *k, const char *v)
@@ -62,6 +82,7 @@ void t_ht_set(t_ht *t, const char *k, const char *v)
 	item = malloc(sizeof(t_ht_item));
 	item->k = ft_strdup(k);
 	item->v = ft_strdup(v);
+	item->next = 0;
 	if (*ptr)
 	{
 		item->next = (*ptr)->next;

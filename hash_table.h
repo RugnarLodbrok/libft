@@ -7,6 +7,7 @@
 # define MAX_INT_PRIME INT_MAX
 # define HT_PRIME_1 163
 # define HT_PRIME_2 199
+# define HT_MIN_SIZE 11
 
 typedef struct
 {
