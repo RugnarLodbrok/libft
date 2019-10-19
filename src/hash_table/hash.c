@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "hash_table.h"
 
-//https://softwareengineering.stackexchange.com/questions/49550/which-hashing-algorithm-is-best-for-uniqueness-and-speed;
+// https://softwareengineering.stackexchange.com/questions/49550/which-hashing-algorithm-is-best-for-uniqueness-and-speed;
 static uint pow_mod(uint a, uint b, uint m)
 {
 	uint r;
