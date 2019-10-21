@@ -99,6 +99,7 @@ SRC = \
       src/get_next_line.c \
       src/t_buff.c \
       src/endian.c \
+      src/ft_error_exit.c \
       \
       src/printf/ft_printf.c \
       src/printf/spec_parse.c \
