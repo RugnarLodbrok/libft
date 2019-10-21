@@ -46,7 +46,7 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 //		if (v > EPSILON)
 //			printf("[FAIL]: f(%f) error =\t%.30f\n\t\t\t\t\t%.30f", x, v, EPSILON);
 	}
-	t = (double)(clock() - t0) / CLOCKS_PER_SEC * 100000000 / n;
+	t = (double)(clock() - t0) / CLOCKS_PER_SEC * 1000 * 1000 * 1000 / n;
 	if (t > time_ref * 1.1)
 		status = WARN;
 	if (max_err > ref_max * 1.1)
@@ -69,8 +69,16 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 
 void test_ft_math()
 {
-	test_double_f_x("ft_sin", &ft_sin, &sin, 0, PI, 1000000, 0.0078, 0.00097, 6.2);
-	test_double_f_x("ft_cos", &ft_cos, &cos, 0, PI, 1000000, 0.0078, 0.00092, 6.2);
-	test_double_f_x("ft_sqrt", &ft_sqrt, &sqrt, 0, 10000, 1000000, 0.14, 0.03, 12.5);
-	test_double_f_x("ft_log", &ft_log, &log, .000001, 77777, 666666, .14, .019, 16.4);
+	test_double_f_x("ft_sin", &ft_sin, &sin,
+					0, PI, 1000000,
+					0.0078, 0.00097, 62.);
+	test_double_f_x("ft_cos", &ft_cos, &cos,
+					0, PI, 1000000,
+					0.0078, 0.00092, 62.);
+	test_double_f_x("ft_sqrt", &ft_sqrt, &sqrt,
+					0, 10000, 1000000,
+					0.14, 0.03, 125.);
+	test_double_f_x("ft_log", &ft_log, &log,
+					.000001, 77777, 666666,
+					.14, .019, 164.);
 }
