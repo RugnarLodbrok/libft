@@ -67,6 +67,7 @@ SRC = \
       src/string/ft_tolower.c \
       src/string/ft_toupper.c \
       src/string/ft_strrev.c \
+      src/string/ft_startswith.c \
 	  \
 	  src/format/ft_itoa.c \
 	  src/format/ft_ultoa.c \

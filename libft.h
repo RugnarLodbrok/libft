@@ -102,6 +102,7 @@ size_t				ft_putchar_fd(char c, int fd);
 size_t				ft_putstr_fd(char *s, int fd);
 size_t				ft_putendl_fd(char *s, int fd);
 size_t				ft_putnbr_fd(int nb, int fd);
+int					ft_startswith(const char *s, const char *prefix);
 
 uint				ft_count_int_digits(long long int n, uint base);
 char				*ft_itoa(long long int n);
