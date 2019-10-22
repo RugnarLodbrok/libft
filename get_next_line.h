@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # define BUFF_SIZE 1024*32
-# define GNL_LAST_EMPTY_LINE_BEHAVIOUR 1
+# define GNL_LAST_EMPTY_LINE_BEHAVIOUR 0
 
 typedef struct	s_gnl_iterator_state
 {
