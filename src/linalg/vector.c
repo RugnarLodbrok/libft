@@ -9,6 +9,14 @@ t_vec t_vec_add(t_vec a, t_vec b)
 	return (a);
 }
 
+t_vec t_vec_sub(t_vec a, t_vec b)
+{
+	a.x -= b.x;
+	a.y -= b.y;
+	a.z -= b.z;
+	return (a);
+}
+
 double t_vec_len(t_vec v)
 {
 	return (ft_sqrt((v.x) * (v.x) + (v.y) * (v.y) + (v.z) * (v.z)));

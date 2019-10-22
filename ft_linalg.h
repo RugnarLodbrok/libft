@@ -18,6 +18,7 @@ typedef struct
 
 double	t_vec_len(t_vec v);
 t_vec	t_vec_add(t_vec a, t_vec b);
+t_vec	t_vec_sub(t_vec a, t_vec b);
 t_vec	t_vec_mul(t_vec a, double n);
 void	t_vec_scale(t_vec *v, double n);
 t_vec	*t_vec_normalize(t_vec *v);
