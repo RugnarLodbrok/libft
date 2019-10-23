@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_trig.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksticks <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/23 18:05:55 by ksticks           #+#    #+#             */
+/*   Updated: 2019/10/23 18:05:56 by ksticks          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static double trig_mod(double x)
+static double	trig_mod(double x)
 {
 	while (x > PI)
 		x -= PI;
@@ -9,13 +21,13 @@ static double trig_mod(double x)
 	return (x);
 }
 
-double ft_cos(double x)
+double			ft_cos(double x)
 {
-	int k;
-	double r;
-	double acc;
-	double den;
-	double num;
+	int		k;
+	double	r;
+	double	acc;
+	double	den;
+	double	num;
 
 	k = 1;
 	r = 1;
@@ -38,13 +50,13 @@ double ft_cos(double x)
 	return (r);
 }
 
-double ft_sin(double x)
+double			ft_sin(double x)
 {
-	int k;
-	double r;
-	double acc;
-	double den;
-	double num;
+	int		k;
+	double	r;
+	double	acc;
+	double	den;
+	double	num;
 
 	k = 2;
 	r = x;
@@ -67,18 +79,7 @@ double ft_sin(double x)
 	return (r);
 }
 
-double radians(double degrees)
+double			radians(double degrees)
 {
 	return (degrees * PI / 180.0);
-}
-
-double zx_sin(double x)
-{
-	double w;
-	double z;
-
-	x = trig_mod(x);
-	w = 4 * x;
-	z = 2 * w * w - 1;
-	return P(z) * w;
 }
