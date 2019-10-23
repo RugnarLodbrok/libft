@@ -21,17 +21,23 @@
 
 # ifndef ulong
 
-typedef unsigned long		ulong;
+typedef unsigned long		t_ulong;
+#  define ulong t_ulong
+
 # endif
 
 # ifndef ullong
 
-typedef unsigned long long	ullong;
+typedef unsigned long long	t_ullong;
+#  define ullong t_ullong
+
 # endif
 
 # ifndef uint
 
-typedef unsigned int		uint;
+typedef unsigned int		t_uint;
+#  define uint t_uint
+
 # endif
 
 # ifndef ULLONG_MAX
