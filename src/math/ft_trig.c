@@ -71,14 +71,3 @@ double radians(double degrees)
 {
 	return (degrees * PI / 180.0);
 }
-
-double zx_sin(double x)
-{
-	double w;
-	double z;
-
-	x = trig_mod(x);
-	w = 4 * x;
-	z = 2 * w * w - 1;
-	return P(z) * w;
-}

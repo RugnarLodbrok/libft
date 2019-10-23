@@ -1,25 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_log.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksticks <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/23 18:00:10 by ksticks           #+#    #+#             */
+/*   Updated: 2019/10/23 18:00:11 by ksticks          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_math.h"
 
-double ft_log(double x)
+static void	move_to_zero(double *x, double *r)
 {
-	double r;
-	int k;
-	double acc;
-	double num;
+	while (*x > 2 / (1 + 1 / E))
+	{
+		*x /= E;
+		*r += 1;
+	}
+	while (*x < 2 / (1 + 1 / E) / E)
+	{
+		*x *= E;
+		*r -= 1;
+	}
+}
+
+double		ft_log(double x)
+{
+	int		k;
+	double	r;
+	double	acc;
+	double	num;
 
 	if (x <= 0)
 		return (0);
 	r = 0;
-	while (x > 2 / (1 + 1 / E))
-	{
-		x /= E;
-		r += 1;
-	}
-	while (x < 2 / (1 + 1 / E) / E)
-	{
-		x *= E;
-		r -= 1;
-	}
+	move_to_zero(&x, &r);
 	x -= 1;
 	k = 1;
 	num = -1;
