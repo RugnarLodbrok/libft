@@ -9,6 +9,14 @@ t_vec t_vec_add(t_vec a, t_vec b)
 	return (a);
 }
 
+t_vec t_vec_sub(t_vec a, t_vec b)
+{
+	a.x -= b.x;
+	a.y -= b.y;
+	a.z -= b.z;
+	return (a);
+}
+
 double t_vec_len(t_vec v)
 {
 	return (ft_sqrt((v.x) * (v.x) + (v.y) * (v.y) + (v.z) * (v.z)));
@@ -83,8 +91,20 @@ t_vec t_vec_transform(t_vec v, t_mat A)
 {
 	t_vec r;
 
-	r.x = (A.data[0][0] * v.x + A.data[0][1] * v.y + A.data[0][2] * v.z) + A.data[0][3];
-	r.y = (A.data[1][0] * v.x + A.data[1][1] * v.y + A.data[1][2] * v.z) + A.data[1][3];
-	r.z = (A.data[2][0] * v.x + A.data[2][1] * v.y + A.data[2][2] * v.z) + A.data[2][3];
+	r.x = A.data[0][0] * v.x + A.data[0][1] * v.y + A.data[0][2] * v.z + A.data[0][3];
+	r.y = A.data[1][0] * v.x + A.data[1][1] * v.y + A.data[1][2] * v.z + A.data[1][3];
+	r.z = A.data[2][0] * v.x + A.data[2][1] * v.y + A.data[2][2] * v.z + A.data[2][3];
+	return (r);
+}
+
+t_vec t_vec_transform4(t_vec v, t_mat A)
+{
+	t_vec r;
+	double w;
+
+	w = A.data[3][0] * v.x + A.data[3][1] * v.y + A.data[3][2] * v.z + A.data[3][3];
+	r.x = (A.data[0][0] * v.x + A.data[0][1] * v.y + A.data[0][2] * v.z + A.data[0][3]) / w;
+	r.y = (A.data[1][0] * v.x + A.data[1][1] * v.y + A.data[1][2] * v.z + A.data[1][3]) / w;
+	r.z = (A.data[2][0] * v.x + A.data[2][1] * v.y + A.data[2][2] * v.z + A.data[2][3]) / w;
 	return (r);
 }
