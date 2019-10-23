@@ -45,7 +45,7 @@ void t_mat_translate(t_mat *m, t_vec v)
 	m->data[2][3] += v.z;
 }
 
-t_mat t_mat_mul(t_mat A, t_mat B)
+t_mat t_mat_mul(t_mat a, t_mat b)
 {
 	t_mat R;
 	int i;
@@ -62,7 +62,7 @@ t_mat t_mat_mul(t_mat A, t_mat B)
 			k = -1;
 			while (++k < MAT_RANK)
 			{
-				R.data[i][j] += A.data[i][k] * B.data[k][j];
+				R.data[i][j] += a.data[i][k] * b.data[k][j];
 			}
 		}
 	}

@@ -87,24 +87,24 @@ t_vec t_vec_cross(t_vec a, t_vec b)
 	return (r);
 }
 
-t_vec t_vec_transform(t_vec v, t_mat A)
+t_vec t_vec_transform(t_vec v, t_mat a)
 {
 	t_vec r;
 
-	r.x = A.data[0][0] * v.x + A.data[0][1] * v.y + A.data[0][2] * v.z + A.data[0][3];
-	r.y = A.data[1][0] * v.x + A.data[1][1] * v.y + A.data[1][2] * v.z + A.data[1][3];
-	r.z = A.data[2][0] * v.x + A.data[2][1] * v.y + A.data[2][2] * v.z + A.data[2][3];
+	r.x = a.data[0][0] * v.x + a.data[0][1] * v.y + a.data[0][2] * v.z + a.data[0][3];
+	r.y = a.data[1][0] * v.x + a.data[1][1] * v.y + a.data[1][2] * v.z + a.data[1][3];
+	r.z = a.data[2][0] * v.x + a.data[2][1] * v.y + a.data[2][2] * v.z + a.data[2][3];
 	return (r);
 }
 
-t_vec t_vec_transform4(t_vec v, t_mat A)
+t_vec t_vec_transform4(t_vec v, t_mat a)
 {
 	t_vec r;
 	double w;
 
-	w = A.data[3][0] * v.x + A.data[3][1] * v.y + A.data[3][2] * v.z + A.data[3][3];
-	r.x = (A.data[0][0] * v.x + A.data[0][1] * v.y + A.data[0][2] * v.z + A.data[0][3]) / w;
-	r.y = (A.data[1][0] * v.x + A.data[1][1] * v.y + A.data[1][2] * v.z + A.data[1][3]) / w;
-	r.z = (A.data[2][0] * v.x + A.data[2][1] * v.y + A.data[2][2] * v.z + A.data[2][3]) / w;
+	w = a.data[3][0] * v.x + a.data[3][1] * v.y + a.data[3][2] * v.z + a.data[3][3];
+	r.x = (a.data[0][0] * v.x + a.data[0][1] * v.y + a.data[0][2] * v.z + a.data[0][3]) / w;
+	r.y = (a.data[1][0] * v.x + a.data[1][1] * v.y + a.data[1][2] * v.z + a.data[1][3]) / w;
+	r.z = (a.data[2][0] * v.x + a.data[2][1] * v.y + a.data[2][2] * v.z + a.data[2][3]) / w;
 	return (r);
 }

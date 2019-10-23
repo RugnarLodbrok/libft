@@ -39,41 +39,41 @@ static void	sub_row(t_mat *A, t_mat *B, int i, int k, double c)
 	}
 }
 
-t_mat		t_mat_inverted(t_mat M)
+t_mat		t_mat_inverted(t_mat m)
 {
 	int i;
-	int m;
+	int n;
 	t_mat R;
 
 	t_mat_reset(&R);
-	m = -1;
-	while (++m < MAT_RANK)
+	n = -1;
+	while (++n < MAT_RANK)
 	{
-		if (M.data[m][m] < MAT_INVERT_EPS && M.data[m][m] > -MAT_INVERT_EPS)
+		if (m.data[n][n] < MAT_INVERT_EPS && m.data[n][n] > -MAT_INVERT_EPS)
 		{
-			i = m + 1 - 1;
+			i = n + 1 - 1;
 			while (++i < MAT_RANK)
-				if (M.data[i][m] > MAT_INVERT_EPS || M.data[i][m] < -MAT_INVERT_EPS)
+				if (m.data[i][n] > MAT_INVERT_EPS || m.data[i][n] < -MAT_INVERT_EPS)
 				{
-					swap_rows(&M, &R, m, i);
+					swap_rows(&m, &R, n, i);
 					break;
 				}
 		}
-		div_row(&M, &R, m, M.data[m][m]);
-		i = m + 1 - 1;
+		div_row(&m, &R, n, m.data[n][n]);
+		i = n + 1 - 1;
 		while (++i < MAT_RANK)
-			if (M.data[i][m])
-				sub_row(&M, &R, i, m, M.data[i][m] / M.data[m][m]);
+			if (m.data[i][n])
+				sub_row(&m, &R, i, n, m.data[i][n] / m.data[n][n]);
 	}
-	//	at this point M is a triangle matrix
-	m = MAT_RANK - 1 + 1;
-	while (--m >= 0)
+	//	at this point m is a triangle matrix
+	n = MAT_RANK - 1 + 1;
+	while (--n >= 0)
 	{
-		div_row(&M, &R, m, M.data[m][m]);
+		div_row(&m, &R, n, m.data[n][n]);
 		i = -1;
-		while (++i < m)
-			if (M.data[i][m])
-				sub_row(&M, &R, i, m, M.data[i][m] / M.data[m][m]);
+		while (++i < n)
+			if (m.data[i][n])
+				sub_row(&m, &R, i, n, m.data[i][n] / m.data[n][n]);
 	}
 	return (R);
 }
