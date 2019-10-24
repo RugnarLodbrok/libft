@@ -95,7 +95,7 @@ SRC = \
 	  src/hash_table/hash_table.c \
 	  src/hash_table/hash.c \
       \
-      src/ft_realloc.c \
+      src/ft_alloc.c \
       src/ft_swap.c \
       src/get_next_line.c \
       src/t_buff.c \

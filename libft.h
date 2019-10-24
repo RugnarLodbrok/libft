@@ -125,6 +125,7 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 void				*ft_realloc(void *ptr, size_t n, size_t len);
+void				*ft_calloc(size_t count, size_t size);
 
 void				*t_buff_init(t_buff *b, size_t size);
 size_t				t_buff_extend(t_buff *b);

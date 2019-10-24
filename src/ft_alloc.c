@@ -13,6 +13,16 @@
 #include <stdlib.h>
 #include "libft.h"
 
+void	*ft_calloc(size_t count, size_t size)
+{
+	void *r;
+
+	r = malloc(size * count);
+	if (r)
+		ft_bzero(r, size * count);
+	return (r);
+}
+
 void	*ft_realloc(void *ptr, size_t n, size_t len)
 {
 	void *ret;

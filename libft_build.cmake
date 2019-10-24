@@ -92,7 +92,7 @@ add_library(libft
 		src/linalg/matrix.c
 		src/linalg/vector.c
 
-		src/ft_realloc.c
+        src/ft_alloc.c
 		src/ft_swap.c
 		src/get_next_line.c
 		src/t_buff.c
