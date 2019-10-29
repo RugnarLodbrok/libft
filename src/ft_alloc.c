@@ -23,13 +23,13 @@ void	*ft_calloc(size_t count, size_t size)
 	return (r);
 }
 
-void	*ft_realloc(void *ptr, size_t n, size_t len)
+void	*ft_realloc(void *ptr, size_t new_size, size_t old_size)
 {
 	void *ret;
 
-	ret = malloc(n);
+	ret = malloc(new_size);
 	if (ret)
-		ft_memcpy(ret, ptr, len);
+		ft_memcpy(ret, ptr, old_size);
 	free(ptr);
 	return (ret);
 }

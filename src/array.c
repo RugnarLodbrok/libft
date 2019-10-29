@@ -19,8 +19,8 @@ static void *t_array_extend(t_array *a)
 {
 	a->size *= 2;
 	a->data = ft_realloc(a->data,
-						 a->count * a->item_size,
-						 a->size * a->item_size);
+						 a->size * a->item_size,
+						 a->count * a->item_size);
 	return (a->data);
 }
 
