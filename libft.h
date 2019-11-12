@@ -148,6 +148,7 @@ void				t_array_del(t_array *a);
 void				ft_swap(void **a, void **b);
 void				ft_swap_int(int *a, int *b);
 void				ft_swap_char(char *a, char *b);
+void				ft_swap_double(double *a, double *b);
 
 int					endian();
 void				ft_error_exit(const char *msg, ...);

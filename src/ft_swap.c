@@ -28,6 +28,15 @@ void	ft_swap_int(int *a, int *b)
 	*b = tmp;
 }
 
+void	ft_swap_double(double *a, double *b)
+{
+	double tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
 void	ft_swap_char(char *a, char *b)
 {
 	char tmp;
