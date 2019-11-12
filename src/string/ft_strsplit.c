@@ -42,13 +42,13 @@ static int	count_chunks(const char *s, char c)
 	}
 }
 
-static char	**clear(char **p)
+char		**ft_strsplit_clear(char **p)
 {
-	char *ptr;
+	int i;
 
-	ptr = *p;
-	while (ptr)
-		free(ptr++);
+	i = 0;
+	while (p[i])
+		free(p[i++]);
 	free(p);
 	return (0);
 }
