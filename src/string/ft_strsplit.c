@@ -73,7 +73,7 @@ char		**ft_strsplit(char const *s, char c)
 		}
 		l = chunk_len(s, c);
 		if (!(*ptr = malloc(sizeof(char) * (l + 1))))
-			return (clear(ret));
+			return (ft_strsplit_clear(ret));
 		(*ptr)[l] = 0;
 		ft_strncpy(*ptr++, s, l);
 		s += l;
