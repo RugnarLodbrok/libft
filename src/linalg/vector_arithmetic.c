@@ -12,7 +12,7 @@
 
 #include "ft_linalg.h"
 
-t_vec t_vec_add(t_vec a, t_vec b)
+t_vec	t_vec_add(t_vec a, t_vec b)
 {
 	a.x += b.x;
 	a.y += b.y;
@@ -20,7 +20,7 @@ t_vec t_vec_add(t_vec a, t_vec b)
 	return (a);
 }
 
-t_vec t_vec_sub(t_vec a, t_vec b)
+t_vec	t_vec_sub(t_vec a, t_vec b)
 {
 	a.x -= b.x;
 	a.y -= b.y;
@@ -28,12 +28,12 @@ t_vec t_vec_sub(t_vec a, t_vec b)
 	return (a);
 }
 
-double t_vec_dot(t_vec a, t_vec b)
+double	t_vec_dot(t_vec a, t_vec b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
-t_vec t_vec_cross(t_vec a, t_vec b)
+t_vec	t_vec_cross(t_vec a, t_vec b)
 {
 	t_vec r;
 

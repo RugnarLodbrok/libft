@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vector.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksticks <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/14 18:52:31 by ksticks           #+#    #+#             */
+/*   Updated: 2019/11/14 18:52:32 by ksticks          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "ft_linalg.h"
 
-double t_vec_len(t_vec v)
+double	t_vec_len(t_vec v)
 {
 	return (ft_sqrt((v.x) * (v.x) + (v.y) * (v.y) + (v.z) * (v.z)));
 }
 
-t_vec *t_vec_normalize(t_vec *v)
+t_vec	*t_vec_normalize(t_vec *v)
 {
 	double len;
 
@@ -26,14 +38,14 @@ t_vec *t_vec_normalize(t_vec *v)
 	return (v);
 }
 
-void t_vec_scale(t_vec *v, double n)
+void	t_vec_scale(t_vec *v, double n)
 {
 	v->x *= n;
 	v->y *= n;
 	v->z *= n;
 }
 
-t_vec t_vec_mul(t_vec a, double n)
+t_vec	t_vec_mul(t_vec a, double n)
 {
 	t_vec r;
 
@@ -43,7 +55,7 @@ t_vec t_vec_mul(t_vec a, double n)
 	return (r);
 }
 
-void t_vec_decay(t_vec *v, double x)
+void	t_vec_decay(t_vec *v, double x)
 {
 	double len;
 
@@ -51,7 +63,7 @@ void t_vec_decay(t_vec *v, double x)
 	if (len <= x)
 	{
 		ft_bzero(v, sizeof(t_vec));
-		return;
+		return ;
 	}
 	*v = t_vec_mul(*v, (len - x) / len);
 }

@@ -14,7 +14,7 @@
 # define FT_LINALG_H
 
 # define MAT_RANK 4
-# define MAT_INVERT_EPS 0.1
+# define MAT_INV_C 0.1
 
 typedef struct	s_vec
 {
