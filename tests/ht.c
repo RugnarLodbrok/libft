@@ -77,6 +77,7 @@ void test_ht_perf(double time_ref, double coll_ratio_ref)
 
 	if (access(f_name, F_OK) == -1)
 		system("wget https://raw.githubusercontent.com/dwyl/english-words/master/words.txt");
+//		system("curl https://raw.githubusercontent.com/dwyl/english-words/master/words.txt > words.txt");
 
 	t_ht_init(&t, 10);
 	fd = open(f_name, O_RDONLY);

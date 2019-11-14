@@ -40,6 +40,7 @@ static void t_ht_resize(t_ht *t, int new_size)
 	t_ht t2;
 	int i;
 	t_ht_item *item;
+	t_ht_item *tmp;
 
 	if (new_size < HT_MIN_SIZE)
 		return;
@@ -51,8 +52,9 @@ static void t_ht_resize(t_ht *t, int new_size)
 		while (item)
 		{
 			t_ht_set(&t2, item->k, item->v);
+			tmp = item->next;
 			t_ht_item_del(item);
-			item = item->next;
+			item = tmp;
 		}
 		i++;
 	}
