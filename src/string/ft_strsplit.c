@@ -42,13 +42,13 @@ static int	count_chunks(const char *s, char c)
 	}
 }
 
-static char	**clear(char **p)
+char		**ft_strsplit_clear(char **p)
 {
-	char *ptr;
+	int i;
 
-	ptr = *p;
-	while (ptr)
-		free(ptr++);
+	i = 0;
+	while (p[i])
+		free(p[i++]);
 	free(p);
 	return (0);
 }
@@ -73,7 +73,7 @@ char		**ft_strsplit(char const *s, char c)
 		}
 		l = chunk_len(s, c);
 		if (!(*ptr = malloc(sizeof(char) * (l + 1))))
-			return (clear(ret));
+			return (ft_strsplit_clear(ret));
 		(*ptr)[l] = 0;
 		ft_strncpy(*ptr++, s, l);
 		s += l;

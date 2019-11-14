@@ -22,13 +22,14 @@ t_vec t_vec_transform(t_vec v, t_mat a)
 	return (r);
 }
 
-t_vec t_vec_transform4(t_vec v, t_mat a, double *w)
+t_vec t_vec_transform4(t_vec v, t_mat a)
 {
 	t_vec r;
+	double w;
 
-	*w = a.data[3][0] * v.x + a.data[3][1] * v.y + a.data[3][2] * v.z + a.data[3][3];
-	r.x = (a.data[0][0] * v.x + a.data[0][1] * v.y + a.data[0][2] * v.z + a.data[0][3]);
-	r.y = (a.data[1][0] * v.x + a.data[1][1] * v.y + a.data[1][2] * v.z + a.data[1][3]);
-	r.z = (a.data[2][0] * v.x + a.data[2][1] * v.y + a.data[2][2] * v.z + a.data[2][3]);
+	w = a.data[3][0] * v.x + a.data[3][1] * v.y + a.data[3][2] * v.z + a.data[3][3];
+	r.x = (a.data[0][0] * v.x + a.data[0][1] * v.y + a.data[0][2] * v.z + a.data[0][3]) / w;
+	r.y = (a.data[1][0] * v.x + a.data[1][1] * v.y + a.data[1][2] * v.z + a.data[1][3]) / w;
+	r.z = (a.data[2][0] * v.x + a.data[2][1] * v.y + a.data[2][2] * v.z + a.data[2][3]) / w;
 	return (r);
 }

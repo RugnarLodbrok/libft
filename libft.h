@@ -102,6 +102,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
+char				**ft_strsplit_clear(char **p);
 size_t				ft_putchar(char c);
 size_t				ft_putstr(char *s);
 size_t				ft_putendl(char *s);
@@ -147,6 +148,7 @@ void				t_array_del(t_array *a);
 void				ft_swap(void **a, void **b);
 void				ft_swap_int(int *a, int *b);
 void				ft_swap_char(char *a, char *b);
+void				ft_swap_double(double *a, double *b);
 
 int					endian();
 void				ft_error_exit(const char *msg, ...);
