@@ -91,6 +91,8 @@ SRC = \
 	  src/linalg/matrix.c \
 	  src/linalg/matrix_invert.c \
 	  src/linalg/vector.c \
+	  src/linalg/vector_arithmetic.c \
+	  src/linalg/vector_transform.c \
 	  \
 	  src/hash_table/hash_table.c \
 	  src/hash_table/hash.c \
