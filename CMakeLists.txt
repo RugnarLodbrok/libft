@@ -96,6 +96,8 @@ add_executable(libft_tests
 
 		src/linalg/matrix.c
 		src/linalg/matrix_invert.c
+		src/linalg/matrix_arithmetic.c
+		src/linalg/matrix_transform.c
 		src/linalg/vector.c
 		src/linalg/vector_arithmetic.c
 		src/linalg/vector_transform.c

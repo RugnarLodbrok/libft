@@ -41,7 +41,10 @@ t_vec			t_vec_transform4(t_vec v, t_mat a);
 
 void			t_vec_decay(t_vec *v, double x);
 t_mat			*t_mat_reset(t_mat *m);
+t_mat			*t_mat_add_ref(t_mat *a, t_mat *b);
 t_mat			t_mat_mul(t_mat a, t_mat b);
+t_mat			t_mat_mul_ref(t_mat *a, t_mat *b);
+t_mat			*t_mat_mul_c(t_mat *m, double c);
 t_mat			t_mat_rot(t_vec axis, double theta);
 t_mat			t_mat_rotation(t_vec axis, double theta, t_vec p);
 t_mat			t_mat_inverted(t_mat m);
