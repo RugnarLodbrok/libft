@@ -59,15 +59,15 @@ double			ft_sin(double x)
 	double	num;
 
 	k = 2;
-	r = x;
 	acc = 1;
 	den = 1;
-	num = x;
 	x = trig_mod(x);
 	if (x > PI / 2)
 		return (ft_sin(PI - x));
 	if (x < -PI / 2)
 		return (ft_sin(-PI - x));
+	r = x;
+	num = x;
 	while (acc > EPSILON || acc < -EPSILON)
 	{
 		num *= -x * x;
