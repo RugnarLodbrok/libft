@@ -19,7 +19,9 @@
 # define PI DOUBLE_PI
 # define E 2.7182818284590452353602874713527
 
-// https://albertveli.wordpress.com/2015/01/10/zx-sine/
+/*
+** https://albertveli.wordpress.com/2015/01/10/zx-sine/
+*/
 
 # include "libft_compat.h"
 

@@ -44,13 +44,13 @@ typedef struct		s_point
 	int	y;
 }					t_point;
 
-typedef struct	s_array
+typedef struct		s_array
 {
 	size_t	item_size;
 	int		count;
 	int		size;
 	void	*data;
-}				t_array;
+}					t_array;
 
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
