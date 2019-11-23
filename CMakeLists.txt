@@ -12,14 +12,7 @@ include_directories(headers)
 #target_link_libraries(<exe_name> LINK_PUBLIC ${FT})
 #---------------------------------------------------
 
-#add_library(libft.a
-add_executable(libft_tests
-		tests/tests_main.c
-		tests/gnl.c
-		tests/tests_printf.c
-		tests/tests_math.c
-		tests/ht.c
-
+add_library(libft
 		src/string/ft_atoi.c
 		src/string/ft_bzero.c
 		src/string/ft_isalnum.c
@@ -120,4 +113,13 @@ add_executable(libft_tests
 		src/printf/convert.c
 		src/printf/apply_fw.c
 		)
-target_link_libraries(libft_tests m)
+
+add_executable(libft_tests
+		tests/tests_main.c
+		tests/gnl.c
+		tests/tests_printf.c
+		tests/tests_math.c
+		tests/ht.c
+		)
+
+target_link_libraries(libft_tests libft)

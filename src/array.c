@@ -24,7 +24,7 @@ void		*t_array_get(t_array *a, int i)
 {
 	if (i >= a->count)
 		return (0);
-	return (a->data + i * a->item_size);
+	return ((char*)a->data + i * a->item_size);
 }
 
 static void	*t_array_extend(t_array *a)
@@ -41,9 +41,9 @@ void		*t_array_push(t_array *a, void *content)
 	if (a->count == a->size - 1)
 		if (!t_array_extend(a))
 			return (0);
-	ft_memcpy(a->data + a->item_size * a->count, content, a->item_size);
+	ft_memcpy((char*)a->data + a->item_size * a->count, content, a->item_size);
 	a->count++;
-	return (a->data + a->item_size * (a->count - 1));
+	return ((char*)a->data + a->item_size * (a->count - 1));
 }
 
 void		t_array_del(t_array *a)
