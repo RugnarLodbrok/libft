@@ -13,12 +13,6 @@ include_directories(headers)
 #---------------------------------------------------
 
 add_library(libft
-#add_executable(libft_tests
-#		tests/tests_main.c
-#		tests/gnl.c
-#		tests/tests_printf.c
-#		tests/tests_math.c
-
 		src/string/ft_atoi.c
 		src/string/ft_bzero.c
 		src/string/ft_isalnum.c
@@ -54,6 +48,7 @@ add_library(libft
 		src/string/ft_striteri.c
 		src/string/ft_strjoin.c
 		src/string/ft_strlcat.c
+		src/string/ft_strlcpy.c
 		src/string/ft_strlen.c
 		src/string/ft_strmap.c
 		src/string/ft_strmapi.c
@@ -70,10 +65,13 @@ add_library(libft
 		src/string/ft_strtrim.c
 		src/string/ft_tolower.c
 		src/string/ft_toupper.c
+		src/string/ft_strrev.c
+		src/string/ft_startswith.c
 
 		src/format/ft_itoa.c
 		src/format/ft_ultoa.c
 		src/format/ft_ftoa.c
+		src/format/ft_ftobin.c
 
 		src/list/ft_lstadd.c
 		src/list/ft_lstaddend.c
@@ -90,15 +88,29 @@ add_library(libft
 		src/math/ft_log.c
 
 		src/linalg/matrix.c
+		src/linalg/matrix_invert.c
+		src/linalg/matrix_arithmetic.c
+		src/linalg/matrix_transform.c
 		src/linalg/vector.c
+		src/linalg/vector_arithmetic.c
+		src/linalg/vector_transform.c
 
-        src/ft_alloc.c
+		src/hash_table/hash_table.c
+		src/hash_table/hash_table2.c
+		src/hash_table/hash.c
+
+		src/ft_alloc.c
 		src/ft_swap.c
 		src/get_next_line.c
 		src/t_buff.c
+		src/array.c
 		src/endian.c
+		src/ft_error_exit.c
 
 		src/printf/ft_printf.c
+		src/printf/spec_parse.c
 		src/printf/conversion.c
+		src/printf/convert.c
+		src/printf/apply_fw.c
 		)
 #target_link_libraries(libft_tests m)
