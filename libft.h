@@ -18,6 +18,7 @@
 
 # include "libft_compat.h"
 # include "ft_math.h"
+# include "array.h"
 
 # define CHECK0RET(x, r) if (!(x)) return (r)
 # define CHECK0RET0(x) CHECK0RET(x, 0)
@@ -43,14 +44,6 @@ typedef struct		s_point
 	int	x;
 	int	y;
 }					t_point;
-
-typedef struct		s_array
-{
-	size_t	item_size;
-	int		count;
-	int		size;
-	void	*data;
-}					t_array;
 
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
@@ -139,11 +132,6 @@ void				*ft_calloc(size_t count, size_t size);
 void				*t_buff_init(t_buff *b, size_t size);
 size_t				t_buff_extend(t_buff *b);
 int					t_buff_append(t_buff *b, void *data, size_t len);
-
-void				t_array_init(t_array *a, size_t item_size);
-void				*t_array_get(t_array *a, int i);
-void				*t_array_push(t_array *a, void *content);
-void				t_array_del(t_array *a);
 
 void				ft_swap(void **a, void **b);
 void				ft_swap_int(int *a, int *b);
