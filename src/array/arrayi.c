@@ -29,7 +29,6 @@ int			t_arrayi_push(t_arrayi *a, int v)
 		if (!t_arrayi_extend(a))
 			return (0);
 	a->data[a->count] = v;
-	a->count++;
 	return ++a->count;
 }
 
