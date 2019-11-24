@@ -37,7 +37,7 @@ static int compare_prints(char *format, ...)
 		return -1;
 	}
 	va_start(ap, format);
-	ret1 = ft_printf_ap(fd, format, ap);
+	ret1 = ft_printf_ap(fd, format, &ap);
 	va_end(ap);
 	close(fd);
 	CHECK1RET1(read_to_buff("tmp.txt", buff1, BUFF_SIZE));
@@ -59,13 +59,14 @@ static int compare_prints(char *format, ...)
 			printf("\tgot:\t\t`%s`\n\texpected:\t`%s`\n", buff1, buff2);
 	}
 	else if (ret1 != ret2)
-		printf("%s:\t%s\treturn expected %d got %d\n", FAIL, format, ret2, ret1);
+		printf("%s:\t%s\treturn expected %d got %d\n", FAIL, format, ret2,
+			   ret1);
 	else
 		printf("%s:\t\t%s -> `%s`\n", OK, format, buff1);
 	return (0);
 }
 
-void test_ft_printf()
+static void printf_test_cases()
 {
 	compare_prints("abc");
 	compare_prints("%#+3lc", '!');
@@ -277,6 +278,12 @@ void test_ft_printf()
 	compare_prints("%5+c", '!'); // edrowzee
 	compare_prints("|%5+d|", 5); // edrowzee
 	compare_prints("%03lc", '!');
-	compare_prints("undefined %l#X behaviour", (ulong)123456789 * 100); //not copying undefined behaviour
+	compare_prints("undefined %l#X behaviour",
+				   (ulong)123456789 * 100); //not copying undefined behaviour
 	compare_prints("%yX", (ulong)123456789 * 100);
+}
+
+void test_ft_printf()
+{
+	printf_test_cases();
 }

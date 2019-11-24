@@ -16,51 +16,51 @@
 #include "libft_compat.h"
 
 static void	ft_printf_conversion_di(char *b, t_printf_arg *v,
-			t_printf_spec *s, va_list ap)
+			t_printf_spec *s, va_list *ap)
 {
 	if (!ft_strcmp(s->modifiers, "ll"))
-		v->d = va_arg(ap, long long int);
+		v->d = va_arg(*ap, long long int);
 	else if (!ft_strcmp(s->modifiers, "l"))
-		v->d = va_arg(ap, long int);
+		v->d = va_arg(*ap, long int);
 	else if (!ft_strcmp(s->modifiers, "hh"))
-		v->d = (signed char)va_arg(ap, int);
+		v->d = (signed char)va_arg(*ap, int);
 	else if (!ft_strcmp(s->modifiers, "h"))
-		v->d = (short int)va_arg(ap, int);
+		v->d = (short int)va_arg(*ap, int);
 	else if (!ft_strcmp(s->modifiers, ""))
-		v->d = va_arg(ap, int);
+		v->d = va_arg(*ap, int);
 	convert_int(b, v->d, s);
 }
 
 static void	ft_printf_conversion_uox(char *b, t_printf_arg *v,
-			t_printf_spec *s, va_list ap)
+			t_printf_spec *s, va_list *ap)
 {
 	if (!ft_strcmp(s->modifiers, "ll"))
-		v->u = va_arg(ap, ullong);
+		v->u = va_arg(*ap, ullong);
 	else if (!ft_strcmp(s->modifiers, "l"))
-		v->u = va_arg(ap, ulong);
+		v->u = va_arg(*ap, ulong);
 	else if (!ft_strcmp(s->modifiers, "hh"))
-		v->u = (unsigned char)va_arg(ap, uint);
+		v->u = (unsigned char)va_arg(*ap, uint);
 	else if (!ft_strcmp(s->modifiers, "h"))
-		v->u = (unsigned short int)va_arg(ap, uint);
+		v->u = (unsigned short int)va_arg(*ap, uint);
 	else if (!ft_strcmp(s->modifiers, ""))
-		v->u = va_arg(ap, uint);
+		v->u = va_arg(*ap, uint);
 	convert_uint(b, v->u, s);
 }
 
 static void	ft_printf_conversion_fp(char *b, t_printf_arg *v,
-			t_printf_spec *s, va_list ap)
+			t_printf_spec *s, va_list *ap)
 {
 	if (s->type == 'f')
 	{
 		if (!ft_strcmp("L", s->modifiers))
-			v->f = va_arg(ap, long double);
+			v->f = va_arg(*ap, long double);
 		else
-			v->f = va_arg(ap, double);
+			v->f = va_arg(*ap, double);
 		convert_double(b, v->f, s);
 	}
 	else
 	{
-		v->u = (ulong)va_arg(ap, void*);
+		v->u = (ulong)va_arg(*ap, void*);
 		if (v->u || s->precision)
 			ft_ultoa_buf(b, v->u, 16);
 		while ((int)ft_strlen(b) < s->precision)
@@ -70,7 +70,7 @@ static void	ft_printf_conversion_fp(char *b, t_printf_arg *v,
 	}
 }
 
-static int	ft_printf_conversion_c(int fd, t_printf_spec *s, va_list ap)
+static int	ft_printf_conversion_c(int fd, t_printf_spec *s, va_list *ap)
 {
 	char			b[256];
 	size_t			len;
@@ -79,12 +79,12 @@ static int	ft_printf_conversion_c(int fd, t_printf_spec *s, va_list ap)
 	b[0] = 'Q';
 	apply_fw(b, *s);
 	len = ft_strlen(b);
-	*ft_strchr(b, 'Q') = (char)va_arg(ap, int);
+	*ft_strchr(b, 'Q') = (char)va_arg(*ap, int);
 	ft_putstr_fd(b, fd);
 	return (len);
 }
 
-int			ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
+int			ft_printf_conversion(int fd, va_list *ap, t_printf_spec s)
 {
 	char			b[256];
 	t_printf_arg	v;
@@ -99,7 +99,7 @@ int			ft_printf_conversion(int fd, va_list ap, t_printf_spec s)
 	else if (s.type == 'c')
 		return (ft_printf_conversion_c(fd, &s, ap));
 	else if (s.type == 's')
-		return (convert_string(fd, 0, s, va_arg(ap, char*)));
+		return (convert_string(fd, 0, s, va_arg(*ap, char*)));
 	else if (s.type == '%')
 		ft_strcpy(b, "%");
 	else
