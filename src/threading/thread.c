@@ -24,6 +24,7 @@ static THREAD_F_TYPE t_thread_func(void *p)
 t_thread t_thread_create(void (*f)(void *p), void *p)
 {
 	t_thread t;
+
 	t.handle = 0;
 	t.is_started = 0;
 	t.is_finished = 0;
@@ -44,7 +45,7 @@ int t_thread_start(t_thread *t)
 			NULL);
 	if (t->handle)
 		t->is_started = 1;
-	return t->is_started;
+	return (t->is_started);
 #else
 	if (!pthread_create(
 			&t->handle,
@@ -52,7 +53,7 @@ int t_thread_start(t_thread *t)
 			t_thread_func,
 			t))
 		t->is_started = 1;
-	return t->is_started;
+	return (t->is_started);
 #endif
 }
 
@@ -63,12 +64,11 @@ int t_thread_wait(t_thread *t, int millis)
 
 	ret = WaitForSingleObject(t->handle, millis);
 	if (ret == WAIT_TIMEOUT)
-		return 0;
-	return 1;
+		return (0);
+	return (1);
 #else
 	(void)millis;
 	pthread_join(t->handle, NULL);
 	return (1);
 #endif
 }
-
