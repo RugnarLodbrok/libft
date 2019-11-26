@@ -42,7 +42,7 @@ typedef union
 t_printf_spec		parse_printf_spec(char **ptr);
 void				prepend_str(char *buff, const char *s);
 int					ft_printf_ap(int fd,
-					const char *format, va_list *ap);
+					const char *format, va_list ap);
 int					ft_printf_conversion(int fd,
 					va_list *ap, t_printf_spec s);
 char				*convert_uint(char *b, unsigned long long int v,

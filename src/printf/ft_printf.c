@@ -15,7 +15,7 @@
 #include "libft_compat.h"
 #include "ft_printf.h"
 
-int	ft_printf_ap(int fd, const char *format, va_list *ap)
+int	ft_printf_ap(int fd, const char *format, va_list ap)
 {
 	char			*ptr;
 	char			*ptr1;
@@ -30,7 +30,7 @@ int	ft_printf_ap(int fd, const char *format, va_list *ap)
 		r += write(fd, ptr1, ptr - ptr1);
 		spec = parse_printf_spec(&ptr);
 		if (spec.type)
-			r += ft_printf_conversion(fd, ap, spec);
+			r += ft_printf_conversion(fd, (va_list*)&ap, spec);
 		ptr1 = ptr;
 	}
 	r += ft_putstr_fd(ptr1, fd);
@@ -43,7 +43,7 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 
 	va_start(ap, format);
-	r = ft_printf_ap(1, format, &ap);
+	r = ft_printf_ap(1, format, ap);
 	va_end(ap);
 	return (r);
 }
@@ -54,7 +54,7 @@ int	ft_fprintf(int fd, const char *format, ...)
 	va_list	ap;
 
 	va_start(ap, format);
-	r = ft_printf_ap(fd, format, &ap);
+	r = ft_printf_ap(fd, format, ap);
 	va_end(ap);
 	return (r);
 }

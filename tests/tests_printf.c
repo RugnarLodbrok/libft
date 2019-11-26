@@ -37,7 +37,7 @@ static int compare_prints(char *format, ...)
 		return -1;
 	}
 	va_start(ap, format);
-	ret1 = ft_printf_ap(fd, format, &ap);
+	ret1 = ft_printf_ap(fd, format, ap);
 	va_end(ap);
 	close(fd);
 	CHECK1RET1(read_to_buff("tmp.txt", buff1, BUFF_SIZE));
