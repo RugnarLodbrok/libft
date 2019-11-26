@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   arrayi.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksticks <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/26 18:07:27 by ksticks           #+#    #+#             */
+/*   Updated: 2019/11/26 18:07:29 by ksticks          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	t_arrayi_init(t_arrayi *a)
@@ -9,7 +21,7 @@ void	t_arrayi_init(t_arrayi *a)
 
 int		t_arrayi_get(t_arrayi *a, int i, int default_v)
 {
-	if (i >= a->count)
+	if ((uint)i >= a->count)
 		return (default_v);
 	return a->data[i];
 }

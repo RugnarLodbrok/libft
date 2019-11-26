@@ -22,7 +22,7 @@ void		t_array_init(t_array *a, size_t item_size)
 
 void		*t_array_get(t_array *a, int i)
 {
-	if (i >= a->count)
+	if ((uint)i >= a->count)
 		return (0);
 	return ((char*)a->data + i * a->item_size);
 }
