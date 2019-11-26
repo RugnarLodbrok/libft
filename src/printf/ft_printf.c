@@ -30,7 +30,7 @@ int	ft_printf_ap(int fd, const char *format, va_list ap)
 		r += write(fd, ptr1, ptr - ptr1);
 		spec = parse_printf_spec(&ptr);
 		if (spec.type)
-			r += ft_printf_conversion(fd, (va_list*)&ap, spec);
+			r += ft_printf_conversion(fd, MAKE_VA_LIST_PTR(ap), spec);
 		ptr1 = ptr;
 	}
 	r += ft_putstr_fd(ptr1, fd);

@@ -63,7 +63,7 @@ static int	do_next_reads(int fd, t_buff *b, t_gnl_state *s)
 t_gnl_state	*gnl_state_get(t_list **lst, const int fd)
 {
 	t_list		*e;
-	t_gnl_state	*s;
+	t_gnl_state	s;
 
 	e = *lst;
 	while (e)
@@ -72,14 +72,10 @@ t_gnl_state	*gnl_state_get(t_list **lst, const int fd)
 			return (e->content);
 		e = e->next;
 	}
-	CHECK0RET0(s = malloc(sizeof(t_gnl_state)));
-	ft_bzero(s, sizeof(t_gnl_state));
-	s->fd = fd;
-	if (!(e = ft_lstnew(s, sizeof(t_gnl_state))))
-	{
-		free(s);
+	ft_bzero(&s, sizeof(t_gnl_state));
+	s.fd = fd;
+	if (!(e = ft_lstnew(&s, sizeof(t_gnl_state))))
 		return (0);
-	}
 	ft_lstadd(lst, e);
 	return (e->content);
 }
