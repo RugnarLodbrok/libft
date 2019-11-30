@@ -13,6 +13,12 @@
 
 typedef struct
 {
+	int i;
+	int c;
+} t_thread_id;
+
+typedef struct
+{
 	T_THREAD_ID handle;
 	void (*f)(void *p);
 	void *p;
@@ -24,9 +30,8 @@ typedef struct
 typedef struct
 {
 	t_thread thread;
-	int n;
-	int i;
-	void (*f)(void *p, int threads_n, int threads_i);
+	t_thread_id ti;
+	void (*f)(void *p, t_thread_id ti);
 	void *p;
 } t_tpool_worker;
 
@@ -41,7 +46,7 @@ int t_thread_start(t_thread *t);
 int t_thread_wait(t_thread *t, int millis);
 
 t_tpool t_tpool_create(int n,
-					   void (*f)(void *p, int threads_n, int threads_i),
+					   void (*f)(void *p, t_thread_id ti),
 					   void *p);
 void t_poool_start(t_tpool *pool);
 
