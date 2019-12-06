@@ -104,6 +104,7 @@ add_library(libft
 		src/get_next_line.c
 		src/t_buff.c
 		src/endian.c
+		src/swatch.c
 		src/ft_error_exit.c
 
 		src/array/array.c
@@ -121,6 +122,7 @@ add_executable(libft_tests
 		tests/gnl.c
 		tests/tests_printf.c
 		tests/tests_math.c
+		tests/val_vs_ref_benchmark.c
 		tests/ht.c
 		)
 
