@@ -1,28 +1,8 @@
 #include <math.h>
 #include <stdio.h>
-#include "ft_math.h"
+#include "libft.h"
 #include "tests.h"
-#include <time.h>
 
-/*void performance()
-{
-	int i;
-	double x;
-	int n = ft_pow(10, 7);
-//	int n = 100;
-	double sup = 3;
-	double step = sup / n;
-	double y;
-
-	for (x = 0; x < sup; x += step)
-	{
-//		printf("%f, %f\n", x, ft_cos(x) - cos(x));
-		y = ft_sqrt(x);
-//		y = sqrt(x);
-//		y = cos(x);
-	}
-}
-*/
 void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 					 double start, double stop, int n,
 					 double ref_max, double ref_avg, double time_ref)
@@ -33,10 +13,9 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 	double max_err = 0;
 	double total_err = 0;
 	char *status = OK;
-	clock_t t0;
 	double t;
 
-	t0 = clock();
+	swatch();
 	for (x = start; x < stop; x += step)
 	{
 		v = ft_fabs(f(x) - f_ref(x));
@@ -46,7 +25,7 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 //		if (v > EPSILON)
 //			printf("[FAIL]: f(%f) error =\t%.30f\n\t\t\t\t\t%.30f", x, v, EPSILON);
 	}
-	t = (double)(clock() - t0) / CLOCKS_PER_SEC * 1000 * 1000 * 1000 / n;
+	t = swatch() * 1000 * 1000 * 1000 / n;
 	if (t > time_ref * 1.1)
 		status = WARN;
 	if (max_err > ref_max * 1.1)
