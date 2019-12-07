@@ -13,6 +13,7 @@
 #ifndef LIBFT_COMPAT_H
 # define LIBFT_COMPAT_H
 
+# include "limits.h"
 # ifdef _WIN32
 #  include <io.h>
 #  define sleep(x) _sleep(x)

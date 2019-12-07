@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "libft.h"
 #include "ft_linalg.h"
 
@@ -38,8 +39,8 @@ t_mat	t_mat_rot(t_vec axis, double theta)
 	w.data[2][2] = 0;
 	w.data[3][3] = 1;
 	w2 = t_mat_mul_ref(&w, &w);
-	t_mat_mul_c(&w, ft_sin(theta));
-	t_mat_mul_c(&w2, 1 - ft_cos(theta));
+	t_mat_mul_c(&w, sin(theta));
+	t_mat_mul_c(&w2, 1 - cos(theta));
 	w.data[0][0] += 1.;
 	w.data[1][1] += 1.;
 	w.data[2][2] += 1.;

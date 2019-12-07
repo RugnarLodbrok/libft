@@ -12,10 +12,11 @@
 
 #include "libft.h"
 #include "ft_linalg.h"
+#include <math.h>
 
 double	t_vec_len(t_vec v)
 {
-	return (ft_sqrt((v.x) * (v.x) + (v.y) * (v.y) + (v.z) * (v.z)));
+	return (sqrt((v.x) * (v.x) + (v.y) * (v.y) + (v.z) * (v.z)));
 }
 
 t_vec	*t_vec_normalize(t_vec *v)

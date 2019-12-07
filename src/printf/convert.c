@@ -17,7 +17,7 @@
 
 void			prepend_str(char *buff, const char *s)
 {
-	int len;
+	size_t len;
 
 	len = ft_strlen(s);
 	ft_memmove(buff + len, buff, ft_strlen(buff) + 1);
