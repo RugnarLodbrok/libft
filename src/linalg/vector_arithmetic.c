@@ -42,3 +42,9 @@ t_vec	t_vec_cross(t_vec a, t_vec b)
 	r.z = a.x * b.y - a.y * b.x;
 	return (r);
 }
+
+t_vec	t_vec_proj(t_vec a, t_vec b)
+{
+	t_vec_scale(&b, t_vec_dot(a, b)/t_vec_dot(b, b));
+	return (b);
+}

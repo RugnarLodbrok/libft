@@ -16,5 +16,6 @@ void test_gnl();
 void test_ft_printf();
 void test_ft_math();
 void test_ht();
+void val_vs_ref_benchmark();
 
 #endif

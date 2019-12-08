@@ -3,7 +3,19 @@
 
 # define MLX_EVENT_KEY_PRESS 2
 # define MLX_EVENT_KEY_RELEASE 3
+# define MLX_EVENT_MOUSE_PRESS 4
+# define MLX_EVENT_MOUSE_RELEASE 5
+# define MLX_EVENT_MOUSE_MOVE 6
+# define MLX_EVENT_EXPOSE 12
 # define MLX_EVENT_EXIT 17
+
+# define MOUSE_B_LEFT  1
+# define MOUSE_B_RIGHT  2
+# define MOUSE_B_MIDDLE  3
+# define MOUSE_SCROLL_UP  4
+# define MOUSE_SCROLL_DOWN  5
+# define MOUSE_SCROLL_LEFT  6
+# define MOUSE_SCROLL_RIGHT  7
 
 # define KEY_LEFT 123
 # define KEY_RIGHT 124

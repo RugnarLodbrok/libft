@@ -17,6 +17,7 @@
 # include <limits.h>
 
 # include "libft_compat.h"
+# include "ft_linalg.h"
 # include "ft_math.h"
 # include "array.h"
 
@@ -132,6 +133,9 @@ void				*ft_calloc(size_t count, size_t size);
 void				*t_buff_init(t_buff *b, size_t size);
 size_t				t_buff_extend(t_buff *b);
 int					t_buff_append(t_buff *b, void *data, size_t len);
+
+double				swatch();
+void				swatch_print();
 
 void				ft_swap(void **a, void **b);
 void				ft_swap_int(int *a, int *b);

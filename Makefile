@@ -112,6 +112,7 @@ SRC = \
       src/t_buff.c \
       src/endian.c \
       src/ft_error_exit.c \
+      src/swatch.c \
       \
       src/printf/ft_printf.c \
       src/printf/spec_parse.c \
@@ -126,6 +127,7 @@ TEST_SRC = \
       tests/tests_math.c \
       tests/tests_main.c \
       tests/gnl.c \
+      tests/val_vs_ref_benchmark.c \
       tests/ht.c
 TEST_OBJ = $(TEST_SRC:.c=.o)
 
