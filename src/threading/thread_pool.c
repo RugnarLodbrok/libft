@@ -13,8 +13,11 @@
 #include "threading.h"
 #include "libft.h"
 
-static void t_pool_worker_foo(t_tpool_worker *w)
+static void t_pool_worker_foo(void *p)
 {
+	t_tpool_worker *w;
+
+	w = p;
 	w->f(w->p, w->ti);
 }
 
@@ -41,7 +44,7 @@ t_tpool t_tpool_create(int n,
 	return pool;
 }
 
-void t_poool_start(t_tpool *pool)
+void t_pool_start(t_tpool *pool)
 {
 	int i;
 

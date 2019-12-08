@@ -99,7 +99,10 @@ SRC = \
 	  src/hash_table/hash_table.c \
 	  src/hash_table/hash_table2.c \
 	  src/hash_table/hash.c \
-      \
+	  \
+	  src/threading/thread.c \
+	  src/threading/thread_pool.c \
+	  \
       src/array/array.c \
       src/array/arrayi.c \
       \

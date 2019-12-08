@@ -48,6 +48,6 @@ int t_thread_wait(t_thread *t, int millis);
 t_tpool t_tpool_create(int n,
 					   void (*f)(void *p, t_thread_id ti),
 					   void *p);
-void t_poool_start(t_tpool *pool);
+void t_pool_start(t_tpool *pool);
 
 #endif

@@ -106,6 +106,9 @@ add_library(libft
 		src/endian.c
 		src/ft_error_exit.c
 
+		libft/src/threading/thread.c
+		libft/src/threading/thread_pool.c
+
 		src/array/array.c
 		src/array/arrayi.c
 
