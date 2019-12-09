@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <limits.h>
+# include <time.h>
 
 # include "libft_compat.h"
 # include "ft_linalg.h"
@@ -134,6 +135,7 @@ void				*t_buff_init(t_buff *b, size_t size);
 size_t				t_buff_extend(t_buff *b);
 int					t_buff_append(t_buff *b, void *data, size_t len);
 
+double				swatch_clock(clock_t *t0);
 double				swatch();
 void				swatch_print();
 
