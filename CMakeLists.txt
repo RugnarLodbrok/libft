@@ -107,11 +107,12 @@ add_library(libft
 		src/swatch.c
 		src/ft_error_exit.c
 
-		libft/src/threading/thread.c
-		libft/src/threading/thread_pool.c
+		src/threading/thread.c
+		src/threading/thread_pool.c
 
 		src/array/array.c
 		src/array/arrayi.c
+		src/array/arrayp.c
 
 		src/printf/ft_printf.c
 		src/printf/spec_parse.c
