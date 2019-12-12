@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_linalg.h"
+#include "libft_linalg.h"
 #include <math.h>
 
 REAL	t_vec_len(t_vec v)

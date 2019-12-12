@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_linalg.h"
+#include "libft_linalg.h"
 
 static void	swap_rows(t_mat *a, t_mat *b, int i, int j)
 {

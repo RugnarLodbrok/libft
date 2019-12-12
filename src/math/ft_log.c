@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_math.h"
+#include "libft_math.h"
 
 static void	move_to_zero(REAL *x, REAL *r)
 {

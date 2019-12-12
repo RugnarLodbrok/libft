@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_linalg.h"
+#include "libft_linalg.h"
 
 t_vec	t_vec_add(t_vec a, t_vec b)
 {

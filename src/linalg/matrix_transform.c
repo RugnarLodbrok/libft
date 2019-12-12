@@ -12,7 +12,7 @@
 
 #include <math.h>
 #include "libft.h"
-#include "ft_linalg.h"
+#include "libft_linalg.h"
 
 void	t_mat_translate(t_mat *m, t_vec v)
 {

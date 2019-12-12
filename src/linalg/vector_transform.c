@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_linalg.h"
+#include "libft_linalg.h"
 
 void	t_vec_translate(t_vec *v, t_vec t)
 {

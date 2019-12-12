@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_linalg.h"
+#include "libft_linalg.h"
 
 t_mat	*t_mat_add_ref(t_mat *a, t_mat *b)
 {

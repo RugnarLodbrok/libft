@@ -13,7 +13,7 @@
 #ifndef FT_LINALG_H
 # define FT_LINALG_H
 
-# include "ft_math.h"
+# include "libft_math.h"
 
 # define MAT_RANK 4
 # define MAT_INV_C 0.2
