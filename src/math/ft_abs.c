@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_math.h"
+
 int		ft_abs(int a)
 {
 	if (a < 0)
@@ -17,7 +19,7 @@ int		ft_abs(int a)
 	return (a);
 }
 
-double	ft_fabs(double a)
+REAL	ft_fabs(REAL a)
 {
 	if (a < 0)
 		return (-a);

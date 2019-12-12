@@ -21,7 +21,7 @@ void	t_mat_translate(t_mat *m, t_vec v)
 	m->data[2][3] += v.z;
 }
 
-t_mat	t_mat_rot(t_vec axis, double theta)
+t_mat	t_mat_rot(t_vec axis, REAL theta)
 {
 	t_mat w;
 	t_mat w2;
@@ -49,7 +49,7 @@ t_mat	t_mat_rot(t_vec axis, double theta)
 	return (w);
 }
 
-t_mat	t_mat_rotation(t_vec axis, double theta, t_vec p)
+t_mat	t_mat_rotation(t_vec axis, REAL theta, t_vec p)
 {
 	t_mat m;
 	t_mat t;

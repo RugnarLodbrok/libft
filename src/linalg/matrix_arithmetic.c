@@ -77,7 +77,7 @@ t_mat	t_mat_mul_ref(t_mat *a, t_mat *b)
 	return (r);
 }
 
-t_mat	*t_mat_mul_c(t_mat *m, double c)
+t_mat	*t_mat_mul_c(t_mat *m, REAL c)
 {
 	int i;
 	int j;

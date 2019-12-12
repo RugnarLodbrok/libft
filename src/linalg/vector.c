@@ -14,7 +14,7 @@
 #include "ft_linalg.h"
 #include <math.h>
 
-double	t_vec_len(t_vec v)
+REAL	t_vec_len(t_vec v)
 {
 	return (sqrt((v.x) * (v.x) + (v.y) * (v.y) + (v.z) * (v.z)));
 }
@@ -39,14 +39,14 @@ t_vec	*t_vec_normalize(t_vec *v)
 	return (v);
 }
 
-void	t_vec_scale(t_vec *v, double n)
+void	t_vec_scale(t_vec *v, REAL n)
 {
 	v->x *= n;
 	v->y *= n;
 	v->z *= n;
 }
 
-t_vec	t_vec_mul(t_vec a, double n)
+t_vec	t_vec_mul(t_vec a, REAL n)
 {
 	t_vec r;
 
@@ -56,9 +56,9 @@ t_vec	t_vec_mul(t_vec a, double n)
 	return (r);
 }
 
-void	t_vec_decay(t_vec *v, double x)
+void	t_vec_decay(t_vec *v, REAL x)
 {
-	double len;
+	REAL len;
 
 	len = t_vec_len(*v);
 	if (len <= x)

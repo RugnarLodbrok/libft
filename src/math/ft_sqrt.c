@@ -12,11 +12,11 @@
 
 #include "ft_math.h"
 
-double	ft_sqrt(double nb)
+REAL	ft_sqrt(REAL nb)
 {
-	double r;
-	double div;
-	double avg;
+	REAL r;
+	REAL div;
+	REAL avg;
 
 	if (nb <= 0)
 		return (0);

@@ -12,7 +12,7 @@
 
 #include "ft_math.h"
 
-static void	move_to_zero(double *x, double *r)
+static void	move_to_zero(REAL *x, REAL *r)
 {
 	while (*x > 2 / (1 + 1 / E))
 	{
@@ -26,12 +26,12 @@ static void	move_to_zero(double *x, double *r)
 	}
 }
 
-double		ft_log(double x)
+REAL		ft_log(REAL x)
 {
 	int		k;
-	double	r;
-	double	acc;
-	double	num;
+	REAL	r;
+	REAL	acc;
+	REAL	num;
 
 	if (x <= 0)
 		return (0);

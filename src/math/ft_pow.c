@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "ft_math.h"
 
 int		ft_pow(int a, int b)
 {
@@ -34,9 +34,9 @@ ullong	ft_ullpow(ullong a, ullong b)
 	return (r);
 }
 
-double	ft_fpow(double a, int b)
+REAL	ft_fpow(REAL a, int b)
 {
-	double r;
+	REAL r;
 
 	r = 1.;
 	while (b > 0)
