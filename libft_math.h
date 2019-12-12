@@ -18,15 +18,22 @@
 # define PI DOUBLE_PI
 # define E 2.7182818284590452353602874713527
 
-//# define REAL float
-//#  define EPSILON .00001f
-
-# ifndef EPSILON
-#  define EPSILON .0000000000001
+# ifndef REAL_FLOAT
+#  define REAL_FLOAT 0
 # endif
 
-# ifndef REAL
+# if !REAL_FLOAT
 #  define REAL double
+#  define EPSILON .0000000000001
+#  define SIN(x) sin(x)
+#  define COS(x) cos(x)
+#  define TAN(x) tan(x)
+# else
+#  define REAL float
+#  define EPSILON .00001f
+#  define SIN(x) sinf(x)
+#  define COS(x) cosf(x)
+#  define TAN(x) tanf(x)
 # endif
 
 /*

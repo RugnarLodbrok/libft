@@ -56,4 +56,8 @@ t_mat			t_mat_inverted(t_mat m);
 void			t_mat_printf(t_mat m);
 void			t_mat_translate(t_mat *m, t_vec v);
 
+t_mat			proj_iso(REAL fov_width, REAL fov_height);
+t_mat			proj_pers_nwh(REAL n, REAL w, REAL h, REAL f);
+t_mat			proj_pers(REAL fov, REAL aspect, REAL near, REAL far);
+
 #endif

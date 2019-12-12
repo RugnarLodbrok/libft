@@ -94,6 +94,7 @@ add_library(libft
 		src/linalg/vector.c
 		src/linalg/vector_arithmetic.c
 		src/linalg/vector_transform.c
+		src/linalg/projection.c
 
 		src/hash_table/hash_table.c
 		src/hash_table/hash_table2.c
