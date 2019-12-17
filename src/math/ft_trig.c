@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static double	trig_mod(double x)
+static REAL	trig_mod(REAL x)
 {
 	while (x > PI)
 		x -= PI;
@@ -21,13 +21,13 @@ static double	trig_mod(double x)
 	return (x);
 }
 
-double			ft_cos(double x)
+REAL		ft_cos(REAL x)
 {
 	int		k;
-	double	r;
-	double	acc;
-	double	den;
-	double	num;
+	REAL	r;
+	REAL	acc;
+	REAL	den;
+	REAL	num;
 
 	k = 1;
 	r = 1;
@@ -50,13 +50,13 @@ double			ft_cos(double x)
 	return (r);
 }
 
-double			ft_sin(double x)
+REAL		ft_sin(REAL x)
 {
 	int		k;
-	double	r;
-	double	acc;
-	double	den;
-	double	num;
+	REAL	r;
+	REAL	acc;
+	REAL	den;
+	REAL	num;
 
 	k = 2;
 	acc = 1;
@@ -79,7 +79,7 @@ double			ft_sin(double x)
 	return (r);
 }
 
-double			radians(double degrees)
+REAL		radians(REAL degrees)
 {
 	return (degrees * PI / 180.0);
 }

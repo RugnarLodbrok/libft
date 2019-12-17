@@ -18,8 +18,8 @@
 # include <time.h>
 
 # include "libft_compat.h"
-# include "ft_linalg.h"
-# include "ft_math.h"
+# include "libft_linalg.h"
+# include "libft_math.h"
 # include "array.h"
 
 # define CHECK0RET(x, r) if (!(x)) return (r)

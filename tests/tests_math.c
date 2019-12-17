@@ -3,22 +3,22 @@
 #include "libft.h"
 #include "tests.h"
 
-void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
-					 double start, double stop, int n,
-					 double ref_max, double ref_avg, double time_ref)
+void test_real_f_x(char *f_name, REAL (*f)(REAL), double (*f_ref)(double),
+				   REAL start, REAL stop, int n,
+				   REAL ref_max, REAL ref_avg, double time_ref)
 {
-	double x;
-	double step = (stop - start) / n;
-	double v;
-	double max_err = 0;
-	double total_err = 0;
+	REAL x;
+	REAL step = (stop - start) / n;
+	REAL v;
+	REAL max_err = 0;
+	REAL total_err = 0;
 	char *status = OK;
 	double t;
 
 	swatch();
 	for (x = start; x < stop; x += step)
 	{
-		v = ft_fabs(f(x) - f_ref(x));
+		v = ft_fabs(f(x) - (REAL)f_ref(x));
 		if (max_err < v / EPSILON)
 			max_err = v / EPSILON;
 		total_err += v / EPSILON;
@@ -48,16 +48,16 @@ void test_double_f_x(char *f_name, double (*f)(double), double (*f_ref)(double),
 
 void test_ft_math()
 {
-	test_double_f_x("ft_sin", &ft_sin, &sin,
-					0, PI, 1000000,
-					0.0078, 0.00097, 62.);
-	test_double_f_x("ft_cos", &ft_cos, &cos,
-					0, PI, 1000000,
-					0.0078, 0.00092, 62.);
-	test_double_f_x("ft_sqrt", &ft_sqrt, &sqrt,
-					0, 10000, 1000000,
-					0.14, 0.03, 125.);
-	test_double_f_x("ft_log", &ft_log, &log,
-					.000001, 77777, 666666,
-					.14, .019, 164.);
+	test_real_f_x("ft_sin", &ft_sin, &sin,
+				  0, PI, 1000000,
+				  0.0078, 0.00097, 62.);
+	test_real_f_x("ft_cos", &ft_cos, &cos,
+				  0, PI, 1000000,
+				  0.0078, 0.00092, 62.);
+	test_real_f_x("ft_sqrt", &ft_sqrt, &sqrt,
+				  0, 10000, 1000000,
+				  0.14, 0.03, 125.);
+	test_real_f_x("ft_log", &ft_log, &log,
+				  .000001, 77777, 666666,
+				  .14, .019, 164.);
 }

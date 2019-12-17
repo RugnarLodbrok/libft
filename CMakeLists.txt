@@ -94,6 +94,7 @@ add_library(libft
 		src/linalg/vector.c
 		src/linalg/vector_arithmetic.c
 		src/linalg/vector_transform.c
+		src/linalg/projection.c
 
 		src/hash_table/hash_table.c
 		src/hash_table/hash_table2.c
@@ -107,11 +108,12 @@ add_library(libft
 		src/swatch.c
 		src/ft_error_exit.c
 
-		libft/src/threading/thread.c
-		libft/src/threading/thread_pool.c
+		src/threading/thread.c
+		src/threading/thread_pool.c
 
 		src/array/array.c
 		src/array/arrayi.c
+		src/array/arrayp.c
 
 		src/printf/ft_printf.c
 		src/printf/spec_parse.c

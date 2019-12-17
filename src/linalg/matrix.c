@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_linalg.h"
+#include "libft_linalg.h"
 
 t_mat	t_mat_identity(void)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_linalg.h"
+#include "libft_linalg.h"
 
 void	t_vec_translate(t_vec *v, t_vec t)
 {
@@ -63,7 +63,7 @@ t_vec	t_vec_transform(t_vec v, t_mat *a)
 t_vec	t_vec_transform4(t_vec v, t_mat *a)
 {
 	t_vec	r;
-	double	w;
+	REAL	w;
 
 	w =
 			a->data[3][0] * v.x +
