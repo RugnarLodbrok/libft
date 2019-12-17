@@ -8,6 +8,7 @@
 # define MLX_EVENT_MOUSE_MOVE 6
 # define MLX_EVENT_EXPOSE 12
 # define MLX_EVENT_EXIT 17
+# define MLX_EVENTS_NUMBER 18
 
 # define MOUSE_B_LEFT  1
 # define MOUSE_B_RIGHT  2
