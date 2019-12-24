@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MATH_H
-# define FT_MATH_H
+#ifndef LIBFT_MATH_H
+# define LIBFT_MATH_H
 
 # define FLOAT_PI 3.1415927410125732421875
 # define DOUBLE_PI 3.141592653589793115997963468544185161590576171875

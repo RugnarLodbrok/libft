@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LINALG_H
-# define FT_LINALG_H
+#ifndef LIBFT_LINALG_H
+# define LIBFT_LINALG_H
 
 # include "libft_math.h"
 

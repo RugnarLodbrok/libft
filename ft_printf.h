@@ -26,13 +26,13 @@
 #  define HAVE_VA_LIST_AS_ARRAY
 # endif
 
-#ifdef HAVE_VA_LIST_AS_ARRAY
+# ifdef HAVE_VA_LIST_AS_ARRAY
 #  define MAKE_VA_LIST_PTR(ap) ((va_list*)(ap))
 # else
 #  define MAKE_VA_LIST_PTR(ap) (&(ap))
 # endif
 
-typedef	struct
+typedef	struct	s_printf_spec
 {
 	uint			flags;
 	size_t			field_width;
@@ -42,7 +42,7 @@ typedef	struct
 	char			modifiers[4];
 }				t_printf_spec;
 
-typedef union
+typedef union	u_printf_arg
 {
 	long double		f;
 	long long int	d;
