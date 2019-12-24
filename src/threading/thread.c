@@ -12,7 +12,7 @@
 
 #include "threading.h"
 
-static THREAD_F_TYPE t_thread_func(void *p)
+static THREAD_F_TYPE	t_thread_func(void *p)
 {
 	t_thread *t;
 
@@ -21,7 +21,7 @@ static THREAD_F_TYPE t_thread_func(void *p)
 	return (0);
 }
 
-t_thread t_thread_create(void (*f)(void *p), void *p)
+t_thread				t_thread_create(void (*f)(void *p), void *p)
 {
 	t_thread t;
 
@@ -33,7 +33,7 @@ t_thread t_thread_create(void (*f)(void *p), void *p)
 	return (t);
 }
 
-int t_thread_start(t_thread *t)
+int						t_thread_start(t_thread *t)
 {
 #ifdef _WIN32
 	t->handle = CreateThread(
@@ -57,7 +57,7 @@ int t_thread_start(t_thread *t)
 #endif
 }
 
-int t_thread_wait(t_thread *t, int millis)
+int						t_thread_wait(t_thread *t, int millis)
 {
 #ifdef _WIN32
 	DWORD ret;
