@@ -146,6 +146,7 @@ void				ft_swap_char(char *a, char *b);
 void				ft_swap_double(double *a, double *b);
 
 int					endian();
+void				*ft_print_memory(void *addr, uint size);
 
 void				ft_error_exit_ap(const char *msg, va_list ap);
 void				ft_error_exit_ape(const char *msg, va_list ap);

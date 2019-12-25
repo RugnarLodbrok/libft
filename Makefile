@@ -114,6 +114,7 @@ SRC = \
       src/endian.c \
       src/ft_error_exit.c \
       src/swatch.c \
+      src/print_memory.c \
       \
       src/printf/ft_printf.c \
       src/printf/spec_parse.c \

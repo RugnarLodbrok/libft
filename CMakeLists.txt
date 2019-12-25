@@ -107,6 +107,7 @@ add_library(libft
 		src/endian.c
 		src/swatch.c
 		src/ft_error_exit.c
+		src/print_memory.c
 
 		src/threading/thread.c
 		src/threading/thread_pool.c
