@@ -42,6 +42,13 @@ typedef unsigned int		t_uint;
 
 # endif
 
+# ifndef byte
+
+typedef unsigned int		t_byte;
+#  define byte t_byte
+
+# endif
+
 # ifndef ULLONG_MAX
 #  define ULLONG_MAX ULONG_LONG_MAX
 # endif

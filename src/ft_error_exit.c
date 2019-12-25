@@ -14,13 +14,28 @@
 #include "ft_printf.h"
 #include <stdarg.h>
 
+void	ft_error_exit_ap(const char *msg, va_list ap)
+{
+	ft_printf_ap(2, msg, ap);
+	ft_fprintf(2, "\n");
+	exit(1);
+}
+
 void	ft_error_exit(const char *msg, ...)
 {
 	va_list ap;
 
 	va_start(ap, msg);
-	ft_printf_ap(2, msg, ap);
-	ft_fprintf(2, "\n");
+	ft_error_exit_ap(msg, ap);
 	va_end(ap);
-	exit(1);
+}
+
+void	ft_assert(const int expr, const char *msg, ...)
+{
+	va_list ap;
+	if (expr)
+		return ;
+	va_start(ap, msg);
+	ft_error_exit_ap(msg, ap);
+	va_end(ap);
 }

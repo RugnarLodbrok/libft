@@ -105,6 +105,7 @@ SRC = \
 	  \
       src/array/array.c \
       src/array/arrayi.c \
+      src/array/arrayp.c \
       \
       src/ft_alloc.c \
       src/ft_swap.c \

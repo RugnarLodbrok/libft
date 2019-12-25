@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <time.h>
+# include <stdarg.h>
 
 # include "libft_compat.h"
 # include "libft_linalg.h"
@@ -145,7 +146,11 @@ void				ft_swap_char(char *a, char *b);
 void				ft_swap_double(double *a, double *b);
 
 int					endian();
+
+void				ft_error_exit_ap(const char *msg, va_list ap);
+void				ft_error_exit_ape(const char *msg, va_list ap);
 void				ft_error_exit(const char *msg, ...);
+void				ft_assert(int expr, const char *msg, ...);
 int					ft_printf(const char *format, ...);
 int					ft_fprintf(int fd, const char *format, ...);
 
