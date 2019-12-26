@@ -72,7 +72,7 @@ char				*ft_strnstr(const char *haystack,
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strrev(char *str);
-char				*ft_memrev(char *str, size_t len);
+void				*ft_memrev(void *str, size_t len);
 unsigned char		ft_bitrev(unsigned char b);
 int					ft_atoi(const char *str);
 int					ft_isalpha(int c);

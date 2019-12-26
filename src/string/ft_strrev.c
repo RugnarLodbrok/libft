@@ -27,7 +27,7 @@ char			*ft_strrev(char *str)
 	return (str);
 }
 
-char			*ft_memrev(char *str, size_t len)
+void			*ft_memrev(void *str, size_t len)
 {
 	int i;
 

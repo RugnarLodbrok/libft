@@ -44,7 +44,7 @@ typedef unsigned int		t_uint;
 
 # ifndef byte
 
-typedef unsigned int		t_byte;
+typedef unsigned char		t_byte;
 #  define byte t_byte
 
 # endif
