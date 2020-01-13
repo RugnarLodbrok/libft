@@ -153,6 +153,7 @@ void				ft_error_exit_ape(const char *msg, va_list ap);
 void				ft_error_exit(const char *msg, ...);
 void				ft_assert(int expr, const char *msg, ...);
 int					ft_printf(const char *format, ...);
+int					ft_printf_ap(int fd, const char *format, va_list ap);
 int					ft_fprintf(int fd, const char *format, ...);
 
 #endif
