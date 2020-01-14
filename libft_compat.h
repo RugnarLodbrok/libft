@@ -16,6 +16,7 @@
 # include "limits.h"
 # ifdef _WIN32
 #  include <io.h>
+#  define read _read
 #  define sleep(x) _sleep(x)
 # else
 #  include <unistd.h>
@@ -57,6 +58,10 @@ typedef unsigned char		t_byte;
 #  define MACOS 1
 # else
 #  define MACOS 0
+# endif
+
+# ifndef STDOUT_FILENO
+#  define STDOUT_FILENO 1
 # endif
 
 # ifndef LITTLE_ENDIAN
