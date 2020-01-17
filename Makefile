@@ -16,6 +16,7 @@ FLAGS = -Wall -Wextra -Werror
 SRC = \
 	  src/string/ft_atoi.c \
       src/string/ft_bzero.c \
+      src/string/ft_isspace.c \
       src/string/ft_isalnum.c \
       src/string/ft_isalpha.c \
       src/string/ft_isascii.c \
@@ -48,6 +49,7 @@ SRC = \
       src/string/ft_striter.c \
       src/string/ft_striteri.c \
       src/string/ft_strjoin.c \
+      src/string/ft_memnjoin.c \
       src/string/ft_strlcat.c \
       src/string/ft_strlcpy.c \
       src/string/ft_strlen.c \
