@@ -25,7 +25,7 @@ char	*ft_strdup(const char *s1)
 	return (ret);
 }
 
-char		*ft_strndup(const char *s1, size_t n)
+char	*ft_strndup(const char *s1, size_t n)
 {
 	char	*str;
 	char	*s2;

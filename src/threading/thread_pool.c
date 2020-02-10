@@ -21,9 +21,10 @@ static void	t_pool_worker_foo(void *p)
 	w->f(w->p, w->ti);
 }
 
-t_tpool		t_tpool_create(int n,
-						   void (*f)(void *p, t_thread_id ti),
-						   void *p)
+t_tpool		t_tpool_create(
+		int n,
+		void (*f)(void *p, t_thread_id ti),
+		void *p)
 {
 	int				i;
 	t_tpool			pool;

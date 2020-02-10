@@ -33,6 +33,7 @@ void	ft_error_exit(const char *msg, ...)
 void	ft_assert(const int expr, const char *msg, ...)
 {
 	va_list ap;
+
 	if (expr)
 		return ;
 	va_start(ap, msg);

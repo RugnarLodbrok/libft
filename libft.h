@@ -141,8 +141,8 @@ size_t				t_buff_extend(t_buff *b);
 int					t_buff_append(t_buff *b, void *data, size_t len);
 
 double				swatch_clock(clock_t *t0);
-double				swatch();
-void				swatch_print();
+double				swatch(void);
+void				swatch_print(void);
 
 void				ft_swap(void **a, void **b);
 void				ft_swap_int(int *a, int *b);
