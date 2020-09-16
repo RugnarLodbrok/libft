@@ -28,4 +28,28 @@ typedef struct	s_gnl_iterator_state
 
 int				get_next_line(const int fd, char **line);
 
+/* USAGE EXAMPLE
+
+#include <stdio.h>
+#include <fcntl.h>
+
+int main() {
+    int fd;
+    int status;
+
+	fd = open("data.txt", O_RDONLY);
+	while ((status = get_next_line(fd, &s)) > 0)
+	{
+		printf("%s\n", s);
+		free(s);
+	}
+	if (status < 0)
+		printf("----ERROR----\n");
+	else
+		printf("-----END-----\n");
+	return 0;
+}
+
+*/
+
 #endif

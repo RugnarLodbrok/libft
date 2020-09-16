@@ -21,7 +21,7 @@ $(LIBFT):
 $(NAME): $(OBJ)
 	gcc $(FLS) $(OBJ) -o $(NAME) $(OPTIONS) -L libft -lft
 
-run : $(NAME)
+run : all
 	@./$(NAME) some argv
 
 clean:
